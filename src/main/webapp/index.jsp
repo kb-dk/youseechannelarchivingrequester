@@ -1,13 +1,61 @@
 <%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.persistence.HibernateUtil" %>
 <%@ page import="java.io.File" %>
 <%@ page import="dk.statsbiblioteket.digitaltv.access.model.persistence.ChannelMappingDAO" %>
-<h3>Heloow Wordl</h3>
+<%@ page import="dk.statsbiblioteket.digitaltv.web.ControllerServlet" %>
+<%@ page pageEncoding="UTF-8"
+%><%
+    ControllerServlet.setUTF8(request);
+%><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Statsbiblioteket's Radio/TV Channel Archive Request Interface</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="./style.css" />
+
+    <script type="text/javascript" xml:space="preserve">
+        function gotopage(page){
+            document.getElementById("page_name").setAttribute("value", page);
+            document.nav_form.submit();
+        }
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function() {
+                    oldonload();
+                    func();
+                }
+            }
+        }
+    </script>
+</head>
 
 <%
     String cfgPath= session.getServletContext().getInitParameter("hibernate_cfg");
     HibernateUtil util = HibernateUtil.initialiseFactory(new File(cfgPath));
-    ChannelMappingDAO dao = new ChannelMappingDAO();
-    int cm_size = dao.getAll().size();
 %>
+ <body>
+     <h1>Statsbiblioteket's Radio/TV Channel Archive Request Interface</h1>
+     <div id="navigation">
+        <form action="simple_dispatcher.jsp" name="nav_form" method="get">
+            <!--<a href="#" class="main_nav" onclick="gotopage('');">Start</a>-->
+            <a href="#" class="main_nav" onclick="gotopage('channel_mappings.jsp');">Channels</a>
+            <a href="#" class="main_nav" onclick="gotopage('archiving_requests.jsp');">Requests</a>
+            <input id="page_name" type="hidden" name="page"/>
+        </form >
+     </div>
 
-Read <%=cfgPath%> and found <%=cm_size%> Channel Mappings.
+     <div id="content">
+         <%
+             String content_page  = (String) request.getAttribute("page_attribute");
+         %>
+         <% if (content_page != null && !"".equals(content_page)) {%>
+         <jsp:include page="<%=content_page%>"/>
+         <%} else {%>
+         <jsp:include page="archiving_requests.jsp"/>
+         <%}%>
+
+     </div>
+</body>
+</html>
