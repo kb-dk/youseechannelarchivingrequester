@@ -1,6 +1,5 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
-import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.ChannelArchivingRequesterException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 
 import java.util.Date;

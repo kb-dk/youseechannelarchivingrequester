@@ -1,6 +1,5 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.service;
 
-import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.ChannelArchivingRequesterException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 
 import java.util.Date;
@@ -16,9 +15,9 @@ public interface YouSeeChannelMappingServiceIF {
      * @param youSeeChannelId the YouSee channel
      * @param date the date.
      * @return the unique mapping
-     * @throws ChannelArchivingRequesterException if the mappings is not unique
+     * @throws ServiceException if the mappings is not unique
      */
-    YouSeeChannelMapping getUniqueMappingFromYouSeeChannelId(String youSeeChannelId, Date date) throws ChannelArchivingRequesterException;
+    YouSeeChannelMapping getUniqueMappingFromYouSeeChannelId(String youSeeChannelId, Date date) throws ServiceException;
 
     /**
      * Gets the unique mapping corresponding to a given SB channel on a given date. Throws an exception if there
@@ -26,9 +25,9 @@ public interface YouSeeChannelMappingServiceIF {
      * @param sBChannelId
      * @param date the date.
      * @return the unique mapping
-     * @throws ChannelArchivingRequesterException if the mappings is not unique
+     * @throws ServiceException if the mappings is not unique
      */
-    YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, Date date) throws ChannelArchivingRequesterException;
+    YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, Date date) throws ServiceException;
 
 
 }
