@@ -1,7 +1,7 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
 import dk.statsbiblioteket.generic.utils.GenericHibernateDAO;
-import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.ChannelArchiveRequest;
+import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 
 import org.hibernate.Query;
 import java.util.Date;

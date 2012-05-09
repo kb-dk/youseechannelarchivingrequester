@@ -1,8 +1,7 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.Schedule;
-import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.ChannelArchiveRequest;
+import dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverage;
+import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 import junit.framework.TestCase;
 
 import java.util.Date;
@@ -14,7 +13,7 @@ public class ChannelArchiveRequestDAOTest extends TestCase {
 
     public void testInsert() {
         ChannelArchiveRequest schedule = new ChannelArchiveRequest();
-        schedule.setSchedule(Schedule.MONDAY_TO_FRIDAY);
+        schedule.setWeekdayCoverage(WeekdayCoverage.MONDAY_TO_FRIDAY);
         schedule.setsBChannelId("dr1");
         ChannelArchiveRequestDAO dao = new ChannelArchiveRequestDAO();
         dao.create(schedule);

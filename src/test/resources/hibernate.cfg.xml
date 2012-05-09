@@ -73,8 +73,8 @@
         <mapping class="dk.statsbiblioteket.digitaltv.access.model.RitzauChannelId2SBChannelMappingConfigurationState"/>
         <mapping class="dk.statsbiblioteket.digitaltv.tv2regional.TV2RegionalFile"/>
         <mapping class="dk.statsbiblioteket.digitaltv.access.model.ChannelMapping"/>
-        <mapping class="dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.YouSeeChannelMapping" />
-        <mapping class="dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.ChannelArchiveRequest"/>
+        <mapping class="dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping" />
+        <mapping class="dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest"/>
         <!--<mapping class="dk.statsbiblioteket.DerbyHibernateLobTestcase" />-->
     </session-factory>
 </hibernate-configuration>
