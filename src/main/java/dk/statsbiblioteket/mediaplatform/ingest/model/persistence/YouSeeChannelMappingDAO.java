@@ -1,15 +1,17 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
 import dk.statsbiblioteket.generic.utils.GenericHibernateDAO;
+import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.ChannelArchivingRequestException;
 import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.YouSeeChannelMapping;
 import org.hibernate.Query;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  */
-public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMapping, Long> {
+public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMapping, Long> implements YouSeeChannelMappingDAOIF {
 
     /**
      * Constructor for this DAO class.
@@ -19,24 +21,38 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
     }
 
 
-    public YouSeeChannelMapping getMappingFromYouSeeChannelId(String youSeeChannelId) {
+    @Override
+    public YouSeeChannelMapping getMappingFromYouSeeChannelId(String youSeeChannelId) throws ChannelArchivingRequestException {
         return getMappingFromYouSeeChannelId(youSeeChannelId, new Date());
     }
 
-    public YouSeeChannelMapping getMappingFromYouSeeChannelId(String youSeeChannelId, Date date) {
+    @Override
+    public YouSeeChannelMapping getMappingFromYouSeeChannelId(String youSeeChannelId, Date date) throws ChannelArchivingRequestException {
         final Query query = getSession().createQuery("FROM YouSeeChannelMapping WHERE youSeeChannelId = :id AND " +
                 "fromDate <= :date AND toDate >= :date");
-        return (YouSeeChannelMapping) (query.setParameter("id", youSeeChannelId).setDate("date", date).list().get(0));
+        final List list = query.setParameter("id", youSeeChannelId).setDate("date", date).list();
+        if (list.size()  != 1) {
+            throw new ChannelArchivingRequestException("Expected exactly one valid mapping but found '" + list.size()
+                    + "' for " + youSeeChannelId + " at " + date);
+        }
+        return (YouSeeChannelMapping) (list.get(0));
     }
 
-    public YouSeeChannelMapping getMappingFromSbChannelId(String sbChannelId) {
+    @Override
+    public YouSeeChannelMapping getMappingFromSbChannelId(String sbChannelId) throws ChannelArchivingRequestException {
         return getMappingFromSbChannelId(sbChannelId, new Date());
     }
 
-    public YouSeeChannelMapping getMappingFromSbChannelId(String sBChannelId, Date date) {
+    @Override
+    public YouSeeChannelMapping getMappingFromSbChannelId(String sBChannelId, Date date) throws ChannelArchivingRequestException {
         final Query query = getSession().createQuery("FROM YouSeeChannelMapping WHERE sbChannelId = :id AND " +
                 "fromDate <= :date AND toDate >= :date");
-        return (YouSeeChannelMapping) (query.setParameter("id", sBChannelId).setDate("date", date).list().get(0));
+        final List list = query.setParameter("id", sBChannelId).setDate("date", date).list();
+         if (list.size()  != 1) {
+            throw new ChannelArchivingRequestException("Expected exactly one valid mapping but found '" + list.size()
+                    + "' for " + sBChannelId + " at " + date);
+        }
+        return (YouSeeChannelMapping) (list.get(0));
     }
 
 

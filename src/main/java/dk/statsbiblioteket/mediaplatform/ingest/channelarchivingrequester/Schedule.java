@@ -1,14 +1,11 @@
 package dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester;
 
 /**
- * Created by IntelliJ IDEA.
- * User: csr
- * Date: 5/8/12
- * Time: 3:18 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public enum Schedule {
-    DAILY("daily"), MONDAY("monday"), MONDAY_TO_FRIDAY("Monday-Friday") ;
+    DAILY("Daily"), MONDAY("Monday"), TUESDAY("Tuesday"), WEDNESDAY("Wednesday"), THURSDAY("Thursday"), FRIDAY("Friday"),
+    SATURDAY("Saturday"), SUNDAY("Sunday"), MONDAY_TO_THURSDAY("Monday-Thursday"), MONDAY_TO_FRIDAY("Monday-Friday"), SATURDAY_AND_SUNDAY("Saturday-Sunday"),  ;
 
     String description;
 

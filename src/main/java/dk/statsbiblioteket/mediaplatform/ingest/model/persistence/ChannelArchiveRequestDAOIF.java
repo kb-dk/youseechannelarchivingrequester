@@ -6,12 +6,16 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by IntelliJ IDEA.
- * User: csr
- * Date: 5/8/12
- * Time: 3:44 PM
- * To change this template use File | Settings | File Templates.
+ *
  */
 public interface ChannelArchiveRequestDAOIF {
+
+
+    /**
+     * Returns a list of all ChannelArchiveRequest objects which are valid in at least part of the specified date range.
+     * @param fromDate Start of date range.
+     * @param toDate End of date range.
+     * @return the list of vaild requests.
+     */
     List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate);
 }

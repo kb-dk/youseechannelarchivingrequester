@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dk.statsbiblioteket.mediaplatform.ingest.model.persistence.HibernateUtilTest
--------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.429 sec

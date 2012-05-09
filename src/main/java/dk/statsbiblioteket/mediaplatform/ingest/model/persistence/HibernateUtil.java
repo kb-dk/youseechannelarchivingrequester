@@ -8,6 +8,9 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 import java.io.File;
 
+/**
+ * A fairly basic hibernate utility which can be initialised from a configuration file.
+ */
 public class HibernateUtil {
     static Logger log = Logger.getLogger(HibernateUtil.class);
 
@@ -15,6 +18,12 @@ public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
+    /**
+     * Initialise hibernate from a configuration file on first call. Subsequent calls will not reinitialise the
+     * hibernate connection unless the sessionFactory is first closed.
+     * @param cfgFile  The configuration file.
+     * @return An instance of this class.
+     */
     public static HibernateUtil initialiseFactory(File cfgFile) {
         if (sessionFactory == null || sessionFactory.isClosed()) {
             try {
@@ -37,7 +46,7 @@ public class HibernateUtil {
     }
 
     /**
-     *
+     * Gets a session factory
      * @return
      */
     public SessionFactory getSessionFactory() {
@@ -45,10 +54,14 @@ public class HibernateUtil {
     }
 
     /**
-     *
-     * @return
+     * Gets a hibernate session. This class must be initialised before this method is called.
+     * @return a Session
      */
     public Session getSession() {
+        if (sessionFactory == null || sessionFactory.isClosed()) {
+            throw new RuntimeException("Attempt to use HibernateUtil before it was initialised or " +
+                    "after sessionFactory was closed");
+        }
         return sessionFactory.openSession();
     }
 }
