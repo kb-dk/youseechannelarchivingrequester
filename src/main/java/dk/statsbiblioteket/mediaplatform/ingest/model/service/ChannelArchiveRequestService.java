@@ -10,7 +10,7 @@ import java.util.List;
 /**
  *
  */
-public class ChannelArchiveRequestService implements ChannelArchveRequestServiceIF{
+public class ChannelArchiveRequestService implements ChannelArchiveRequestServiceIF {
 
     @Override
     public List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) {
