@@ -1,0 +1,27 @@
+body {
+    color:#252525
+}
+
+h1 {
+    color: #9400d3;
+}
+
+h3 {
+    background-color: #445555;
+}
+
+th {
+    background-color: #cc9999;
+}
+
+A {
+    color: #336699;
+}
+
+ tr.description {
+    background-color:#daa520;
+}
+
+div.data_error {
+    color:  #dc143c;
+}

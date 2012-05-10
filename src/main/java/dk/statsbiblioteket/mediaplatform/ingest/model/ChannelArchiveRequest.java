@@ -19,9 +19,9 @@ public class ChannelArchiveRequest {
 
     private String sBChannelId;
 
-    private Time fromTime;
+    private Date fromTime;
 
-    private Time toTime;
+    private Date toTime;
 
     private Date fromDate;
 
@@ -72,19 +72,19 @@ public class ChannelArchiveRequest {
         this.weekdayCoverage = weekdayCoverage;
     }
 
-    public Time getFromTime() {
+    public Date getFromTime() {
         return fromTime;
     }
 
-    public void setFromTime(Time fromTime) {
+    public void setFromTime(Date fromTime) {
         this.fromTime = fromTime;
     }
 
-    public Time getToTime() {
+    public Date getToTime() {
         return toTime;
     }
 
-    public void setToTime(Time toTime) {
+    public void setToTime(Date toTime) {
         this.toTime = toTime;
     }
 }

@@ -26,4 +26,18 @@
 <display-name>Statsbiblioteket Mediaplatform Channel Scheduler</display-name>
 <description>Statsbiblioteket Mediaplatform Channel Scheduler</description>
 
+    <servlet>
+        <servlet-name>ChannelArchiveRequestCRUDServlet</servlet-name>
+        <servlet-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.ChannelArchiveRequestCRUDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChannelArchiveRequestCRUDServlet</servlet-name>
+        <url-pattern>/ChannelArchiveRequestCRUDServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--This is an init utiltiy class -->
+    <listener>
+        <listener-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.WebInitiator</listener-class>
+    </listener>
+
 </web-app>

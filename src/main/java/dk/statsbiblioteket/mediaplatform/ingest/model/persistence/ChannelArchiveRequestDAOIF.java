@@ -18,4 +18,10 @@ public interface ChannelArchiveRequestDAOIF {
      * @return the list of vaild requests.
      */
     List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate);
+
+    /**
+     * Gets all requests in the database.
+     * @return
+     */
+    List<ChannelArchiveRequest> getAllRequests();
 }

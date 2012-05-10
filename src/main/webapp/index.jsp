@@ -10,8 +10,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Statsbiblioteket's Radio/TV Channel Archive Request Interface</title>
     <link rel="stylesheet" type="text/css" media="all"
-          href="./style.css" />
-
+          href="./style_all.css" />
+     <link rel="stylesheet" type="text/css" media="print"
+          href="./style_print.css" />
+     <link rel="stylesheet" type="text/css" media="screen"
+          href="./style_screen.css" />
     <script type="text/javascript" xml:space="preserve">
         function gotopage(page){
             document.getElementById("page_name").setAttribute("value", page);
@@ -32,8 +35,7 @@
 </head>
 
 <%
-    String cfgPath= session.getServletContext().getInitParameter("hibernate_cfg");
-    HibernateUtil util = HibernateUtil.initialiseFactory(new File(cfgPath));
+
 %>
  <body>
      <h1>Statsbiblioteket's Radio/TV Channel Archive Request Interface</h1>
@@ -57,5 +59,8 @@
          <%}%>
 
      </div>
+
+ <div class="data_error">Here we print any warnings if there are data inconsistencies</div>
+
 </body>
 </html>
