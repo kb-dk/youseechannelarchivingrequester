@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Dynarch Calendar -- Simple popup calendar</title>
+    <script src="../src/js/jscal2.js"></script>
+    <script src="../src/js/lang/en.js"></script>
+    <link rel="stylesheet" type="text/css" href="../src/css/jscal2.css" />
+    <link rel="stylesheet" type="text/css" href="../src/css/border-radius.css" />
+    <link rel="stylesheet" type="text/css" href="../src/css/steel/steel.css" />
+  </head>
+  <body>
+    <input size="30" id="f_date1" /><button id="f_btn1">...</button><br />
+
+    <script type="text/javascript">//<![CDATA[
+      Calendar.setup({
+        inputField : "f_date1",
+        trigger    : "f_btn1",
+        onSelect   : function() { this.hide() },
+        showTime   : 12,
+        dateFormat : "%Y-%m-%d %I:%M %p"
+      });
+    //]]></script>
+  </body>
+</html>

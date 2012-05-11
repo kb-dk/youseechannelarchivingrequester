@@ -4,6 +4,9 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 import dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverage;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchiveRequestDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchiveRequestDAOIF;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestService;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestServiceIF;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,7 +41,7 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ChannelArchiveRequestDAO dao = new ChannelArchiveRequestDAO();
+        ChannelArchiveRequestServiceIF service = new ChannelArchiveRequestService();
 
         String action = req.getParameter(SUBMIT_ACTION);
         //For a delete action, all of these may be null. Only Id is needed
@@ -79,12 +82,25 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
             Date fromTime = new Date(0);
             fromTime.setHours(Integer.parseInt(fromTimeHours));
             fromTime.setMinutes(Integer.parseInt(fromTimeMinutes));
-            Date toTime = new Date(0,0,1, Integer.parseInt(toTimeHours), Integer.parseInt(toTimeMinutes), 0);
+            Date toTime = new Date(0);
+            toTime.setHours(Integer.parseInt(toTimeHours));
+            toTime.setMinutes(Integer.parseInt(toTimeMinutes));
             caRequest.setToTime(toTime);
             caRequest.setFromTime(fromTime);
             caRequest.setWeekdayCoverage(WeekdayCoverage.valueOf(coverageS));
             if (action.equals(CREATE)) {
-                dao.create(caRequest);
+                try {
+                    service.insert(caRequest);
+                } catch (ServiceException e) {
+                    req.setAttribute("error", e);
+                }
+            } else if (action.equals(UPDATE)) {
+                caRequest.setId(Long.parseLong(idS));
+                try {
+                    service.update(caRequest);
+                } catch (ServiceException e) {
+                    req.setAttribute("error", e);
+                }
             }
         }
 

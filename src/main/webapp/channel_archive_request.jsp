@@ -34,7 +34,7 @@
     <form>
     <tr>
         <td><input value="<%=caRequest.getsBChannelId()%>"/></td>
-        <td><input value="<%=caRequest.getWeekdayCoverage().getDescription()%>" /></td>
+        <td><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
         <td><input value="<%=fromTimeWct.getHours()%>" size="2" maxlength="2"/>:<input value="<%=fromTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
         <td><input value="<%=toTimeWct.getHours()%>" size="2" maxlength="2"/>:<input value="<%=toTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
         <td><input value="<%=JAVA_DATE_FORMAT.format(fromDate)%>" size="10" maxlength="10" /></td>
@@ -47,21 +47,12 @@
 %>
     <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
         <td><input name="<%=CHANNEL%>" value=""/></td>
-        <td>
-            <select name="<%=COVERAGE%>">
-                <option value="MONDAY">Monday</option>
-                <option value="TUESDAY">Tuesday</option>
-            </select>
-        </td>
+        <td> <%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, null)%></td>
         <td><input name="<%=FROM_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=FROM_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
         <td><input name="<%=TO_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
         <td><input id="start_create" name="<%=FROM_DATE%>" value=""  size="10" maxlength="10" /></td>
         <td><input id="end_create" name="<%=TO_DATE%>" value=""  size="10" maxlength="10" /></td>
         <td><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=CREATE%>">Create</button></td>
     </form>
-    <script type="text/javascript">
-        //createCalendar('start_create');
-        //createCalendar('end_create');
-    </script>
 </table>
 

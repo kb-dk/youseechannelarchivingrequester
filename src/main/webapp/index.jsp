@@ -66,7 +66,7 @@
         <form action="simple_dispatcher.jsp" name="nav_form" method="get">
             <!--<a href="#" class="main_nav" onclick="gotopage('');">Start</a>-->
             <a href="#" class="main_nav" onclick="gotopage('you_see_channel_mapping.jsp');">Channels</a>
-            <a href="#" class="main_nav" onclick="gotopage('archiving_requests.jsp');">Requests</a>
+            <a href="#" class="main_nav" onclick="gotopage('channel_archive_request.jsp');">Requests</a>
             <input id="page_name" type="hidden" name="page"/>
         </form >
      </div>
@@ -83,7 +83,14 @@
 
      </div>
 
- <div class="data_error">Here we print any warnings if there are data inconsistencies</div>
+     <%
+         if (request.getAttribute("error") != null) {
+             String error_text = ((Exception) request.getAttribute("error")).getMessage();
+     %>
+     <div class="data_error"><%=error_text%></div>
+     <%
+         }
+     %>
 
-</body>
+ </body>
 </html>
