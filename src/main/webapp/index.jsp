@@ -11,10 +11,33 @@
     <title>Statsbiblioteket's Radio/TV Channel Archive Request Interface</title>
     <link rel="stylesheet" type="text/css" media="all"
           href="./style_all.css" />
-     <link rel="stylesheet" type="text/css" media="print"
+    <link rel="stylesheet" type="text/css" media="print"
           href="./style_print.css" />
-     <link rel="stylesheet" type="text/css" media="screen"
+    <link rel="stylesheet" type="text/css" media="screen"
           href="./style_screen.css" />
+
+    <!--Import styling for the javascript calendars -->
+    <link rel="stylesheet" type="text/css" href="./JSCal2/src/css/jscal2.css" />
+    <link rel="stylesheet" type="text/css" href="./JSCal2/src/css/border-radius.css" />
+    <link rel="stylesheet" type="text/css" href="./JSCal2/src/css/gold/gold.css" />
+    <script type="text/javascript" src="./JSCal2/src/js/jscal2.js"></script>
+    <script type="text/javascript" src="./JSCal2/src/js/lang/en.js"></script>
+
+    <script type="text/javascript">
+         function createCalendar(field) {
+            Calendar.setup({
+                trigger    : field,
+                inputField : field,
+                fdow       : "1",
+                weekNumbers: "true",
+                onSelect   : function () {
+                    this.hide();
+                }
+            });
+        }
+
+    </script>
+
     <script type="text/javascript" xml:space="preserve">
         function gotopage(page){
             document.getElementById("page_name").setAttribute("value", page);
@@ -42,7 +65,7 @@
      <div id="navigation">
         <form action="simple_dispatcher.jsp" name="nav_form" method="get">
             <!--<a href="#" class="main_nav" onclick="gotopage('');">Start</a>-->
-            <a href="#" class="main_nav" onclick="gotopage('channel_mappings.jsp');">Channels</a>
+            <a href="#" class="main_nav" onclick="gotopage('you_see_channel_mapping.jsp');">Channels</a>
             <a href="#" class="main_nav" onclick="gotopage('archiving_requests.jsp');">Requests</a>
             <input id="page_name" type="hidden" name="page"/>
         </form >
@@ -55,7 +78,7 @@
          <% if (content_page != null && !"".equals(content_page)) {%>
          <jsp:include page="<%=content_page%>"/>
          <%} else {%>
-         <jsp:include page="archiving_requests.jsp"/>
+         <jsp:include page="channel_archive_request.jsp"/>
          <%}%>
 
      </div>

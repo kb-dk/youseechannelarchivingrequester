@@ -1,5 +1,6 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
+import dk.statsbiblioteket.digitaltv.utils.db.GenericDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 
 import java.util.Date;
@@ -7,7 +8,7 @@ import java.util.List;
 
 /**
  */
-public interface YouSeeChannelMappingDAOIF {
+public interface YouSeeChannelMappingDAOIF extends GenericDAO<YouSeeChannelMapping, Long>{
 
 
     /**

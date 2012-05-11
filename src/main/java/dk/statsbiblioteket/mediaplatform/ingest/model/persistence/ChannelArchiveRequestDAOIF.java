@@ -1,5 +1,6 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
+import dk.statsbiblioteket.digitaltv.utils.db.GenericDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 
 import java.util.Date;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  *
  */
-public interface ChannelArchiveRequestDAOIF {
+public interface ChannelArchiveRequestDAOIF extends GenericDAO<ChannelArchiveRequest, Long>{
 
 
     /**
