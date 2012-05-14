@@ -27,11 +27,6 @@ public class HibernateUtil {
     public static HibernateUtil initialiseFactory(File cfgFile) {
         if (sessionFactory == null || sessionFactory.isClosed()) {
             try {
-                try {
-                    sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-                } catch (Throwable e) {
-                    log.info("Could not load hibernate configuration from classpath, trying from properties");
-                }
                 if (sessionFactory == null) {
 
                     sessionFactory = new AnnotationConfiguration().configure(cfgFile).buildSessionFactory();

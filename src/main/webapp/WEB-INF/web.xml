@@ -35,6 +35,15 @@
         <url-pattern>/ChannelArchiveRequestCRUDServlet</url-pattern>
     </servlet-mapping>
 
+     <servlet>
+        <servlet-name>YouSeeChannelMapping</servlet-name>
+        <servlet-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.YouSeeChannelMappingCRUDServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>YouSeeChannelMapping</servlet-name>
+        <url-pattern>/dkYouSeeChannelMapping</url-pattern>
+    </servlet-mapping>
+
     <!--This is an init utiltiy class -->
     <listener>
         <listener-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.WebInitiator</listener-class>

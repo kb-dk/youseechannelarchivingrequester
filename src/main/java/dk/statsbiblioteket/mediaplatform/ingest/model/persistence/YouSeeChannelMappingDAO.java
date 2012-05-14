@@ -37,6 +37,10 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
          return query.setParameter("id", sBChannelId).setDate("date", date).list();
     }
 
+    @Override
+    public List<YouSeeChannelMapping> getAllMappings() {
+        return getSession().createQuery("from YouSeeChannelMapping ORDER BY toDate desc").list();
+    }
 
 
 }

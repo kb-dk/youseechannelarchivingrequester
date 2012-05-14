@@ -36,7 +36,7 @@
     <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
         <input type="hidden" name="<%=Id%>" value="<%=id%>" />
     <tr>
-        <td><input  name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>" size="6"/></td>
+        <td><input  name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>" size="8"/></td>
         <td><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
         <td><input name="<%=FROM_TIME_HOURS%>" value="<%=formatter.format(fromTimeWct.getHours())%>" size="2" maxlength="2"/>:<input  name="<%=FROM_TIME_MINUTES%>" value="<%=formatter.format(fromTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
         <td><input name="<%=TO_TIME_HOURS%>" value="<%=formatter.format(toTimeWct.getHours())%>" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="<%=formatter.format(toTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
@@ -50,7 +50,7 @@
     }
 %>
     <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
-        <td><input name="<%=CHANNEL%>" value="" size="6"/></td>
+        <td><input name="<%=CHANNEL%>" value="" size="8"/></td>
         <td> <%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, null)%></td>
         <td><input name="<%=FROM_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=FROM_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
         <td><input name="<%=TO_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>

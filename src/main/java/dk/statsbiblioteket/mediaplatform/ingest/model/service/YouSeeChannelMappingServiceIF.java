@@ -3,6 +3,7 @@ package dk.statsbiblioteket.mediaplatform.ingest.model.service;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -29,5 +30,10 @@ public interface YouSeeChannelMappingServiceIF {
      */
     YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, Date date) throws ServiceException;
 
-
+    /**
+     * Get a complete list of all known mappings, sorted by expiry date.
+     * @return The list of known mappings.
+     * @throws ServiceException
+     */
+    List<YouSeeChannelMapping> getAllMappings() throws ServiceException;
 }

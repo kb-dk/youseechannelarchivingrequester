@@ -28,4 +28,11 @@ public interface YouSeeChannelMappingDAOIF extends GenericDAO<YouSeeChannelMappi
      * @return  the mappings
      */
     List<YouSeeChannelMapping> getMappingsFromSbChannelId(String sBChannelId, Date date);
+
+    /**
+     * Get all known mappings, expired or not.
+     * @return The mappings.
+     */
+    List<YouSeeChannelMapping> getAllMappings();
+
 }

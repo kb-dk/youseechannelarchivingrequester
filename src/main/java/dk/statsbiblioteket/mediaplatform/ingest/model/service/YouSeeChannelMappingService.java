@@ -34,4 +34,10 @@ public class YouSeeChannelMappingService implements YouSeeChannelMappingServiceI
                     + date + " but found " + mappings.size());
         }
     }
+
+    @Override
+    public List<YouSeeChannelMapping> getAllMappings() throws ServiceException {
+        YouSeeChannelMappingDAOIF dao = new YouSeeChannelMappingDAO();
+        return dao.getAllMappings();
+    }
 }
