@@ -123,7 +123,7 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
                 req.setAttribute("error", e);
             }
         }
-        req.setAttribute("page_attr", "you_see_channel_mapping.jsp");
+        req.setAttribute("page_attribute", "you_see_channel_mapping.jsp");
         req.getSession().getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
 
     }
