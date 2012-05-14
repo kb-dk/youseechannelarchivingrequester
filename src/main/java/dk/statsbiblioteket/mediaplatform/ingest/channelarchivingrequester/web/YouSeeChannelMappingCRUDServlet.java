@@ -33,6 +33,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.undo.CannotRedoException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -103,27 +104,25 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
         mapping.setToDate(toDate);
         mapping.setSbChannelId(sbChannelName);
         mapping.setYouSeeChannelId(youSeeName);
-        if (action.equals(CREATE)) {
+        if (CREATE.equals(action)) {
             try {
                 service.create(mapping);
             } catch (ServiceException e) {
                 req.setAttribute("error", e);
             }
-        } else if (action.equals(UPDATE)) {
+        } else if (UPDATE.equals(action)) {
               try {
                 service.update(mapping);
             } catch (ServiceException e) {
                 req.setAttribute("error", e);
             }
-        } else if (action.equals(DELETE)) {
+        } else if (DELETE.equals(action)) {
               try {
                 service.delete(mapping);
             } catch (ServiceException e) {
                 req.setAttribute("error", e);
             }
         }
-
-
         req.setAttribute("page_attr", "you_see_channel_mapping.jsp");
         req.getSession().getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
 

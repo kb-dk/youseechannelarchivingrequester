@@ -29,8 +29,8 @@
         <td><input name="<%=FROM_DATE%>" value="<%=JAVA_DATE_FORMAT.format(fromDate)%>"/> </td>
         <td><input name="<%=TO_DATE%>" value="<%=JAVA_DATE_FORMAT.format(toDate)%>"/> </td>
         <td>
-            <button>Update</button>
-            <button>Delete</button>
+            <button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=UPDATE%>">Update</button>
+            <button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=DELETE%>">Delete</button>
         </td>
     </form>
     </tr>

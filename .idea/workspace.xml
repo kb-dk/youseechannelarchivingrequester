@@ -72,7 +72,7 @@
     <favorites_list name="test_dummy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.23312883">
+    <splitter split-orientation="horizontal" split-proportion="0.3321829">
       <split-first>
         <leaf>
           <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
@@ -122,16 +122,16 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="you_see_channel_mapping.jsp" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="you_see_channel_mapping.jsp" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/you_see_channel_mapping.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="15" column="88" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
+                <state line="32" column="76" selection-start="1709" selection-end="1709" vertical-scroll-proportion="0.40101522">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
               <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
                 <state />
@@ -143,7 +143,7 @@
                 <state />
               </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7797271">
+                <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="-19.047619">
                   <folding />
                 </state>
               </provider>
@@ -183,7 +183,7 @@
           <file leaf-file-name="channel_archive_request.jsp" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="62" column="0" selection-start="4246" selection-end="4246" vertical-scroll-proportion="-23.125">
+                <state line="62" column="0" selection-start="4246" selection-end="4246" vertical-scroll-proportion="-22.333334">
                   <folding />
                 </state>
               </provider>
@@ -192,7 +192,7 @@
           <file leaf-file-name="YouSeeChannelMappingCRUDServlet.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="87" column="30" selection-start="3629" selection-end="3629" vertical-scroll-proportion="0.6677266">
+                <state line="124" column="9" selection-start="4948" selection-end="4948" vertical-scroll-proportion="0.8396369">
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -266,9 +266,9 @@
         <option value="$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtil.java" />
         <option value="$PROJECT_DIR$/src/main/resources/channelarchivingrequester.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java" />
       </list>
     </option>
   </component>
@@ -1001,7 +1001,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="462" y="302" width="1415" height="846" extended-state="0" />
+    <frame x="157" y="249" width="1415" height="846" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1018,7 +1018,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3028777" sideWeight="0.7457306" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40029433" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16618705" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26380953" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1136,20 +1136,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/you_see_channel_mapping.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="62" column="0" selection-start="4246" selection-end="4246" vertical-scroll-proportion="-23.125">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
       <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
         <state />
@@ -1161,7 +1147,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7797271">
+        <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="-19.047619">
           <folding />
         </state>
       </provider>
@@ -1194,9 +1180,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="62" column="0" selection-start="4246" selection-end="4246" vertical-scroll-proportion="-22.333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/you_see_channel_mapping.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="87" column="30" selection-start="3629" selection-end="3629" vertical-scroll-proportion="0.6677266">
+        <state line="124" column="9" selection-start="4948" selection-end="4948" vertical-scroll-proportion="0.8396369">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
