@@ -10,6 +10,8 @@
 <%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverageTime" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="static dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.ChannelArchiveRequestCRUDServlet.*" %>
+<%@ page import="java.text.NumberFormat" %>
+<%@ page import="java.text.DecimalFormat" %>
 <%
     List<ChannelArchiveRequest> requests = (new ChannelArchiveRequestDAO()).getAllRequests();
     YouSeeChannelMappingServiceIF ucService = new YouSeeChannelMappingService();
@@ -29,15 +31,15 @@
         Date toTime = caRequest.getToTime();
         WeekdayCoverageTime toTimeWct = new WeekdayCoverageTime(toTime);
         WeekdayCoverageTime fromTimeWct = new WeekdayCoverageTime(fromTime);
-
+        NumberFormat formatter = new DecimalFormat("00");
 %>  <!--Each row is an html form -->
     <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
         <input type="hidden" name="<%=Id%>" value="<%=id%>" />
     <tr>
-        <td><input  name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>"/></td>
+        <td><input  name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>" size="6"/></td>
         <td><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
-        <td><input name="<%=FROM_TIME_HOURS%>" value="<%=fromTimeWct.getHours()%>" size="2" maxlength="2"/>:<input  name="<%=FROM_TIME_MINUTES%>" value="<%=fromTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
-        <td><input name="<%=TO_TIME_HOURS%>" value="<%=toTimeWct.getHours()%>" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="<%=toTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
+        <td><input name="<%=FROM_TIME_HOURS%>" value="<%=formatter.format(fromTimeWct.getHours())%>" size="2" maxlength="2"/>:<input  name="<%=FROM_TIME_MINUTES%>" value="<%=formatter.format(fromTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
+        <td><input name="<%=TO_TIME_HOURS%>" value="<%=formatter.format(toTimeWct.getHours())%>" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="<%=formatter.format(toTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
         <td><input name="<%=FROM_DATE%>" value="<%=JAVA_DATE_FORMAT.format(fromDate)%>" size="10" maxlength="10" /></td>
         <td><input name="<%=TO_DATE%>" value="<%=JAVA_DATE_FORMAT.format(toDate)%>"  size="10" maxlength="10" /></td>
         <td><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=UPDATE%>">Update</button>
@@ -48,7 +50,7 @@
     }
 %>
     <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
-        <td><input name="<%=CHANNEL%>" value=""/></td>
+        <td><input name="<%=CHANNEL%>" value="" size="6"/></td>
         <td> <%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, null)%></td>
         <td><input name="<%=FROM_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=FROM_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
         <td><input name="<%=TO_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>

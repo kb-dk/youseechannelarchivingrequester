@@ -27,7 +27,7 @@ public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchive
 
     @Override
     public List<ChannelArchiveRequest> getAllRequests() {
-        Query query = getSession().createQuery("FROM ChannelArchiveRequest ORDER BY toDate, sBChannelId");
+        Query query = getSession().createQuery("FROM ChannelArchiveRequest ORDER BY sBChannelId, toDate desc");
         return query.list();
     }
 
