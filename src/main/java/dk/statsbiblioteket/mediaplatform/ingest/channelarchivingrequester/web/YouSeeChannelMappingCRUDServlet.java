@@ -74,7 +74,7 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
         Date fromDate;
         Date toDate;
         String fromDateS = req.getParameter(FROM_DATE);
-        if (fromDateS != null || "".equals(fromDateS)) {
+        if (fromDateS == null || "".equals(fromDateS)) {
             fromDateS = "2012-05-01 00:00";
         }
         try {
@@ -85,7 +85,7 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
                     fromDateS + "'");
         }
         String toDateS = req.getParameter(TO_DATE);
-        if (toDateS != null || "".equals(toDateS)) {
+        if (toDateS == null || "".equals(toDateS)) {
             toDateS = "3000-01-01 00:00";
         }
         try {
