@@ -72,19 +72,27 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
         String displayName = req.getParameter(DISPLAY_NAME);
         Date fromDate;
         Date toDate;
+        String fromDateS = req.getParameter(FROM_DATE);
+        if (fromDateS != null || "".equals(fromDateS)) {
+            fromDateS = "2012-05-01 00:00";
+        }
         try {
-            fromDate = JAVA_DATE_FORMAT.parse(req.getParameter(FROM_DATE));
+            fromDate = JAVA_DATE_FORMAT.parse(fromDateS);
             fromDate.setSeconds(0);
         } catch (ParseException e) {
             throw new RuntimeException("Could not parse '" +
-                    req.getParameter(FROM_DATE) + "'");
+                    fromDateS + "'");
+        }
+        String toDateS = req.getParameter(TO_DATE);
+        if (toDateS != null || "".equals(toDateS)) {
+            toDateS = "3000-01-01 00:00";
         }
         try {
-            toDate = JAVA_DATE_FORMAT.parse(req.getParameter(TO_DATE));
+            toDate = JAVA_DATE_FORMAT.parse(toDateS);
             toDate.setSeconds(0);
         } catch (ParseException e) {
             throw new RuntimeException("Could not parse '" +
-                    req.getParameter(TO_DATE) + "'");
+                    toDateS + "'");
         }
         YouSeeChannelMapping mapping = new YouSeeChannelMapping();
         if (id != null && !"".equals(id)) {
@@ -116,7 +124,7 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
         }
 
 
-        req.setAttribute("page_attr", "you_see_channel_mapping");
+        req.setAttribute("page_attr", "you_see_channel_mapping.jsp");
         req.getSession().getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
 
     }
