@@ -72,7 +72,7 @@
     <favorites_list name="test_dummy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.36011615">
+    <splitter split-orientation="horizontal" split-proportion="0.23312883">
       <split-first>
         <leaf>
           <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
@@ -143,7 +143,7 @@
                 <state />
               </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7518797">
+                <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7797271">
                   <folding />
                 </state>
               </provider>
@@ -192,19 +192,10 @@
           <file leaf-file-name="YouSeeChannelMappingCRUDServlet.java" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="114" column="44" selection-start="4736" selection-end="4736" vertical-scroll-proportion="0.8600954">
+                <state line="26" column="0" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.3338633">
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ChannelArchveRequestServiceIF.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchveRequestServiceIF.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="10" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
-                  <folding />
                 </state>
               </provider>
             </entry>
@@ -593,7 +584,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1010,7 +1001,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="168" y="115" width="1415" height="846" extended-state="0" />
+    <frame x="133" y="264" width="1415" height="846" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1027,7 +1018,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3028777" sideWeight="0.7457306" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26269317" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40029433" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26380953" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1110,22 +1101,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="60" selection-start="3204" selection-end="3204" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="tag#dependencies#0;tag#project#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtilTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="41" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverageTimeTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="13" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
@@ -1186,14 +1161,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7518797">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchveRequestServiceIF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+        <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7797271">
           <folding />
         </state>
       </provider>
@@ -1212,13 +1180,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="27" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/ChannelArchiveRequestCRUDServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="40" column="56" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.0">
@@ -1226,9 +1187,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="27" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="44" selection-start="4736" selection-end="4736" vertical-scroll-proportion="0.8600954">
+        <state line="26" column="0" selection-start="1026" selection-end="1026" vertical-scroll-proportion="0.3338633">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

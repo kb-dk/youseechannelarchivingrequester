@@ -24,7 +24,6 @@
 package dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web;
 
 
-import dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.ChannelArchivingRequesterException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService;
