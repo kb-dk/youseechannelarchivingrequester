@@ -32,13 +32,14 @@
 
 %>  <!--Each row is an html form -->
     <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
+        <input type="hidden" name="<%=Id%>" value="<%=id%>" />
     <tr>
-        <td><input value="<%=caRequest.getsBChannelId()%>"/></td>
+        <td><input  name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>"/></td>
         <td><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
-        <td><input value="<%=fromTimeWct.getHours()%>" size="2" maxlength="2"/>:<input value="<%=fromTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
-        <td><input value="<%=toTimeWct.getHours()%>" size="2" maxlength="2"/>:<input value="<%=toTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
-        <td><input value="<%=JAVA_DATE_FORMAT.format(fromDate)%>" size="10" maxlength="10" /></td>
-        <td><input value="<%=JAVA_DATE_FORMAT.format(toDate)%>"  size="10" maxlength="10" /></td>
+        <td><input name="<%=FROM_TIME_HOURS%>" value="<%=fromTimeWct.getHours()%>" size="2" maxlength="2"/>:<input  name="<%=FROM_TIME_MINUTES%>" value="<%=fromTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
+        <td><input name="<%=TO_TIME_HOURS%>" value="<%=toTimeWct.getHours()%>" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="<%=toTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
+        <td><input name="<%=FROM_DATE%>" value="<%=JAVA_DATE_FORMAT.format(fromDate)%>" size="10" maxlength="10" /></td>
+        <td><input name="<%=TO_DATE%>" value="<%=JAVA_DATE_FORMAT.format(toDate)%>"  size="10" maxlength="10" /></td>
         <td><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=UPDATE%>">Update</button>
             <button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=DELETE%>">Delete</button></td>
     </tr>
