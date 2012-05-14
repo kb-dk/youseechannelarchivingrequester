@@ -36,12 +36,12 @@
     </servlet-mapping>
 
      <servlet>
-        <servlet-name>YouSeeChannelMapping</servlet-name>
+        <servlet-name>YouSeeChannelMappingCRUDServlet</servlet-name>
         <servlet-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.YouSeeChannelMappingCRUDServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>YouSeeChannelMapping</servlet-name>
-        <url-pattern>/dkYouSeeChannelMapping</url-pattern>
+        <servlet-name>YouSeeChannelMappingCRUDServlet</servlet-name>
+        <url-pattern>/YouSeeChannelMappingCRUDServlet</url-pattern>
     </servlet-mapping>
 
     <!--This is an init utiltiy class -->

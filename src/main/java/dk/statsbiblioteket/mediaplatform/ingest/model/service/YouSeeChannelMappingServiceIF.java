@@ -36,4 +36,11 @@ public interface YouSeeChannelMappingServiceIF {
      * @throws ServiceException
      */
     List<YouSeeChannelMapping> getAllMappings() throws ServiceException;
+
+    void create(YouSeeChannelMapping mapping) throws ServiceException;
+
+    void update(YouSeeChannelMapping mapping) throws ServiceException;
+
+    void delete(YouSeeChannelMapping mapping) throws ServiceException;
+
 }
