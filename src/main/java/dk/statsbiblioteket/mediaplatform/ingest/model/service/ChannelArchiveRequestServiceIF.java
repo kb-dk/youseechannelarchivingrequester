@@ -18,7 +18,19 @@ public interface ChannelArchiveRequestServiceIF {
      */
     void insert(ChannelArchiveRequest request) throws ServiceException;
 
+    /**
+     * Update the given request.
+     * @param request the request
+     * @throws ServiceException if the update is not permitted.
+     */
     void update(ChannelArchiveRequest request) throws ServiceException;
+
+    /**
+     * Delete the given request
+     * @param request the request
+     * @throws ServiceException if the update is not permitted.
+     */
+    void delete(ChannelArchiveRequest request) throws ServiceException;
 
      /**
      * Returns a list of all ChannelArchiveRequest objects which are valid in at least part of the specified date range.

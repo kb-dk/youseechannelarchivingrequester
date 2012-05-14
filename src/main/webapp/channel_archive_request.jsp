@@ -31,7 +31,7 @@
         WeekdayCoverageTime fromTimeWct = new WeekdayCoverageTime(fromTime);
 
 %>  <!--Each row is an html form -->
-    <form>
+    <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
     <tr>
         <td><input value="<%=caRequest.getsBChannelId()%>"/></td>
         <td><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
@@ -39,7 +39,8 @@
         <td><input value="<%=toTimeWct.getHours()%>" size="2" maxlength="2"/>:<input value="<%=toTimeWct.getMinutes()%>" size="2" maxlength="2"/></td>
         <td><input value="<%=JAVA_DATE_FORMAT.format(fromDate)%>" size="10" maxlength="10" /></td>
         <td><input value="<%=JAVA_DATE_FORMAT.format(toDate)%>"  size="10" maxlength="10" /></td>
-        <td><button>Update</button><button>Delete</button></td>
+        <td><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=UPDATE%>">Update</button>
+            <button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=DELETE%>">Delete</button></td>
     </tr>
     </form>
 <%

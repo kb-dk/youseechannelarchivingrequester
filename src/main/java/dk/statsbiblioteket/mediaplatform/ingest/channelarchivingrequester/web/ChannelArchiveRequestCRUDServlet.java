@@ -35,6 +35,7 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
 
     public static final String CREATE = "create";
     public static final String UPDATE = "update";
+    public static final String DELETE = "delete";
 
     public static final SimpleDateFormat JAVA_DATE_FORMAT =  new SimpleDateFormat("yyyy-MM-dd");
 
@@ -62,47 +63,53 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
         //For a create action, the id is null
         String idS = req.getParameter(Id);
 
-        if (action.equals(CREATE) || action.equals(UPDATE)) {
-            ChannelArchiveRequest caRequest = new ChannelArchiveRequest();
-            caRequest.setsBChannelId(channel);
+        ChannelArchiveRequest caRequest = new ChannelArchiveRequest();
+        caRequest.setsBChannelId(channel);
+        try {
+            Date fromDate = JAVA_DATE_FORMAT.parse(fromDateS);
+            fromDate.setHours(0);
+            fromDate.setMinutes(0);
+            fromDate.setSeconds(0);
+            Date toDate = JAVA_DATE_FORMAT.parse(toDateS);
+            toDate.setHours(0);
+            toDate.setMinutes(0);
+            toDate.setSeconds(0);
+            caRequest.setFromDate(fromDate);
+            caRequest.setToDate(toDate);
+        } catch (ParseException e) {
+            throw new RuntimeException("Could not parse date", e);
+        }
+        Date fromTime = new Date(0);
+        fromTime.setHours(Integer.parseInt(fromTimeHours));
+        fromTime.setMinutes(Integer.parseInt(fromTimeMinutes));
+        Date toTime = new Date(0);
+        toTime.setHours(Integer.parseInt(toTimeHours));
+        toTime.setMinutes(Integer.parseInt(toTimeMinutes));
+        caRequest.setToTime(toTime);
+        caRequest.setFromTime(fromTime);
+        caRequest.setWeekdayCoverage(WeekdayCoverage.valueOf(coverageS));
+        if (action.equals(CREATE)) {
             try {
-                Date fromDate = JAVA_DATE_FORMAT.parse(fromDateS);
-                fromDate.setHours(0);
-                fromDate.setMinutes(0);
-                fromDate.setSeconds(0);
-                Date toDate = JAVA_DATE_FORMAT.parse(toDateS);
-                toDate.setHours(0);
-                toDate.setMinutes(0);
-                toDate.setSeconds(0);
-                caRequest.setFromDate(fromDate);
-                caRequest.setToDate(toDate);
-            } catch (ParseException e) {
-                throw new RuntimeException("Could not parse date", e);
+                service.insert(caRequest);
+            } catch (ServiceException e) {
+                req.setAttribute("error", e);
             }
-            Date fromTime = new Date(0);
-            fromTime.setHours(Integer.parseInt(fromTimeHours));
-            fromTime.setMinutes(Integer.parseInt(fromTimeMinutes));
-            Date toTime = new Date(0);
-            toTime.setHours(Integer.parseInt(toTimeHours));
-            toTime.setMinutes(Integer.parseInt(toTimeMinutes));
-            caRequest.setToTime(toTime);
-            caRequest.setFromTime(fromTime);
-            caRequest.setWeekdayCoverage(WeekdayCoverage.valueOf(coverageS));
-            if (action.equals(CREATE)) {
-                try {
-                    service.insert(caRequest);
-                } catch (ServiceException e) {
-                    req.setAttribute("error", e);
-                }
-            } else if (action.equals(UPDATE)) {
-                caRequest.setId(Long.parseLong(idS));
-                try {
-                    service.update(caRequest);
-                } catch (ServiceException e) {
-                    req.setAttribute("error", e);
-                }
+        } else if (action.equals(UPDATE)) {
+            caRequest.setId(Long.parseLong(idS));
+            try {
+                service.update(caRequest);
+            } catch (ServiceException e) {
+                req.setAttribute("error", e);
+            }
+        } else if (action.equals(DELETE)) {
+            caRequest.setId(Long.parseLong(idS));
+            try {
+                service.delete(caRequest);
+            } catch (ServiceException e) {
+                req.setAttribute("error", e);
             }
         }
+
 
 
 

@@ -28,9 +28,18 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
     }
 
     @Override
+    public void delete(ChannelArchiveRequest request) throws ServiceException {
+        ChannelArchiveRequestDAOIF dao = new ChannelArchiveRequestDAO();
+        dao.delete(request);
+
+    }
+
+    @Override
     public List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) {
         ChannelArchiveRequestDAOIF dao = new ChannelArchiveRequestDAO();
         return dao.getValidRequests(fromDate, toDate);
     }
+
+
 
 }
