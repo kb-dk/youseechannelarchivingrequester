@@ -1,6 +1,0 @@
-----------------------------------------------------------------
-2012-05-11 12:56:52.949 GMT:
- Booting Derby version The Apache Software Foundation - Apache Derby - 10.6.1.0 - (938214): instance a816c00e-0137-3bf9-258f-000003d8f888 
-on database directory /home/csr/projects/channelarchivingrequester/target/derbyDB/digitv_dev_db   with class loader sun.misc.Launcher$AppClassLoader@77cde100
-
-Database Class Loader started - derby.database.classpath=''
