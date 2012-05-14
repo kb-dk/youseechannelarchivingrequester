@@ -24,6 +24,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager" choice="3" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
     <option name="REVERSE_PATCH" value="false" />
@@ -71,96 +72,96 @@
     <favorites_list name="test_dummy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.76876676">
+    <splitter split-orientation="horizontal" split-proportion="0.36011615">
       <split-first>
         <leaf>
-          <file leaf-file-name="channel_archive_request.jsp" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp">
+          <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="55" column="11" selection-start="3568" selection-end="3568" vertical-scroll-proportion="-34.375">
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ChannelArchiveRequestCRUDServlet.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/ChannelArchiveRequestCRUDServlet.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state line="100" column="55" selection-start="4673" selection-end="4673" vertical-scroll-proportion="0.0">
+                <state line="89" column="60" selection-start="3204" selection-end="3204" vertical-scroll-proportion="0.0">
                   <folding>
-                    <element signature="imports" expanded="true" />
+                    <element signature="tag#dependencies#0;tag#project#0" expanded="false" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ChannelArchiveRequestService.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestService.java">
+          <file leaf-file-name="ChannelArchiveRequestDAOTest.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAOTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="17" column="138" selection-start="770" selection-end="770" vertical-scroll-proportion="0.0">
+                <state line="11" column="13" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ChannelArchiveRequestServiceIF.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestServiceIF.java">
+          <file leaf-file-name="HibernateUtilTest.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtilTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="20" column="71" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0">
+                <state line="22" column="41" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="YouSeeChannelMappingServiceIF.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingServiceIF.java">
+          <file leaf-file-name="WeekdayCoverageTimeTest.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverageTimeTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="31" column="5" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.0">
+                <state line="8" column="13" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="YouSeeChannelMappingDAOIF.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOIF.java">
+          <file leaf-file-name="YouSeeChannelMappingDAOTest.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="10" column="51" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0">
+                <state line="15" column="41" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ChannelArchiveRequestDAO.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAO.java">
+          <file leaf-file-name="you_see_channel_mapping.jsp" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/you_see_channel_mapping.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="29" column="103" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.0">
+                <state line="15" column="88" selection-start="716" selection-end="716" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="ChannelArchiveRequestDAOIF.java" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAOIF.java">
+          <file leaf-file-name="web.xml" pinned="false" current="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+              <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+                <state />
+              </provider>
+              <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+                <state />
+              </provider>
+              <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+                <state />
+              </provider>
               <provider selected="true" editor-type-id="text-editor">
-                <state line="28" column="67" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
+                <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7518797">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+          <file leaf-file-name="HibernateUtil.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtil.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="68" column="83" selection-start="2759" selection-end="2759" vertical-scroll-proportion="-7.8333335">
+                <state line="23" column="17" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="WeekdayCoverage.java" pinned="false" current="true" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverage.java">
+          <file leaf-file-name="channelarchivingrequester.xml" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/channelarchivingrequester.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="35" column="24" selection-start="1509" selection-end="1509" vertical-scroll-proportion="0.75648415">
+                <state line="7" column="0" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -170,10 +171,75 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="channel_archive_request.jsp" pinned="false" current="false" current-in-tab="true">
+          <file leaf-file-name="you_see_channel_mapping.jsp" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/webapp/you_see_channel_mapping.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="channel_archive_request.jsp" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="46" column="80" selection-start="2731" selection-end="2731" vertical-scroll-proportion="0.61864406">
+                <state line="62" column="0" selection-start="4246" selection-end="4246" vertical-scroll-proportion="-23.125">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="YouSeeChannelMappingCRUDServlet.java" pinned="false" current="true" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="114" column="44" selection-start="4736" selection-end="4736" vertical-scroll-proportion="0.8600954">
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ChannelArchveRequestServiceIF.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchveRequestServiceIF.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="10" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ChannelArchiveRequestServiceIF.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestServiceIF.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="11" column="17" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="YouSeeChannelMappingServiceIF.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingServiceIF.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="43" column="70" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="YouSeeChannelMappingService.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="29" column="27" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ChannelArchiveRequestCRUDServlet.java" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/ChannelArchiveRequestCRUDServlet.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="40" column="56" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -196,22 +262,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAO.java" />
-        <option value="$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverageTimeTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverageTime.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/style.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/style_all.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/style_screen.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/archiving_requests.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOIF.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAOIF.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestServiceIF.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/ChannelArchiveRequestCRUDServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestServiceIF.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAO.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingServiceIF.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOIF.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/you_see_channel_mapping.jsp" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtilTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/channelarchivingrequester.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java" />
       </list>
     </option>
   </component>
@@ -224,7 +290,6 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
-        <option name="keepSourceFolders" value="false" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -239,19 +304,9 @@
           <option name="myItemId" value="Statsbiblioteket Radio/TV Download Scheduler" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
         </PATH_ELEMENT>
-      </PATH>
-      <PATH>
         <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Statsbiblioteket Radio/TV Download Scheduler" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
+          <option name="myItemId" value="Dependencies" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$DependenciesNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -262,10 +317,6 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="Statsbiblioteket Radio/TV Download Scheduler" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
         </PATH_ELEMENT>
       </PATH>
       <PATH>
@@ -308,16 +359,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="channelarchivingrequester" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="Favorites" />
       <pane id="Scope">
         <subPane subId="All" />
       </pane>
@@ -383,7 +425,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ingest" />
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="persistence" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -424,6 +496,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -517,47 +593,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="persistence" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
               <option name="myItemId" value="channelarchivingrequester" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="channelarchivingrequester" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ingest" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Favorites" />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -753,14 +804,14 @@
           <MavenGeneralSettings>
             <option name="checksumPolicy" value="FAIL" />
             <option name="failureBehavior" value="FAST" />
-            <option name="localRepository" value="" />
             <option name="mavenHome" value="" />
+            <option name="mavenSettingsFile" value="" />
             <option name="nonRecursive" value="false" />
+            <option name="overriddenLocalRepository" value="" />
             <option name="pluginUpdatePolicy" value="DO_NOT_UPDATE" />
             <option name="printErrorStackTraces" value="false" />
             <option name="snapshotUpdatePolicy" value="ALWAYS_UPDATE" />
             <option name="usePluginRegistry" value="false" />
-            <option name="userSettingsFile" value="" />
             <option name="workOffline" value="false" />
           </MavenGeneralSettings>
         </option>
@@ -921,12 +972,12 @@
       </method>
     </configuration>
     <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.Compile and Run" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ChannelArchiveRequestDAOTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.All in channelarchivingrequester" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.ChannelArchiveRequestDAOTest.testGetValidRequests" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.dk.statsbiblioteket.mediaplatform.ingest in channelarchivingrequester" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.WeekdayCoverageTimeTest.testCtor" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.ChannelArchiveRequestDAOTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.All in channelarchivingrequester" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ChannelArchiveRequestDAOTest.testGetValidRequests" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.dk.statsbiblioteket.mediaplatform.ingest in channelarchivingrequester" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.WeekdayCoverageTimeTest.testCtor" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.Compile and Run" />
     </list>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
@@ -937,8 +988,6 @@
   <component name="SvnConfiguration" maxAnnotateRevisions="500">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
     <option name="LAST_MERGED_REVISION" />
     <option name="MERGE_DRY_RUN" value="false" />
     <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
@@ -961,30 +1010,30 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1293" y="31" width="1998" height="1169" extended-state="0" />
+    <frame x="168" y="115" width="1415" height="846" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21904762" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42761904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28963414" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25333333" sideWeight="0.9160079" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1842546" sideWeight="0.18761905" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15187165" sideWeight="0.7457306" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3028777" sideWeight="0.7457306" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23329908" sideWeight="0.7361905" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26380953" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26269317" sideWeight="0.0" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26380953" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21904762" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25333333" sideWeight="0.9160079" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="SVN Repositories" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41428572" sideWeight="0.9143469" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -993,15 +1042,6 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_NEW_TODO" value="true" />
-    <option name="myTodoPanelSettings">
-      <value>
-        <are-packages-shown value="false" />
-        <are-modules-shown value="false" />
-        <flatten-packages value="false" />
-        <is-autoscroll-to-source value="false" />
-      </value>
-    </option>
     <option name="PERFORM_UPDATE_IN_BACKGROUND" value="true" />
     <option name="PERFORM_COMMIT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_EDIT_IN_BACKGROUND" value="true" />
@@ -1013,7 +1053,6 @@
     <option name="CHANGED_ON_SERVER_INTERVAL" value="60" />
     <option name="SHOW_ONLY_CHANGED_IN_SELECTION_DIFF" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="true" />
-    <option name="DEFAULT_PATCH_EXTENSION" value="patch" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="LAST_COMMIT_MESSAGE" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
@@ -1071,119 +1110,128 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/ChannelArchiveRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="645" selection-end="645" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="56" selection-start="553" selection-end="553" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/WebInitiator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="5" selection-start="797" selection-end="797" vertical-scroll-proportion="0.0">
+        <state line="89" column="60" selection-start="3204" selection-end="3204" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="tag#dependencies#0;tag#project#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtilTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="397" selection-end="397" vertical-scroll-proportion="0.0">
+        <state line="22" column="41" selection-start="731" selection-end="731" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverageTimeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="50" selection-start="344" selection-end="344" vertical-scroll-proportion="0.0">
+        <state line="8" column="13" selection-start="136" selection-end="136" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/dk/statsbiblioteket/digitaltv/DigiTV/0.8.0-SNAPSHOT/DigiTV-0.8.0-SNAPSHOT-sources.jar!/dk/statsbiblioteket/generic/utils/GenericHibernateDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="13" selection-start="1223" selection-end="1223" vertical-scroll-proportion="0.0">
+        <state line="15" column="41" selection-start="499" selection-end="499" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/YouSeeChannelMappingDAOIF.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAOTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="51" selection-start="310" selection-end="310" vertical-scroll-proportion="0.0">
+        <state line="11" column="13" selection-start="319" selection-end="319" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/HibernateUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="103" selection-start="1289" selection-end="1289" vertical-scroll-proportion="0.0">
+        <state line="23" column="17" selection-start="722" selection-end="722" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/persistence/ChannelArchiveRequestDAOIF.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/channelarchivingrequester.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="67" selection-start="826" selection-end="826" vertical-scroll-proportion="0.0">
+        <state line="7" column="0" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestServiceIF.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/you_see_channel_mapping.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="71" selection-start="655" selection-end="655" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingServiceIF.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="5" selection-start="1118" selection-end="1118" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/ChannelArchiveRequestCRUDServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="55" selection-start="4673" selection-end="4673" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="138" selection-start="770" selection-end="770" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="68" column="83" selection-start="2759" selection-end="2759" vertical-scroll-proportion="-7.8333335">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="11" selection-start="3568" selection-end="3568" vertical-scroll-proportion="-34.375">
+        <state line="62" column="0" selection-start="4246" selection-end="4246" vertical-scroll-proportion="-23.125">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/WeekdayCoverage.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleGeneralEditorProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorReferencesProvider">
+        <state />
+      </provider>
+      <provider editor-type-id="com.intellij.javaee.module.view.web.viewlets.WebModuleAssemblyDescriptorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="24" selection-start="1509" selection-end="1509" vertical-scroll-proportion="0.75648415">
+        <state line="43" column="53" selection-start="1992" selection-end="1992" vertical-scroll-proportion="0.7518797">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchveRequestServiceIF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="17" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestServiceIF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="17" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingServiceIF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="70" selection-start="1593" selection-end="1593" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="27" selection-start="1386" selection-end="1386" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/ChannelArchiveRequestCRUDServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="56" selection-start="1877" selection-end="1877" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="114" column="44" selection-start="4736" selection-end="4736" vertical-scroll-proportion="0.8600954">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

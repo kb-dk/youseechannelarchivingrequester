@@ -40,4 +40,22 @@ public class YouSeeChannelMappingService implements YouSeeChannelMappingServiceI
         YouSeeChannelMappingDAOIF dao = new YouSeeChannelMappingDAO();
         return dao.getAllMappings();
     }
+
+    @Override
+    public void create(YouSeeChannelMapping mapping) throws ServiceException {
+        YouSeeChannelMappingDAOIF dao = new YouSeeChannelMappingDAO();
+        dao.create(mapping);
+    }
+
+    @Override
+    public void update(YouSeeChannelMapping mapping) throws ServiceException {
+        YouSeeChannelMappingDAOIF dao = new YouSeeChannelMappingDAO();
+        dao.update(mapping);
+    }
+
+    @Override
+    public void delete(YouSeeChannelMapping mapping) throws ServiceException {
+        YouSeeChannelMappingDAOIF dao = new YouSeeChannelMappingDAO();
+        dao.delete(mapping);
+    }
 }

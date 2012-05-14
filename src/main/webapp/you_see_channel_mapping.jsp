@@ -20,6 +20,7 @@
             Date fromDate = mapping.getFromDate();
             Date toDate =mapping.getToDate();
     %>
+    <tr>
     <form action="./YouSeeChannelMappingCRUDServlet" method="post">
         <input type="hidden" name="<%=ID%>" value="<%=id%>"/>
         <td><input name="<%=SB_ID%>" value="<%=sbId%>"/></td>
@@ -32,9 +33,11 @@
             <button>Delete</button>
         </td>
     </form>
+    </tr>
     <%
         }
     %>
+    <tr>
     <form action="./YouSeeChannelMappingCRUDServlet" method="post">
         <td><input name="<%=SB_ID%>" value=""/></td>
         <td><input name="<%=UC_ID%>" value=""/></td>
@@ -45,4 +48,5 @@
             <button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=CREATE%>">Create</button>
         </td>
     </form>
+    </tr>
 </table>
