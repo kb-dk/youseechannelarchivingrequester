@@ -31,7 +31,7 @@ public interface YouSeeChannelMappingServiceIF {
     YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, Date date) throws ServiceException;
 
     /**
-     * Get a complete list of all known mappings, sorted by expiry date.
+     * Get a complete list of all known mappings,sorted by expiry date.
      * @return The list of known mappings.
      * @throws ServiceException
      */

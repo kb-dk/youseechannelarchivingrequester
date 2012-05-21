@@ -59,7 +59,7 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        super.init();    //To change body of overridden methods use File | Settings | File Templates.
+        super.init();
         service = new YouSeeChannelMappingService();
     }
 
@@ -72,7 +72,7 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
         String youSeeName = req.getParameter(UC_ID);
         String displayName = req.getParameter(DISPLAY_NAME);
         Date fromDate;
-        Date toDate;
+        Date toDate = null;
         String fromDateS = req.getParameter(FROM_DATE);
         if (fromDateS == null || "".equals(fromDateS)) {
             fromDateS = "2012-05-01 00:00";
@@ -81,8 +81,9 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
             fromDate = JAVA_DATE_FORMAT.parse(fromDateS);
             fromDate.setSeconds(0);
         } catch (ParseException e) {
-            throw new RuntimeException("Could not parse '" +
-                    fromDateS + "'");
+            req.setAttribute("error", e);
+            doForward(req, resp);
+            return;
         }
         String toDateS = req.getParameter(TO_DATE);
         if (toDateS == null || "".equals(toDateS)) {
@@ -92,8 +93,9 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
             toDate = JAVA_DATE_FORMAT.parse(toDateS);
             toDate.setSeconds(0);
         } catch (ParseException e) {
-            throw new RuntimeException("Could not parse '" +
-                    toDateS + "'");
+            req.setAttribute("error", e);
+            doForward(req, resp);
+            return;
         }
         YouSeeChannelMapping mapping = new YouSeeChannelMapping();
         if (id != null && !"".equals(id)) {
@@ -123,8 +125,11 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
                 req.setAttribute("error", e);
             }
         }
+        doForward(req, resp);
+    }
+
+    private void doForward(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("page_attribute", "you_see_channel_mapping.jsp");
         req.getSession().getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
-
     }
 }

@@ -16,27 +16,6 @@
     <link rel="stylesheet" type="text/css" media="screen"
           href="./style_screen.css" />
 
-    <!--Import styling for the javascript calendars -->
-    <link rel="stylesheet" type="text/css" href="./JSCal2/src/css/jscal2.css" />
-    <link rel="stylesheet" type="text/css" href="./JSCal2/src/css/border-radius.css" />
-    <link rel="stylesheet" type="text/css" href="./JSCal2/src/css/gold/gold.css" />
-    <script type="text/javascript" src="./JSCal2/src/js/jscal2.js"></script>
-    <script type="text/javascript" src="./JSCal2/src/js/lang/en.js"></script>
-
-    <script type="text/javascript">
-         function createCalendar(field) {
-            Calendar.setup({
-                trigger    : field,
-                inputField : field,
-                fdow       : "1",
-                weekNumbers: "true",
-                onSelect   : function () {
-                    this.hide();
-                }
-            });
-        }
-
-    </script>
 
     <script type="text/javascript" xml:space="preserve">
         function gotopage(page){

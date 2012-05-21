@@ -39,13 +39,17 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
 
     public static final SimpleDateFormat JAVA_DATE_FORMAT =  new SimpleDateFormat("yyyy-MM-dd");
 
+    private static ChannelArchiveRequestServiceIF service = null;
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        service = new ChannelArchiveRequestService();
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ChannelArchiveRequestServiceIF service = new ChannelArchiveRequestService();
-
         String action = req.getParameter(SUBMIT_ACTION);
-        //For a delete action, all of these may be null. Only Id is needed
         String channel = req.getParameter(CHANNEL);
         String coverageS = req.getParameter(COVERAGE);
         String fromTimeHours = req.getParameter(FROM_TIME_HOURS);
@@ -54,7 +58,10 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
         String toTimeMinutes = req.getParameter(TO_TIME_MINUTES);
         String fromDateS = req.getParameter(FROM_DATE);
         if (fromDateS == null || fromDateS.equals("")) {
-            fromDateS = "2012-05-01";
+            long nowL = (new Date()).getTime();
+            long fourWeeksAgoL = nowL - 28*24*3600L*1000L;
+            Date fromDate = new Date(fourWeeksAgoL);
+            fromDateS = JAVA_DATE_FORMAT.format(fromDate);
         }
         String toDateS = req.getParameter(TO_DATE);
         if (toDateS == null || toDateS.equals("")) {
@@ -77,16 +84,24 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
             caRequest.setFromDate(fromDate);
             caRequest.setToDate(toDate);
         } catch (ParseException e) {
-            throw new RuntimeException("Could not parse date", e);
+            req.setAttribute("error", e);
+            doForward(req, resp);
+            return;
         }
-        Date fromTime = new Date(0);
-        fromTime.setHours(Integer.parseInt(fromTimeHours));
-        fromTime.setMinutes(Integer.parseInt(fromTimeMinutes));
-        Date toTime = new Date(0);
-        toTime.setHours(Integer.parseInt(toTimeHours));
-        toTime.setMinutes(Integer.parseInt(toTimeMinutes));
-        caRequest.setToTime(toTime);
-        caRequest.setFromTime(fromTime);
+        try {
+            Date fromTime = new Date(0);
+            fromTime.setHours(Integer.parseInt(fromTimeHours));
+            fromTime.setMinutes(Integer.parseInt(fromTimeMinutes));
+            Date toTime = new Date(0);
+            toTime.setHours(Integer.parseInt(toTimeHours));
+            toTime.setMinutes(Integer.parseInt(toTimeMinutes));
+            caRequest.setToTime(toTime);
+            caRequest.setFromTime(fromTime);
+        } catch (NumberFormatException e) {
+            req.setAttribute("error", e);
+            doForward(req, resp);
+            return;
+        }
         caRequest.setWeekdayCoverage(WeekdayCoverage.valueOf(coverageS));
         if (action.equals(CREATE)) {
             try {
@@ -109,10 +124,10 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
                 req.setAttribute("error", e);
             }
         }
+        doForward(req, resp);
+    }
 
-
-
-
+    private void doForward(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("page_attr", "archiving_requests.jsp");
         req.getSession().getServletContext().getRequestDispatcher("/index.jsp").forward(req, resp);
     }
