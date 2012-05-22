@@ -9,8 +9,10 @@
 <%@ page import="static dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.ChannelArchiveRequestCRUDServlet.*" %>
 <%@ page import="java.text.NumberFormat" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivingRequesterHibernateUtil" %>
+<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestService" %>
 <%
-    List<ChannelArchiveRequest> requests = (new ChannelArchiveRequestDAO()).getAllRequests();
+    List<ChannelArchiveRequest> requests = (new ChannelArchiveRequestService()).getAllRequests();
     YouSeeChannelMappingServiceIF ucService = new YouSeeChannelMappingService();
 %>
 <table>

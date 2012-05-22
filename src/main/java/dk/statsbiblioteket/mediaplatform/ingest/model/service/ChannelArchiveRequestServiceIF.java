@@ -39,4 +39,6 @@ public interface ChannelArchiveRequestServiceIF {
      * @return the list of vaild requests.
      */
     List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) throws ServiceException;
+
+    List<ChannelArchiveRequest> getAllRequests() throws ServiceException;
 }
