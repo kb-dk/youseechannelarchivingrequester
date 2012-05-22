@@ -1,12 +1,14 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
 
+import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 import java.io.File;
+import java.lang.annotation.Annotation;
 
 /**
  * A fairly basic hibernate utility which can be initialised from a configuration file.
@@ -28,8 +30,8 @@ public class HibernateUtil {
         if (sessionFactory == null || sessionFactory.isClosed()) {
             try {
                 if (sessionFactory == null) {
-
-                    sessionFactory = new AnnotationConfiguration().configure(cfgFile).buildSessionFactory();
+                    AnnotationConfiguration configure = (new AnnotationConfiguration()).configure(cfgFile);
+                    sessionFactory = configure.buildSessionFactory();
                 }
             } catch (Throwable ex) {
                 System.err.println("Initial SessionFactory creation failed." + ex);
