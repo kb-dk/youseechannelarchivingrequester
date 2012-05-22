@@ -13,10 +13,10 @@ import java.lang.annotation.Annotation;
 /**
  * A fairly basic hibernate utility which can be initialised from a configuration file.
  */
-public class HibernateUtil {
-    static Logger log = Logger.getLogger(HibernateUtil.class);
+public class ChannelArchivingRequesterHibernateUtil {
+    static Logger log = Logger.getLogger(ChannelArchivingRequesterHibernateUtil.class);
 
-    private HibernateUtil() {}
+    private ChannelArchivingRequesterHibernateUtil() {}
 
     private static SessionFactory sessionFactory;
 
@@ -26,7 +26,7 @@ public class HibernateUtil {
      * @param cfgFile  The configuration file.
      * @return An instance of this class.
      */
-    public static HibernateUtil initialiseFactory(File cfgFile) {
+    public static ChannelArchivingRequesterHibernateUtil initialiseFactory(File cfgFile) {
         if (sessionFactory == null || sessionFactory.isClosed()) {
             try {
                 if (sessionFactory == null) {
@@ -39,7 +39,7 @@ public class HibernateUtil {
                 throw new ExceptionInInitializerError(ex);
             }
         }
-        return new HibernateUtil();
+        return new ChannelArchivingRequesterHibernateUtil();
     }
 
     /**
@@ -56,7 +56,7 @@ public class HibernateUtil {
      */
     public Session getSession() {
         if (sessionFactory == null || sessionFactory.isClosed()) {
-            throw new RuntimeException("Attempt to use HibernateUtil before it was initialised or " +
+            throw new RuntimeException("Attempt to use ChannelArchivingRequesterHibernateUtil before it was initialised or " +
                     "after sessionFactory was closed");
         }
         return sessionFactory.openSession();
