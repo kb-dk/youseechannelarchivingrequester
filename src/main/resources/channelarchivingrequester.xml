@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context  docBase="/home/yousee/channelarchivingrequester/channelarchivingrequester.war">
 
-    <Parameter name="log4jConfigLocation" value="../../../channelarchivingrequester/log4j.xml"
+    <Parameter name="log4jConfigLocation" value="../../channelarchivingrequester/log4j.xml"
                  override="false"/>
 
-    <Parameter name="log4jExposeWebAppRoot" value="false" override="false" />
+    <Parameter name="log4jExposeWebAppRoot" value="true" override="false" />
 
 
     <Parameter name="hibernate_cfg" value="/home/yousee/channelarchivingrequester/hibernate.cfg.xml"/>
