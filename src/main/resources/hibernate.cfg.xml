@@ -30,9 +30,9 @@
         <!--
         TO BE CUSTOMISED PER MACHINE
         -->
-        <property name="connection.url">jdbc:postgresql://localhost:5432/digitaltv</property>
-        <property name="connection.username">digitaltv</property>
-        <property name="connection.password">uag9chuG</property>
+        <property name="connection.url">jdbc:postgresql://localhost:5432/yousee_channelarchivingrequester-devel</property>
+        <property name="connection.username">yousee</property>
+        <property name="connection.password">HbdtrVZ6</property>
 
 
         <!-- THIS PROPERTY MUST BE SET TO "VALIDATE" OR LEFT UNSET IN PRODUCTIONS -->

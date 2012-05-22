@@ -1,4 +1,4 @@
-<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.persistence.HibernateUtil" %>
+<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivingRequesterHibernateUtil" %>
 <%@ page import="java.io.File" %>
 <%@ page import="dk.statsbiblioteket.digitaltv.access.model.persistence.ChannelMappingDAO" %>
 <%@ page import="dk.statsbiblioteket.digitaltv.web.ControllerServlet" %>

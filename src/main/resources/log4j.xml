@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <!--
+    Console level appender for serious problems
+    -->
+    <appender name="console_log" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p [%d{yyyy-MM-dd HH.mm:ss}] %C{1}.%M(%L): %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
+
+    <appender name="error_log" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="${catalina.home}/logs/car.error.log"></param>
+        <param name="MaxBackupIndex" value="100"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="%-5p [%d{yyyy-MM-dd HH.mm:ss}] %C{1}.%M(%L): %m%n" />
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
+
+    <!--
+    a debug logger. minimum logging level set as needed
+    -->
+    <appender name="debug_log" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="${catalina.home}/logs/car.debug.log"></param>
+        <param name="MaxBackupIndex" value="100"/>
+        <layout class="org.apache.log4j.PatternLayout">
+             <param name="ConversionPattern"
+	     value="%-5p [%d{yyyy-MM-dd HH.mm:ss}] %C{1}.%M(%L): %m%n" />
+        </layout>
+         <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+            <param name="LevelMax" value="FATAL"/>
+        </filter>
+    </appender>
+
+
+    <logger name="org.hibernate.SQL">
+        <level value="INFO"/>
+    </logger>
+    <logger name="org.hibernate.type">
+        <level value="INFO"/>
+    </logger>
+
+  <root>
+    <priority value ="INFO" />
+     <appender-ref ref="error_log" />
+     <appender-ref ref="debug_log" />
+  </root>
+
+  <!--<logger name="dk.statsbiblioteket.digitaltv" additivity="true">
+      <level value="finest" />
+      --><!--  Disable console logging in web-application
+      <appender-ref ref="console_log" />
+      --><!--
+      <appender-ref ref="error_log" />
+      <appender-ref ref="debug_log" />
+  </logger>-->
+
+
+</log4j:configuration>
