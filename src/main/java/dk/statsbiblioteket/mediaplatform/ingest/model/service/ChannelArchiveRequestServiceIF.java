@@ -38,5 +38,5 @@ public interface ChannelArchiveRequestServiceIF {
      * @param toDate End of date range.
      * @return the list of vaild requests.
      */
-    List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate);
+    List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) throws ServiceException;
 }

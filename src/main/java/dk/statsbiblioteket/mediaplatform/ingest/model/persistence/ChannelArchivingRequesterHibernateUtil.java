@@ -13,12 +13,20 @@ import java.lang.annotation.Annotation;
 /**
  * A fairly basic hibernate utility which can be initialised from a configuration file.
  */
-public class ChannelArchivingRequesterHibernateUtil {
+public class ChannelArchivingRequesterHibernateUtil implements HibernateUtilIF {
     static Logger log = Logger.getLogger(ChannelArchivingRequesterHibernateUtil.class);
 
     private ChannelArchivingRequesterHibernateUtil() {}
 
     private static SessionFactory sessionFactory;
+
+   public static HibernateUtilIF getInitialisedFactory() throws NotInitialiasedException {
+       if (sessionFactory != null && !sessionFactory.isClosed()) {
+           return new ChannelArchivingRequesterHibernateUtil();
+       } else {
+           throw new NotInitialiasedException("Attempt to access uninitialised Hibernate utility.");
+       }
+   }
 
     /**
      * Initialise hibernate from a configuration file on first call. Subsequent calls will not reinitialise the
@@ -26,7 +34,7 @@ public class ChannelArchivingRequesterHibernateUtil {
      * @param cfgFile  The configuration file.
      * @return An instance of this class.
      */
-    public static ChannelArchivingRequesterHibernateUtil initialiseFactory(File cfgFile) {
+    public static HibernateUtilIF initialiseFactory(File cfgFile) {
         if (sessionFactory == null || sessionFactory.isClosed()) {
             try {
                 if (sessionFactory == null) {

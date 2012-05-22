@@ -1,6 +1,5 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
-import dk.statsbiblioteket.generic.utils.GenericHibernateDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 import org.hibernate.Query;
 
@@ -15,8 +14,8 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
     /**
      * Constructor for this DAO class.
      */
-    public YouSeeChannelMappingDAO() {
-        super(YouSeeChannelMapping.class);
+    public YouSeeChannelMappingDAO(HibernateUtilIF util) {
+        super(YouSeeChannelMapping.class, util);
     }
 
 

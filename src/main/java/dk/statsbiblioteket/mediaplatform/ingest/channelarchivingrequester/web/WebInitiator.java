@@ -1,6 +1,7 @@
 package dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web;
 
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivingRequesterHibernateUtil;
+import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.HibernateUtilIF;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContextEvent;
@@ -23,7 +24,7 @@ public class WebInitiator implements ServletContextListener {
         String cfgPath= sce.getServletContext().getInitParameter("hibernate_cfg");
         final File cfgFile = new File(cfgPath);
         log.info("Reading hibernate configuration from " + cfgFile.getAbsolutePath());
-        ChannelArchivingRequesterHibernateUtil util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
+        HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
         util.getSession();
     }
 

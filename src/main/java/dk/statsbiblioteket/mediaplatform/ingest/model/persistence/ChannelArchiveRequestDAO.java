@@ -1,6 +1,5 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
-import dk.statsbiblioteket.generic.utils.GenericHibernateDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 
 import org.hibernate.Query;
@@ -11,8 +10,8 @@ import java.util.List;
  */
 public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchiveRequest, Long> implements ChannelArchiveRequestDAOIF {
 
-    public ChannelArchiveRequestDAO() {
-        super(ChannelArchiveRequest.class);
+    public ChannelArchiveRequestDAO(HibernateUtilIF util) {
+        super(ChannelArchiveRequest.class, util);
     }
 
     @Override

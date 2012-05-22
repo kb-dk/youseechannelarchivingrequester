@@ -4,6 +4,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverage;
 import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 import junit.framework.TestCase;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -11,11 +12,18 @@ import java.util.List;
  */
 public class ChannelArchiveRequestDAOTest extends TestCase {
 
-    public void testInsert() {
+    private static ChannelArchiveRequestDAO dao;
+
+    public void setUp() throws NotInitialiasedException {
+         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
+        HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
+         dao = new ChannelArchiveRequestDAO(ChannelArchivingRequesterHibernateUtil.getInitialisedFactory());
+    }
+
+    public void testInsert() throws NotInitialiasedException {
         ChannelArchiveRequest schedule = new ChannelArchiveRequest();
         schedule.setWeekdayCoverage(WeekdayCoverage.MONDAY_TO_FRIDAY);
         schedule.setsBChannelId("dr1");
-        ChannelArchiveRequestDAO dao = new ChannelArchiveRequestDAO();
         dao.create(schedule);
     }
 
@@ -60,7 +68,7 @@ public class ChannelArchiveRequestDAOTest extends TestCase {
         r4.setFromDate(d6);
         r4.setToDate(d7);
         r4.setsBChannelId("r4");
-        ChannelArchiveRequestDAO carDAO = new ChannelArchiveRequestDAO();
+        ChannelArchiveRequestDAO carDAO = dao;
         carDAO.create(r1); carDAO.create(r2); carDAO.create(r3); carDAO.create(r4);
         //
         Date d9 = new Date(100, 2, 1);

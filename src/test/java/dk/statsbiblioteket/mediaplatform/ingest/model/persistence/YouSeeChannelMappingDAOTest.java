@@ -14,8 +14,8 @@ public class YouSeeChannelMappingDAOTest extends TestCase {
 
     public void testGetMappingFromYouSeeChannelId() throws Exception {
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
-        ChannelArchivingRequesterHibernateUtil util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
-        YouSeeChannelMappingDAO ucDAO = new YouSeeChannelMappingDAO();
+        HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
+        YouSeeChannelMappingDAO ucDAO = new YouSeeChannelMappingDAO(util);
         YouSeeChannelMapping ucMapping = new YouSeeChannelMapping();
         ucMapping.setSbChannelId("barfoo_sb");
         ucMapping.setYouSeeChannelId("barfoo");
