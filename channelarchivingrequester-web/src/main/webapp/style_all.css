@@ -1,0 +1,88 @@
+body {
+    font-family: Verdana, Arial, Helvetica, Geneva, sans-serif;
+    background-color: #faebd7;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 240%;
+}
+h2 {
+    color: black;
+    font-weight: bold;
+    font-size: 140%;
+}
+
+h3 {
+    font-size:24px;
+    font-weight:bold;
+}
+
+h4 {
+    color: black;
+    font-weight: bold;
+    font-size: 120%;
+}
+h5 {
+    color: black;
+    font-weight: bold;
+    font-size: 100%;
+}
+h6 {
+    color: black;
+    font-weight: bold;
+    font-size: 90%;
+}
+body,table,tr,td, h1 {
+ padding:0;
+ margin:0;
+ border:none;
+}
+
+th {
+font-size:16px;
+font-weight:bold;
+}
+
+tr {
+font-size:12px;
+font-style:normal;
+}
+
+A { font-family: verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+ }
+
+A:LINK {
+    text-decoration:none ;
+    }
+
+A:VISITED {
+    text-decoration:none ;
+    }
+
+A:HOVER {
+    text-decoration:underline ;
+    }
+
+A:ACTIVE {
+    text-decoration:underline ;
+    }
+
+
+form[action="/foo/bar"] td {
+border-width:2pt;
+border-style:solid;
+border-left-style:none;
+border-right-style:none;
+border-color:#bfe2f9;
+}
+
+
+
+th {
+    text-align:left;
+}
+
+
+

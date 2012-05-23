@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        <!--
+        This configuration file is for tests running on the developer machine
+        -->
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.provider_class">
+            org.hibernate.connection.C3P0ConnectionProvider
+        </property>
+        <property name="hibernate.c3p0.acquire_increment">1</property>
+        <property name="hibernate.c3p0.idle_test_period">100</property> 
+        <property name="hibernate.c3p0.max_size">100</property>
+        <property name="hibernate.c3p0.max_statements">0</property>
+        <property name="hibernate.c3p0.min_size">10</property>
+        <property name="hibernate.c3p0.timeout">100</property>
+
+        <!--
+        hsql properties
+        -->
+        <!--
+        <property name="hibernate.connection.url">jdbc:hsqldb:hsql://localhost</property>
+        <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+        -->
+        
+        <!--
+        derby properties
+        -->
+        <property name="connection.url">jdbc:derby:target/derbyDB/digitv_dev_db;create=true</property>
+        <property name="connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+        <property name="hibernate.cglib.use_reflection_optimizer">false</property>
+        <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.DerbyDialect</property>
+
+
+
+        <!-- this will show us all sql statements -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="format_sql">true</property>
+        <property name="hbm2ddl.auto">create-drop</property>
+
+
+    </session-factory>
+</hibernate-configuration>
