@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/channelarchivingrequester.iml" filepath="$PROJECT_DIR$/channelarchivingrequester.iml" />
+      <module fileurl="file://$PROJECT_DIR$/channelarchivingrequester-core/channelarchivingrequester-core.iml" filepath="$PROJECT_DIR$/channelarchivingrequester-core/channelarchivingrequester-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/channelarchivingrequester-web/channelarchivingrequester-web.iml" filepath="$PROJECT_DIR$/channelarchivingrequester-web/channelarchivingrequester-web.iml" />
     </modules>
   </component>
 </project>
