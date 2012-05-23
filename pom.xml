@@ -18,11 +18,11 @@
             </snapshots>
         </repository>
     </repositories>
-      <scm>
-    <connection>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</connection>
-    <url>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</url>
-    <developerConnection>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</developerConnection>
-  </scm>
+    <scm>
+        <connection>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</connection>
+        <url>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</url>
+        <developerConnection>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</developerConnection>
+    </scm>
 
     <packaging>jar</packaging>
     <groupId>dk.statsbiblioteket.mediaplatform</groupId>
