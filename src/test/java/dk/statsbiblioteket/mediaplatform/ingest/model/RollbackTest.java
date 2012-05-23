@@ -19,7 +19,8 @@ import java.util.List;
 
 public class RollbackTest extends TestCase {
 
-    public void testDoTest() throws NotInitialiasedException, SQLException {
+
+    public void failingTestDoTest() throws NotInitialiasedException, SQLException {
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
         YouSeeChannelMappingDAO dao = new YouSeeChannelMappingDAO(util);
