@@ -27,7 +27,7 @@
     <packaging>jar</packaging>
     <groupId>dk.statsbiblioteket.mediaplatform</groupId>
     <artifactId>channelarchivingrequester</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.1</version>
     <name>Statsbiblioteket Radio/TV Download Scheduler</name>
     <dependencies>
         <dependency>

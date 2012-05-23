@@ -20,6 +20,10 @@ import java.util.List;
 public class RollbackTest extends TestCase {
 
 
+    public void testTest() {
+
+    }
+
     public void failingTestDoTest() throws NotInitialiasedException, SQLException {
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
