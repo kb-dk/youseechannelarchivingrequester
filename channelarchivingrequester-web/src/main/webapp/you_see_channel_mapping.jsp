@@ -1,6 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService" %>
-<%@page import="static web.YouSeeChannelMappingCRUDServlet.*" %>
+<%@page import="static dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.YouSeeChannelMappingCRUDServlet.*" %>
 <%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping" %>
 <%@ page import="java.util.Date" %>
 <%

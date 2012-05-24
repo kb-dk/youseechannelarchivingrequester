@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>channelarchivingrequester-web</artifactId>
+    <name>channelarchivingrequester</name>
     <packaging>war</packaging>
     <dependencies>
         <dependency>
@@ -50,5 +51,73 @@
             </plugin>
         </plugins>
     </build>
-
+    <profiles>
+        <profile>
+            <id>deploy-to-testserver</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <phase>pre-integration-test</phase>
+                                <!--
+                                This target assumes that you have
+                                sbprojects_canopus_keyfile
+                                sbprojects_git_username
+                                sbprojects_git_password
+                                set in your shell environment.
+                                Run with mvn [-Dmaven.test.skip=true] install -Pdeploy-to-testserver
+                                -->
+                                <configuration>
+                                    <target>
+                                        <property name="remote_warfile" value="~/${project.name}/${project.name}.war" />
+                                        <property name="tomcat" value="tomcat01"/>
+                                        <property name="keyfile" value="${env.sbprojects_canopus_keyfile}" />
+                                        <!--
+                                        deploy the warfile
+                                        -->
+                                        <scp file="${project.build.directory}/${artifactId}-${project.version}-war.war"
+                                             remoteToFile="yousee@canopus:${remote_warfile}"
+                                             keyfile="${keyfile}"/>
+                                        <exec command="rm -rf ${project.build.directory}/Medieplatform-config " />
+                                        <exec command="git clone  https://${env.sbprojects_git_username}:${env.sbprojects_git_password}@sbprojects.statsbiblioteket.dk/fisheye/git/Medieplatform-config.git ${project.build.directory}/Medieplatform-config "/>
+                                        <!--
+                                        deploy project-specific configuration files
+                                        -->
+                                        <scp file="${project.build.directory}//Medieplatform-config/${artifactId}/hibernate.cfg.xml"
+                                             toDir="yousee@canopus:~/${project.name}/"
+                                             keyfile="${keyfile}"/>
+                                        <scp file="${project.build.directory}//Medieplatform-config/${artifactId}/log4j.xml"
+                                             toDir="yousee@canopus:~/${project.name}/"
+                                             keyfile="${keyfile}"/>
+                                        <scp file="${project.build.directory}//Medieplatform-config/${artifactId}/${project.name}.xml"
+                                             toDir="yousee@canopus:~/${tomcat}/conf/Catalina/localhost"
+                                             keyfile="${keyfile}"/>
+                                        <!--
+                                        Restart tomcat (with extreme prejudice)
+                                        -->
+                                        <sshexec host="canopus" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh stop"/>
+                                        <sshexec host="canopus" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh KILL"/>
+                                        <sshexec host="canopus" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh start"/>
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.ant</groupId>
+                                <artifactId>ant-jsch</artifactId>
+                                <version>1.8.3</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

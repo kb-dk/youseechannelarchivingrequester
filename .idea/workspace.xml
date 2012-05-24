@@ -71,13 +71,13 @@
     <favorites_list name="test_dummy" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="vertical" split-proportion="0.5">
+    <splitter split-orientation="vertical" split-proportion="0.313416">
       <split-first>
         <leaf>
           <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/channelarchivingrequester-core/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="23" column="17" selection-start="843" selection-end="843" vertical-scroll-proportion="0.6268657">
+                <state line="23" column="17" selection-start="843" selection-end="843" vertical-scroll-proportion="1.4935066">
                   <folding />
                 </state>
               </provider>
@@ -106,7 +106,7 @@
           <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="49" column="21" selection-start="1915" selection-end="1915" vertical-scroll-proportion="0.0">
+                <state line="50" column="21" selection-start="1958" selection-end="1958" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -161,8 +161,44 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+          <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/pom.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="70" column="45" selection-start="2784" selection-end="2784" vertical-scroll-proportion="0.13250883">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="channel_archive_request.jsp" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/channel_archive_request.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="8" column="129" selection-start="778" selection-end="778" vertical-scroll-proportion="7.4166665">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="you_see_channel_mapping.jsp" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/you_see_channel_mapping.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="2" column="127" selection-start="267" selection-end="267" vertical-scroll-proportion="4.375">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/index.jsp">
+              <provider selected="true" editor-type-id="text-editor">
+                <state line="29" column="70" selection-start="1338" selection-end="1338" vertical-scroll-proportion="1.875">
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="simple_dispatcher.jsp" pinned="false" current="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/simple_dispatcher.jsp">
               <provider selected="true" editor-type-id="text-editor">
                 <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
                   <folding />
@@ -170,10 +206,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pom.xml" pinned="false" current="true" current-in-tab="true">
+          <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/pom.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state line="98" column="21" selection-start="3684" selection-end="3684" vertical-scroll-proportion="3.6029413">
+                <state line="102" column="4" selection-start="3716" selection-end="3716" vertical-scroll-proportion="0.0">
                   <folding />
                 </state>
               </provider>
@@ -196,8 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/WebInitiator.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/channel_archive_request.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/YouSeeChannelMappingService.java" />
         <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/mappings.hbm" />
         <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/mappings.hbm.xml" />
@@ -209,9 +243,11 @@
         <option value="$PROJECT_DIR$/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/model/service/ChannelArchiveRequestService.java" />
         <option value="$PROJECT_DIR$/channelarchivingrequester-core/src/test/java/dk/statsbiblioteket/mediaplatform/model/RollbackTest.java" />
         <option value="$PROJECT_DIR$/channelarchivingrequester-core/src/test/java/dk/statsbiblioteket/mediaplatform/ingest/model/RollbackTest.java" />
-        <option value="$PROJECT_DIR$/channelarchivingrequester-web/pom.xml" />
         <option value="$PROJECT_DIR$/channelarchivingrequester-core/pom.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/channel_archive_request.jsp" />
+        <option value="$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/you_see_channel_mapping.jsp" />
+        <option value="$PROJECT_DIR$/channelarchivingrequester-web/pom.xml" />
       </list>
     </option>
   </component>
@@ -336,6 +372,102 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="channelarchivingrequester-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="target" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="channelarchivingrequester-web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -773,14 +905,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1023" y="31" width="1922" height="1173" extended-state="6" />
+    <frame x="1451" y="31" width="1868" height="1160" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14136623" sideWeight="0.9650146" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1431316" sideWeight="0.9650146" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42761904" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -790,10 +922,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.1842546" sideWeight="0.18761905" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.10641711" sideWeight="0.85863376" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.04955947" sideWeight="0.8568684" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28074867" sideWeight="0.85863376" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2730415" sideWeight="0.85631627" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.268081" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -883,38 +1015,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/YouSeeChannelMappingCRUDServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="104" column="32" selection-start="4110" selection-end="4110" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/java/dk/statsbiblioteket/mediaplatform/ingest/channelarchivingrequester/web/WebInitiator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="24" selection-start="1147" selection-end="1147" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="70" selection-start="1344" selection-end="1344" vertical-scroll-proportion="8.541667">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/channel_archive_request.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="827" selection-end="827" vertical-scroll-proportion="-5.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$MAVEN_REPOSITORY$/dk/statsbiblioteket/sbprojects/sbprojects-parent/3/sbprojects-parent-3.pom">
       <provider selected="true" editor-type-id="text-editor">
         <state line="160" column="71" selection-start="6005" selection-end="6005" vertical-scroll-proportion="0.0">
@@ -980,23 +1080,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/channelarchivingrequester-core/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="17" selection-start="843" selection-end="843" vertical-scroll-proportion="0.6268657">
+        <state line="23" column="17" selection-start="843" selection-end="843" vertical-scroll-proportion="1.4935066">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="98" column="21" selection-start="3684" selection-end="3684" vertical-scroll-proportion="3.6029413">
+        <state line="102" column="4" selection-start="3716" selection-end="3716" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/channel_archive_request.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="129" selection-start="778" selection-end="778" vertical-scroll-proportion="7.4166665">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/you_see_channel_mapping.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="127" selection-start="267" selection-end="267" vertical-scroll-proportion="4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="70" selection-start="1338" selection-end="1338" vertical-scroll-proportion="1.875">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/src/main/webapp/simple_dispatcher.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channelarchivingrequester-web/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="45" selection-start="2784" selection-end="2784" vertical-scroll-proportion="0.13250883">
           <folding />
         </state>
       </provider>
