@@ -32,7 +32,7 @@
         </dependency>
     </dependencies>
 
-    <build>
+    <!--<build>
         <plugins>
            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -45,12 +45,13 @@
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
-                    <primaryArtifact>false</primaryArtifact>
+                    <primaryArtifact>true</primaryArtifact>
                     <classifier>war</classifier>
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build> -->
+
     <profiles>
         <profile>
             <id>deploy-to-testserver</id>
@@ -72,34 +73,40 @@
                                 -->
                                 <configuration>
                                     <target>
-                                        <property name="remote_warfile" value="~/${project.name}/${project.name}.war" />
+                                        <property name="application_name" value="${parent.artifactId}" />
+                                        <property name="remote_warfile" value="~/${application_name}/${application_name}.war" />
                                         <property name="tomcat" value="tomcat01"/>
                                         <property name="keyfile" value="${env.sbprojects_canopus_keyfile}" />
+                                         <!--
+                                        Kill tomcat (with extreme prejudice)
+                                        -->
+                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh stop"/>
+                                        <sleep seconds="5"/>
+                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh KILL"/>
                                         <!--
                                         deploy the warfile
                                         -->
-                                        <scp file="${project.build.directory}/${artifactId}-${project.version}-war.war"
+                                        <scp file="${project.build.directory}/${project.artifactId}-${project.version}.war"
                                              remoteToFile="yousee@canopus:${remote_warfile}"
                                              keyfile="${keyfile}"/>
+                                        <!--
+                                           Check out a clean copy of the configuration files from git.
+                                        -->
                                         <exec command="rm -rf ${project.build.directory}/Medieplatform-config " />
                                         <exec command="git clone  https://${env.sbprojects_git_username}:${env.sbprojects_git_password}@sbprojects.statsbiblioteket.dk/fisheye/git/Medieplatform-config.git ${project.build.directory}/Medieplatform-config "/>
                                         <!--
                                         deploy project-specific configuration files
                                         -->
-                                        <scp file="${project.build.directory}//Medieplatform-config/${artifactId}/hibernate.cfg.xml"
-                                             toDir="yousee@canopus:~/${project.name}/"
+                                        <scp file="${project.build.directory}//Medieplatform-config/${project.artifactId}/hibernate.cfg.xml"
+                                             toDir="yousee@canopus:~/${application_name}/"
                                              keyfile="${keyfile}"/>
-                                        <scp file="${project.build.directory}//Medieplatform-config/${artifactId}/log4j.xml"
-                                             toDir="yousee@canopus:~/${project.name}/"
+                                        <scp file="${project.build.directory}//Medieplatform-config/${project.artifactId}/log4j.xml"
+                                             toDir="yousee@canopus:~/${application_name}/"
                                              keyfile="${keyfile}"/>
-                                        <scp file="${project.build.directory}//Medieplatform-config/${artifactId}/${project.name}.xml"
+                                        <scp file="${project.build.directory}//Medieplatform-config/${project.artifactId}/${application_name}.xml"
                                              toDir="yousee@canopus:~/${tomcat}/conf/Catalina/localhost"
                                              keyfile="${keyfile}"/>
-                                        <!--
-                                        Restart tomcat (with extreme prejudice)
-                                        -->
-                                        <sshexec host="canopus" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh stop"/>
-                                        <sshexec host="canopus" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh KILL"/>
+                                        <!-- Restart tomcat -->
                                         <sshexec host="canopus" username="yousee" keyfile="${keyfile}"  command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh start"/>
                                     </target>
                                 </configuration>
