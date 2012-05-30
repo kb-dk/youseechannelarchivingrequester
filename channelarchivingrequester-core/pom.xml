@@ -3,7 +3,7 @@
     <parent>
         <artifactId>channelarchivingrequester</artifactId>
         <groupId>dk.statsbiblioteket.mediaplatform</groupId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.1rc1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
