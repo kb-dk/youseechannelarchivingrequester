@@ -32,7 +32,7 @@
     <packaging>pom</packaging>
     <groupId>dk.statsbiblioteket.mediaplatform</groupId>
     <artifactId>channelarchivingrequester</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>1.0.0rc1</version>
     <name>Statsbiblioteket Radio/TV Download Scheduler</name>
 
 
