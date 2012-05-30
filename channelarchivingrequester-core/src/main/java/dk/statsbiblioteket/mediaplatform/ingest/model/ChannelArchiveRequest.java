@@ -6,6 +6,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.sql.Time;
 import java.util.Date;
 
@@ -28,6 +29,36 @@ public class ChannelArchiveRequest {
     private Date toDate;
 
     private WeekdayCoverage weekdayCoverage;
+
+    private boolean isEnabled;
+
+    private String cause;
+
+    /**
+     * True is there are no validation problems which affect this request.
+     * @return whether this request is enabled.
+     */
+    @Transient
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = enabled;
+    }
+
+    /**
+     * If this request is disabled, this field gives a human-readable explanation as to why.
+     * @return the reason for this request being disabled.
+     */
+    @Transient
+    public String getCause() {
+        return cause;
+    }
+
+    public void setCause(String cause) {
+        this.cause = cause;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
