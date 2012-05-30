@@ -25,7 +25,7 @@
     <scm>
         <connection>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</connection>
         <!--<url>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</url>-->
-        <url>https://github.com/statsbiblioteket/channelarchivingrequester.git</url>
+        <!--<url>https://github.com/statsbiblioteket/channelarchivingrequester.git</url>-->
         <developerConnection>scm:git:git@github.com/statsbiblioteket/channelarchivingrequester.git</developerConnection>
     </scm>
 
