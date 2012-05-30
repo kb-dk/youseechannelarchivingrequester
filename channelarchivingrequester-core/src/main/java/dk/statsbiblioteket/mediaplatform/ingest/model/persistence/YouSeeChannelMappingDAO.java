@@ -18,9 +18,6 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
         super(YouSeeChannelMapping.class, util);
     }
 
-
-
-
     @Override
     public List<YouSeeChannelMapping> getMappingsFromYouSeeChannelId(String youSeeChannelId, Date date) {
         final Query query = getSession().createQuery("FROM YouSeeChannelMapping WHERE youSeeChannelId = :id AND " +

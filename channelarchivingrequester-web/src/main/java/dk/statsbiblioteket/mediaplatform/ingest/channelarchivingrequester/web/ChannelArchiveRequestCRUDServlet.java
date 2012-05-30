@@ -95,6 +95,11 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
             Date toTime = new Date(0);
             toTime.setHours(Integer.parseInt(toTimeHours));
             toTime.setMinutes(Integer.parseInt(toTimeMinutes));
+            if (toTime.getHours() == 0 && toTime.getMinutes() == 0) {
+                toTime.setDate(1);
+                toTime.setMonth(0);
+                toTime.setYear(0);
+            }
             caRequest.setToTime(toTime);
             caRequest.setFromTime(fromTime);
         } catch (NumberFormatException e) {
