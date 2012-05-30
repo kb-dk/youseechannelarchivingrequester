@@ -3,7 +3,7 @@
     <parent>
         <artifactId>channelarchivingrequester</artifactId>
         <groupId>dk.statsbiblioteket.mediaplatform</groupId>
-        <version>1.0.0rc1</version>
+        <version>1.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,7 +14,7 @@
         <dependency>
             <groupId>dk.statsbiblioteket.mediaplatform</groupId>
             <artifactId>channelarchivingrequester-core</artifactId>
-            <version>1.0.0rc1</version>
+            <version>${project.version}</version>
         </dependency>
          <dependency>
             <groupId>javax.servlet</groupId>
