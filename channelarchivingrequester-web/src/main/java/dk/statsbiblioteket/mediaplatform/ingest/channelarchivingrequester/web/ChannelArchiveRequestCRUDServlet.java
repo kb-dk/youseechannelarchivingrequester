@@ -108,12 +108,12 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
             if (toTime.getHours() == 0 && toTime.getMinutes() == 0) {
                 toTime.setDate(2);
                 toTime.setMonth(0);
-                toTime.setYear(0);
+                toTime.setYear(70);
             }
             if (fromTime.after(toTime)) {
                 req.setAttribute("error", "fromTime "
                         + fromTimeHours + ":" + fromTimeMinutes + "  is after toTime " +
-                        toTimeHours + ":" + toTimeMinutes + " (" + fromTime + "," + toTime + ")" );
+                        toTimeHours + ":" + toTimeMinutes);
                 doForward(req, resp);
                 return;
             }
