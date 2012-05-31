@@ -36,4 +36,6 @@ public class PersistenceTestCase extends TestCase {
 
     }
 
+    public void testDummy() {}
+
 }
