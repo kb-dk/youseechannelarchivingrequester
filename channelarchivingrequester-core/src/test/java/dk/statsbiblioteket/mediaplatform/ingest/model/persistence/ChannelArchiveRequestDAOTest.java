@@ -16,7 +16,7 @@ public class ChannelArchiveRequestDAOTest extends TestCase {
 
     public void setUp() throws NotInitialiasedException {
          File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
-        HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
+         HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
          dao = new ChannelArchiveRequestDAO(ChannelArchivingRequesterHibernateUtil.getInitialisedFactory());
     }
 

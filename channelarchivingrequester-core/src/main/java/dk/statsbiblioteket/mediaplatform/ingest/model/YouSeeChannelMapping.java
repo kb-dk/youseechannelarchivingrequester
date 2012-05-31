@@ -88,4 +88,15 @@ public class YouSeeChannelMapping {
     public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
+
+    @Override
+    public String toString() {
+        return "YouSeeChannelMapping{" +
+                "sbChannelId='" + sbChannelId + '\'' +
+                ", youSeeChannelId='" + youSeeChannelId + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                '}';
+    }
 }

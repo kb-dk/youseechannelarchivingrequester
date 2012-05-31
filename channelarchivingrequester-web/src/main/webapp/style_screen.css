@@ -25,3 +25,11 @@ A {
 div.data_error {
     color:  #dc143c;
 }
+
+div#failure {
+   color:  #dc143c;
+}
+
+tr.disabled{
+  color:  #dc143c;
+}

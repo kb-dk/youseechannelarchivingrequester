@@ -11,8 +11,13 @@
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivingRequesterHibernateUtil" %>
 <%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestService" %>
+<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ChannelArchivingRequesterValidator" %>
+<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ValidationFailure" %>
 <%
     List<ChannelArchiveRequest> requests = (new ChannelArchiveRequestService()).getAllRequests();
+    ChannelArchivingRequesterValidator validator = new ChannelArchivingRequesterValidator();
+    final List<ValidationFailure> failures = validator.getFailures();
+    ChannelArchivingRequesterValidator.markAsEnabledOrDisabled(requests, failures);
     YouSeeChannelMappingServiceIF ucService = new YouSeeChannelMappingService();
 %>
 <table>
@@ -31,10 +36,16 @@
         WeekdayCoverageTime toTimeWct = new WeekdayCoverageTime(toTime);
         WeekdayCoverageTime fromTimeWct = new WeekdayCoverageTime(fromTime);
         NumberFormat formatter = new DecimalFormat("00");
+        String classType;
+        if (caRequest.isEnabled()) {
+            classType = "";
+        } else {
+            classType = "class=\"disabled\"";
+        }
 %>  <!--Each row is an html form -->
     <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
         <input type="hidden" name="<%=Id%>" value="<%=id%>" />
-    <tr>
+    <tr <%=classType%> >
         <td><input  name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>" size="8"/></td>
         <td><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
         <td><input name="<%=FROM_TIME_HOURS%>" value="<%=formatter.format(fromTimeWct.getHours())%>" size="2" maxlength="2"/>:<input  name="<%=FROM_TIME_MINUTES%>" value="<%=formatter.format(fromTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
@@ -59,3 +70,20 @@
     </form>
 </table>
 
+<%
+    if (!failures.isEmpty()) {
+%>
+<div id="failure">
+    <h2>WARNING! There are data inconsistencies and some requests have been disabled</h2>
+    <%
+        for (ValidationFailure failure: failures) {
+    %>
+         Channel <%=failure.getAffectedSBChannel()%> will not be downloaded because <%=failure.getCause()%>.<br/>
+    <%
+        }
+    %>
+</div>
+
+<%
+    }
+%>

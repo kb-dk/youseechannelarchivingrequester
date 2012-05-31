@@ -5,6 +5,8 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchive
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchiveRequestDAOIF;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivingRequesterHibernateUtil;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.NotInitialiasedException;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ChannelArchivingRequesterValidator;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ValidatorIF;
 
 import java.util.Date;
 import java.util.List;
@@ -47,11 +49,15 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
 
     @Override
     public List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) throws ServiceException {
+        List<ChannelArchiveRequest> validRequests;
         try {
-            return getDao().getValidRequests(fromDate, toDate);
+            validRequests = getDao().getValidRequests(fromDate, toDate);
         } catch (NotInitialiasedException e) {
             throw new ServiceException(e);
         }
+        ValidatorIF validator = new ChannelArchivingRequesterValidator();
+        ChannelArchivingRequesterValidator.markAsEnabledOrDisabled(validRequests, validator.getFailures());
+        return validRequests;
     }
 
     @Override

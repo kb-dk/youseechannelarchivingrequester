@@ -33,6 +33,8 @@ public interface ChannelArchiveRequestServiceIF {
 
      /**
      * Returns a list of all ChannelArchiveRequest objects which are valid in at least part of the specified date range.
+     * Valid, in this case, means only that the request covers the given period. Requests can subsequently be tested by
+      * the ChannelArchiveRequest.isEnabled() method to determine whether they have been disabled for any other reason.
      * @param fromDate Start of date range.
      * @param toDate End of date range.
      * @return the list of vaild requests.

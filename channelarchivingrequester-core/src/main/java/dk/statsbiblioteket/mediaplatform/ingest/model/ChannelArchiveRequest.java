@@ -30,7 +30,7 @@ public class ChannelArchiveRequest {
 
     private WeekdayCoverage weekdayCoverage;
 
-    private boolean isEnabled;
+    private boolean isEnabled = true;
 
     private String cause;
 
