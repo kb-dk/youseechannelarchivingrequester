@@ -51,6 +51,11 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter(SUBMIT_ACTION);
         String channel = req.getParameter(CHANNEL);
+        if (channel == null || channel.trim().length() == 0) {
+            req.setAttribute("error", "The SB Channel Name must not be empty.");
+            doForward(req, resp);
+            return;
+        }
         String coverageS = req.getParameter(COVERAGE);
         String fromTimeHours = req.getParameter(FROM_TIME_HOURS);
         String fromTimeMinutes = req.getParameter(FROM_TIME_MINUTES);
@@ -81,6 +86,11 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
             toDate.setHours(0);
             toDate.setMinutes(0);
             toDate.setSeconds(0);
+            if (fromDate.after(toDate)) {
+                req.setAttribute("error", "fromDate " + fromDateS + " must not be after toDate " + toDateS);
+                doForward(req, resp);
+                return;
+            }
             caRequest.setFromDate(fromDate);
             caRequest.setToDate(toDate);
         } catch (ParseException e) {
@@ -96,9 +106,16 @@ public class ChannelArchiveRequestCRUDServlet extends HttpServlet {
             toTime.setHours(Integer.parseInt(toTimeHours));
             toTime.setMinutes(Integer.parseInt(toTimeMinutes));
             if (toTime.getHours() == 0 && toTime.getMinutes() == 0) {
-                toTime.setDate(1);
+                toTime.setDate(2);
                 toTime.setMonth(0);
                 toTime.setYear(0);
+            }
+            if (fromTime.after(toTime)) {
+                req.setAttribute("error", "fromTime "
+                        + fromTimeHours + ":" + fromTimeMinutes + "  is after toTime " +
+                        toTimeHours + ":" + toTimeMinutes);
+                doForward(req, resp);
+                return;
             }
             caRequest.setToTime(toTime);
             caRequest.setFromTime(fromTime);
