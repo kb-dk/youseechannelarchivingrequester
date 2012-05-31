@@ -2,6 +2,9 @@
 <%@ page import="java.io.File" %>
 <%@ page import="dk.statsbiblioteket.digitaltv.access.model.persistence.ChannelMappingDAO" %>
 <%@ page import="dk.statsbiblioteket.digitaltv.web.ControllerServlet" %>
+<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ValidationFailure" %>
+<%@ page import="java.util.List" %>
+<%@ page import="dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ChannelArchivingRequesterValidator" %>
 <%@ page pageEncoding="UTF-8"
 %><%
     ControllerServlet.setUTF8(request);
@@ -63,10 +66,39 @@
      </div>
 
      <%
-         if (request.getAttribute("error") != null) {
-             String error_text = ((Exception) request.getAttribute("error")).getMessage();
+         ChannelArchivingRequesterValidator validator = new ChannelArchivingRequesterValidator();
+         final List<ValidationFailure> failures = validator.getFailures();
+         if (!failures.isEmpty()) {
      %>
-     <div class="data_error"><%=error_text%></div>
+     <div id="failure">
+         <h2>WARNING! There are data inconsistencies and some requests have been disabled</h2>
+         <%
+             for (ValidationFailure failure: failures) {
+         %>
+         Channel <%=failure.getAffectedSBChannel()%> will not be downloaded because <%=failure.getCause()%>.<br/>
+         <%
+             }
+         %>
+     </div>
+
+     <%
+         }
+     %>
+
+     <%
+         if (request.getAttribute("error") != null) {
+             Object error =  request.getAttribute("error");
+             String error_text;
+             if (error instanceof Throwable) {
+                    error_text = ((Throwable) request.getAttribute("error")).getMessage();
+             } else {
+                 error_text = error.toString();
+             }
+     %>
+     <div class="data_error">
+         <h2>Input Error</h2>
+         <%=error_text%>
+     </div>
      <%
          }
      %>

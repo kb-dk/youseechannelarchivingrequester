@@ -70,20 +70,4 @@
     </form>
 </table>
 
-<%
-    if (!failures.isEmpty()) {
-%>
-<div id="failure">
-    <h2>WARNING! There are data inconsistencies and some requests have been disabled</h2>
-    <%
-        for (ValidationFailure failure: failures) {
-    %>
-         Channel <%=failure.getAffectedSBChannel()%> will not be downloaded because <%=failure.getCause()%>.<br/>
-    <%
-        }
-    %>
-</div>
 
-<%
-    }
-%>

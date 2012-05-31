@@ -69,10 +69,23 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
         String id = req.getParameter(ID);
 
         String sbChannelName = req.getParameter(SB_ID);
+        if (sbChannelName == null || sbChannelName.trim().length() == 0) {
+            req.setAttribute("error", "SB Channel Name must not be empty");
+            doForward(req, resp);
+            return;
+        }
         String youSeeName = req.getParameter(UC_ID);
+         if (youSeeName == null || youSeeName.trim().length() == 0) {
+            req.setAttribute("error", "YouSee Channel Name must not be empty");
+            doForward(req, resp);
+            return;
+        }
         String displayName = req.getParameter(DISPLAY_NAME);
+        if (displayName == null || displayName.trim().length() == 0) {
+            displayName = sbChannelName;
+        }
         Date fromDate;
-        Date toDate = null;
+        Date toDate;
         String fromDateS = req.getParameter(FROM_DATE);
         if (fromDateS == null || "".equals(fromDateS)) {
             fromDateS = "2012-05-01 00:00";
@@ -94,6 +107,11 @@ public class YouSeeChannelMappingCRUDServlet extends HttpServlet {
             toDate.setSeconds(0);
         } catch (ParseException e) {
             req.setAttribute("error", e);
+            doForward(req, resp);
+            return;
+        }
+        if (fromDate.after(toDate)) {
+            req.setAttribute("error", "fromDate" + fromDate + " is after toDate " + toDate + ".");
             doForward(req, resp);
             return;
         }

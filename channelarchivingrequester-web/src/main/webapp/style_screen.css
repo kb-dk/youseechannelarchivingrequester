@@ -18,7 +18,7 @@ A {
     color: #336699;
 }
 
- tr.description {
+tr.description {
     background-color:#daa520;
 }
 
@@ -30,6 +30,6 @@ div#failure {
    color:  #dc143c;
 }
 
-tr.disabled{
-  color:  #dc143c;
+tr.disabled * {
+  background-color:  #dc143c;
 }
