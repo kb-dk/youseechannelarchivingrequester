@@ -75,7 +75,12 @@
                                         <property name="remote_warfile" value="~/${application_name}/${application_name}.war" />
                                         <property name="tomcat" value="tomcat01" />
                                         <property name="keyfile" value="${env.sbprojects_canopus_keyfile}" />
-                                         <!--
+                                        <!--
+                                        Undeploy the webapp by deleting the context descriptor
+                                        -->
+                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}" command="rm ~/${tomcat}/conf/Catalina/localhost/${application_name}.xml" />
+                                        <sleep seconds="10" />
+                                        <!--
                                         Kill tomcat (with extreme prejudice)
                                         -->
                                         <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}" command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh stop" />
