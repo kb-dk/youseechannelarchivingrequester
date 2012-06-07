@@ -3,7 +3,7 @@
 
     <groupId>dk.statsbiblioteket.mediaplatform</groupId>
     <artifactId>channelarchivingrequester</artifactId>
-    <version>1.1.1</version>
+    <version>1.1.2-SNAPSHOT</version>
     <name>Statsbiblioteket Radio/TV Download Scheduler</name>
 
     <modelVersion>4.0.0</modelVersion>
