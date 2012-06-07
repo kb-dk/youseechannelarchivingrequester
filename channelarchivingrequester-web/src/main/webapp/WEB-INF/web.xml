@@ -44,14 +44,15 @@
         <url-pattern>/YouSeeChannelMappingCRUDServlet</url-pattern>
     </servlet-mapping>
 
-    <!--This is an init utiltiy class -->
-    <listener>
-        <listener-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.WebInitiator</listener-class>
-    </listener>
+
 
     <listener>
       <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
+     <!--This is an init utiltiy class -->
+    <listener>
+        <listener-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.WebInitiator</listener-class>
+    </listener>
 
 </web-app>
