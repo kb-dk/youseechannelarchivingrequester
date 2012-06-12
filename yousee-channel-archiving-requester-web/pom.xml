@@ -82,6 +82,7 @@
                                         <property name="remote_warfile" value="~/${application_name}/${application_name}.war" />
                                         <property name="tomcat" value="tomcat01" />
                                         <property name="keyfile" value="${env.sbprojects_canopus_keyfile}" />
+                                        <property name="canonical.name.spaceless" value="youseechannelarchivingrequester" />
                                         <!--
                                         Undeploy the webapp by deleting the context descriptor
                                         -->
@@ -105,9 +106,9 @@
                                         <!--
                                         deploy project-specific configuration files
                                         -->
-                                        <scp file="${project.build.directory}//Medieplatform-config/${project.artifactId}/hibernate.cfg.xml" toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}" />
-                                        <scp file="${project.build.directory}//Medieplatform-config/${project.artifactId}/log4j.xml" toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}" />
-                                        <scp file="${project.build.directory}//Medieplatform-config/${project.artifactId}/${application_name}.xml" toDir="yousee@canopus:~/${tomcat}/conf/Catalina/localhost" keyfile="${keyfile}" />
+                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/hibernate.cfg.xml" toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}" />
+                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/log4j.xml" toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}" />
+                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/${canonical.name.spaceless}.xml" toDir="yousee@canopus:~/${tomcat}/conf/Catalina/localhost" keyfile="${keyfile}" />
                                         <!-- Restart tomcat -->
                                         <sshexec host="canopus" username="yousee" keyfile="${keyfile}" command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh start" />
                                     </target>
