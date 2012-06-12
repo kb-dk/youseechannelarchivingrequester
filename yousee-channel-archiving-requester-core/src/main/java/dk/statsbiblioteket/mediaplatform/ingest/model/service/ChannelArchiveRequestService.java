@@ -7,6 +7,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivi
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.NotInitialiasedException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ChannelArchivingRequesterValidator;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ValidatorIF;
+import org.apache.log4j.Logger;
 
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.List;
  *
  */
 public class ChannelArchiveRequestService implements ChannelArchiveRequestServiceIF {
+
+    Logger log = Logger.getLogger(ChannelArchiveRequestService.class);
 
     @Override
     public void insert(ChannelArchiveRequest request) throws ServiceException {
@@ -57,6 +60,7 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
         }
         ValidatorIF validator = new ChannelArchivingRequesterValidator();
         ChannelArchivingRequesterValidator.markAsEnabledOrDisabled(validRequests, validator.getFailures());
+        log.info("Found " + validator.getFailures().size() + " validation failure(s).");
         return validRequests;
     }
 
