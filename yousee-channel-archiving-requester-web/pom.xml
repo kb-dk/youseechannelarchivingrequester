@@ -86,7 +86,7 @@
                                         <!--
                                         Undeploy the webapp by deleting the context descriptor
                                         -->
-                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}" command="rm ~/${tomcat}/conf/Catalina/localhost/${application_name}.xml" />
+                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}" command="rm ~/${tomcat}/conf/Catalina/localhost/${canonical.name.spaceless}.xml" />
                                         <sleep seconds="10" />
                                         <!--
                                         Kill tomcat (with extreme prejudice)
