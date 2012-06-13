@@ -14,8 +14,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>dk.statsbiblioteket.mediaplatform</groupId>
-            <artifactId>channelarchivingrequester-core</artifactId>
+            <groupId>dk.statsbiblioteket.medieplatform</groupId>
+            <artifactId>yousee-channel-archiving-requester-core</artifactId>
             <version>${project.version}</version>
         </dependency>
          <dependency>
