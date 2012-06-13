@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>dk.statsbiblioteket.mediaplatform</groupId>
-    <artifactId>channelarchivingrequester</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
-    <name>Statsbiblioteket Radio/TV Download Scheduler</name>
+    <groupId>dk.statsbiblioteket.medieplatform</groupId>
+    <artifactId>yousee-channel-archiving-requester</artifactId>
+    <version>1.1.2-SNAPSHOT</version>
+    <name>Yousee Channel Archiving Requester</name>
 
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>channelarchivingrequester-core</module>
-        <module>channelarchivingrequester-web</module>
+        <module>yousee-channel-archiving-requester-core</module>
+        <module>yousee-channel-archiving-requester-web</module>
     </modules>
     <parent>
         <groupId>dk.statsbiblioteket.sbprojects</groupId>
@@ -29,10 +29,9 @@
         </repository>
     </repositories>
     <scm>
-        <url>https://github.com/statsbiblioteket/channelarchivingrequester.git</url>
-        <connection>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</connection>
-        <!--<url>scm:git:git://github.com/statsbiblioteket/channelarchivingrequester.git</url>-->
-        <developerConnection>scm:git:git@github.com:statsbiblioteket/channelarchivingrequester.git</developerConnection>
+        <url>https://github.com/statsbiblioteket/youseechannelarchivingrequester.git</url>
+        <connection>scm:git:git://github.com/statsbiblioteket/youseechannelarchivingrequester.git</connection>
+        <developerConnection>scm:git:git@github.com:statsbiblioteket/youseechannelarchivingrequester.git</developerConnection>
     </scm>
 
     <packaging>pom</packaging>
