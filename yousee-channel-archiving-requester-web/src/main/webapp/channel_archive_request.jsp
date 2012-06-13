@@ -17,7 +17,7 @@
     List<ChannelArchiveRequest> requests = (new ChannelArchiveRequestService()).getAllRequests();
     ChannelArchivingRequesterValidator validator = new ChannelArchivingRequesterValidator();
     final List<ValidationFailure> failures = validator.getFailures();
-    ChannelArchivingRequesterValidator.markAsEnabledOrDisabled(requests, failures);
+    ChannelArchivingRequesterValidator.markFailuresAsDisabled(requests, failures);
     YouSeeChannelMappingServiceIF ucService = new YouSeeChannelMappingService();
 %>
 <table>

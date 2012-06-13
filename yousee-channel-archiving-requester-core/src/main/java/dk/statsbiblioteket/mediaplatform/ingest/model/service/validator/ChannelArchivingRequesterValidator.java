@@ -20,7 +20,7 @@ public class ChannelArchivingRequesterValidator extends CompositeValidator {
      * @param requests
      * @param failures
      */
-    public static void markAsEnabledOrDisabled(List<ChannelArchiveRequest> requests, List<ValidationFailure> failures) {
+    public static void markFailuresAsDisabled(List<ChannelArchiveRequest> requests, List<ValidationFailure> failures) {
          for (ChannelArchiveRequest request: requests) {
              for (ValidationFailure failure: failures) {
                  if (request.getsBChannelId().equals(failure.getAffectedSBChannel())) {

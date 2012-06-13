@@ -59,7 +59,7 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
             throw new ServiceException(e);
         }
         ValidatorIF validator = new ChannelArchivingRequesterValidator();
-        ChannelArchivingRequesterValidator.markAsEnabledOrDisabled(validRequests, validator.getFailures());
+        ChannelArchivingRequesterValidator.markFailuresAsDisabled(validRequests, validator.getFailures());
         log.info("Found " + validator.getFailures().size() + " validation failure(s).");
         return validRequests;
     }
