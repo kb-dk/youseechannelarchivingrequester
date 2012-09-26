@@ -118,4 +118,19 @@ public class ChannelArchiveRequest {
     public void setToTime(Date toTime) {
         this.toTime = toTime;
     }
+
+    @Override
+    public String toString() {
+        return "ChannelArchiveRequest{"
+                + "Id=" + Id
+                + ", sBChannelId='" + sBChannelId + '\''
+                + ", fromTime=" + fromTime
+                + ", toTime=" + toTime
+                + ", fromDate=" + fromDate
+                + ", toDate=" + toDate
+                + ", weekdayCoverage=" + weekdayCoverage
+                + ", isEnabled=" + isEnabled
+                + ", cause='" + cause + '\''
+                + '}';
+    }
 }

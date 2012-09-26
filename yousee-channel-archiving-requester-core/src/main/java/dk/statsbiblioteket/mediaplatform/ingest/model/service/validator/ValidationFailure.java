@@ -23,4 +23,12 @@ public class ValidationFailure {
     public void setCause(String cause) {
         this.cause = cause;
     }
+
+    @Override
+    public String toString() {
+        return "ValidationFailure{"
+                + "affectedSBChannel='" + affectedSBChannel + '\''
+                + ", cause='" + cause + '\''
+                + '}';
+    }
 }
