@@ -25,7 +25,8 @@ public class ChannelArchivingRequesterValidator extends CompositeValidator {
              for (ValidationFailure failure: failures) {
                  if (request.getsBChannelId().equals(failure.getAffectedSBChannel())) {
                      request.setEnabled(false);
-                     request.setCause(request.getCause() + failure.getCause() + " ");
+                     String previousCause = request.getCause() == null ? "" : request.getCause() + " ";
+                     request.setCause(previousCause + failure.getCause());
                  }
              }
          }
