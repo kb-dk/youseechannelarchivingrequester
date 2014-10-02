@@ -18,6 +18,7 @@
           href="style_print.css" />
     <link rel="stylesheet" type="text/css" media="screen"
           href="style_screen.css" />
+    <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 
 
     <script type="text/javascript" xml:space="preserve">
@@ -43,7 +44,10 @@
 
 %>
  <body>
-     <h1>Statsbiblioteket's Radio/TV Channel Archive Request Interface</h1>
+    <div class="span12 text-center">
+        <h1>Statsbiblioteket's Radio/TV Channel</h1>
+        <h1>Archive Request Interface</h1>
+    </div>
      <div id="navigation">
         <form action="simple_dispatcher.jsp" name="nav_form" method="get">
             <!--<a href="#" class="main_nav" onclick="gotopage('');">Start</a>-->
@@ -103,5 +107,9 @@
          }
      %>
 
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+     <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
  </body>
 </html>
