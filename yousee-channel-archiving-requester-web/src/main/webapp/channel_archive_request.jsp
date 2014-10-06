@@ -22,16 +22,29 @@
 %>
 <!-- Bootstrap beautification -->
 <div class="center-text">
-    <table class="table table-bordered table-striped" style="table-layout: fixed;">
-        <tr>
-            <th class="col-md-1">Channel</th>
-            <th class="col-md-1">Coverage</th>
-            <th class="col-md-2">Start Time</th>
-            <th class="col-md-2">End Time</th>
-            <th class="col-md-1">From</th>
-            <th class="col-md-1">To</th>
-            <th class="col-md-2"><!--Submit Buttons in this column--></th>
-        </tr>
+    <table class="table table-bordered active" style="table-layout: fixed;">
+        <thead class="active">
+            <tr class="active">
+                <th class="col-md-2 text-center" colspan="2">Channel</th>
+                <th class="col-md-2 text-center" colspan="2">Coverage</th>
+                <th class="col-md-2 text-center" colspan="2">Start Time</th>
+                <th class="col-md-2 text-center" colspan="2">End Time</th>
+                <th class="col-md-1 text-center" colspan="1">From</th>
+                <th class="col-md-1 text-center" colspan="1">To</th>
+                <th class="col-md-2" colspan="2"><!--Submit Buttons in this column--></th>
+            </tr>
+            <tr class="active">
+                <th class="col-md-2 text-center" colspan="2"></th>
+                <th class="col-md-2 text-center" colspan="2"></th>
+                <th class="col-md-1 text-center" colspan="1">Hour</th>
+                <th class="col-md-1 text-center" colspan="1">Minute</th>
+                <th class="col-md-1 text-center" colspan="1">Hour</th>
+                <th class="col-md-1 text-center" colspan="1">Minute</th>
+                <th class="col-md-1 text-center" colspan="1"></th>
+                <th class="col-md-1 text-center" colspan="1"></th>
+                <th class="col-md-2" colspan="2"><!--Submit Buttons in this column--></th>
+            </tr>
+        </thead>
     <%
         for (ChannelArchiveRequest caRequest: requests) {
             Long id = caRequest.getId();
@@ -54,13 +67,15 @@
         <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
             <input type="hidden" name="<%=Id%>" value="<%=id%>" />
         <tr <%=classType%> >
-            <td class="col-md-1"><input class="form-control col-md-1" name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>" size="8"/></td>
-            <td class="col-md-1"><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
-            <td class="col-md-2"><input class="form-control col-md-1" name="<%=FROM_TIME_HOURS%>" value="<%=formatter.format(fromTimeWct.getHours())%>" size="2" maxlength="2"/>:<input class="form-control col-md-1" name="<%=FROM_TIME_MINUTES%>" value="<%=formatter.format(fromTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
-            <td class="col-md-2"><input  class="form-control col-md-1" name="<%=TO_TIME_HOURS%>" value="<%=formatter.format(toTimeWct.getHours())%>" size="2" maxlength="2"/>:<input class="form-control col-md-1" name="<%=TO_TIME_MINUTES%>" value="<%=formatter.format(toTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
-            <td class="col-md-1"><input class="form-control col-md-1" name="<%=FROM_DATE%>" value="<%=JAVA_DATE_FORMAT.format(fromDate)%>" size="10" maxlength="10" /></td>
-            <td class="col-md-1"><input class="form-control col-md-1" name="<%=TO_DATE%>" value="<%=JAVA_DATE_FORMAT.format(toDate)%>"  size="10" maxlength="10" /></td>
-            <td class="col-md-2"><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=UPDATE%>">Update</button>
+            <td class="col-md-2" colspan="2"><input class="form-control col-md-2" name="<%=CHANNEL%>" value="<%=caRequest.getsBChannelId()%>" size="8"/></td>
+            <td class="col-md-2 text-center" colspan="2"><%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, coverage)%></td>
+            <td class="col-md-1 text-right" colspan="1"><input class="form-control col-md-1 text-right" name="<%=FROM_TIME_HOURS%>" value="<%=formatter.format(fromTimeWct.getHours())%>" size="2" maxlength="2"/></td>
+            <td class="col-md-1 text-left" colspan="1"><input class="form-control col-md-1 text-left" name="<%=FROM_TIME_MINUTES%>" value="<%=formatter.format(fromTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
+            <td class="col-md-1 text-right" colspan="1"><input  class="form-control col-md-1 text-right" name="<%=TO_TIME_HOURS%>" value="<%=formatter.format(toTimeWct.getHours())%>" size="2" maxlength="2"/></td>
+            <td class="col-md-1 text-left" colspan="1"><input class="form-control col-md-1 text-left" name="<%=TO_TIME_MINUTES%>" value="<%=formatter.format(toTimeWct.getMinutes())%>" size="2" maxlength="2"/></td>
+            <td class="col-md-1" colspan="1"><input class="form-control col-md-1" name="<%=FROM_DATE%>" value="<%=JAVA_DATE_FORMAT.format(fromDate)%>" size="10" maxlength="10" /></td>
+            <td class="col-md-1" colspan="1"><input class="form-control col-md-1" name="<%=TO_DATE%>" value="<%=JAVA_DATE_FORMAT.format(toDate)%>"  size="10" maxlength="10" /></td>
+            <td class="col-md-2" colspan="2"><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=UPDATE%>">Update</button>
                 <button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=DELETE%>">Delete</button></td>
         </tr>
         </form>
@@ -68,13 +83,15 @@
         }
     %>
         <form action="./ChannelArchiveRequestCRUDServlet" method="post" >
-            <td><input class="form-control" name="<%=CHANNEL%>" value="" size="8"/></td>
-            <td> <%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, null)%></td>
-            <td><input class="form-control" name="<%=FROM_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=FROM_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
-            <td><input class="form-control" name="<%=TO_TIME_HOURS%>" value="00" size="2" maxlength="2"/>:<input name="<%=TO_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
-            <td><input id="start_create" name="<%=FROM_DATE%>" value=""  size="10" maxlength="10" /></td>
-            <td><input id="end_create" name="<%=TO_DATE%>" value=""  size="10" maxlength="10" /></td>
-            <td><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=CREATE%>">Create</button></td>
+            <td class="col-md-2" colspan="2"><input class="form-control col-md-2" name="<%=CHANNEL%>" value="" size="8"/></td>
+            <td class="col-md-2 text-center" colspan="2"> <%=WeekdayCoverage.getHtmlSelect(COVERAGE, null, null, null)%></td>
+            <td class="col-md-1 text-right" colspan="1"><input class="form-control col-md-1 text-right" name="<%=FROM_TIME_HOURS%>" value="00" size="2" maxlength="2"/></td>
+            <td class="col-md-1 text-left" colspan="1"><input class="form-control col-md-1 text-left" name="<%=FROM_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
+            <td class="col-md-1 text-right" colspan="1"><input class="form-control col-md-1 text-right" name="<%=TO_TIME_HOURS%>" value="00" size="2" maxlength="2"/></td>
+            <td class="col-md-1 text-left" colspan="1"><input class="form-control col-md-1 text-left" name="<%=TO_TIME_MINUTES%>" value="00" size="2" maxlength="2"/></td>
+            <td class="col-md-1" colspan="1"><input class="form-control col-md-1" id="start_create" name="<%=FROM_DATE%>" value=""  size="10" maxlength="10" /></td>
+            <td class="col-md-1" colspan="1"><input class="form-control col-md-1" id="end_create" name="<%=TO_DATE%>" value=""  size="10" maxlength="10" /></td>
+            <td class="col-md-2" colspan="2"><button type="submit" name="<%=SUBMIT_ACTION%>" value="<%=CREATE%>">Create</button></td>
         </form>
     </table>
 </div>
