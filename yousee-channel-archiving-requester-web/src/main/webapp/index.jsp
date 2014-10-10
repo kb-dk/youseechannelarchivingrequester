@@ -20,6 +20,12 @@
           href="style_screen.css" />
     <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="jquery-2.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+    <script src="datepicker/js/bootstrap-datepicker.js"></script>
+
 
     <script type="text/javascript" xml:space="preserve">
         function gotopage(page){
@@ -107,9 +113,6 @@
          }
      %>
 
-     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-     <!-- Include all compiled plugins (below), or include individual files as needed -->
-     <script src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+
  </body>
 </html>
