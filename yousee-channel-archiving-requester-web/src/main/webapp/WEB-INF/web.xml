@@ -16,43 +16,65 @@
 -->
 
 <!DOCTYPE web-app
-    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
-    "http://java.sun.com/dtd/web-app_2_3.dtd">
+        PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app version="2.4"
          xmlns="http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-<display-name>Statsbiblioteket Mediaplatform Channel Scheduler</display-name>
-<description>Statsbiblioteket Mediaplatform Channel Scheduler</description>
+    <display-name>Statsbiblioteket Mediaplatform Channel Scheduler</display-name>
+    <description>Statsbiblioteket Mediaplatform Channel Scheduler</description>
 
     <servlet>
         <servlet-name>ChannelArchiveRequestCRUDServlet</servlet-name>
-        <servlet-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.ChannelArchiveRequestCRUDServlet</servlet-class>
+        <servlet-class>
+            dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.ChannelArchiveRequestCRUDServlet
+        </servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ChannelArchiveRequestCRUDServlet</servlet-name>
-        <url-pattern>/ChannelArchiveRequestCRUDServlet</url-pattern>
+        <url-pattern>/ChannelArchiveRequestCRUDServlet/*</url-pattern>
     </servlet-mapping>
 
-     <servlet>
+    <servlet>
         <servlet-name>YouSeeChannelMappingCRUDServlet</servlet-name>
-        <servlet-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.YouSeeChannelMappingCRUDServlet</servlet-class>
+        <servlet-class>
+            dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.YouSeeChannelMappingCRUDServlet
+        </servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>YouSeeChannelMappingCRUDServlet</servlet-name>
-        <url-pattern>/YouSeeChannelMappingCRUDServlet</url-pattern>
+        <url-pattern>/YouSeeChannelMappingCRUDServlet/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>HelloWorld</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.Test</param-value>
+        </init-param>
+        <init-param>
+            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>HelloWorld</servlet-name>
+        <url-pattern>/test/*</url-pattern>
+    </servlet-mapping>
 
     <listener>
-      <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
-     <!--This is an init utiltiy class -->
+    <!--This is an init utiltiy class -->
     <listener>
-        <listener-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.WebInitiator</listener-class>
+        <listener-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.WebInitiator
+        </listener-class>
     </listener>
 
 </web-app>

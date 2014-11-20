@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Statsbiblioteket's Radio/TV Channel Archive Request Interface</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="style_all.css"/>
+    <link rel="stylesheet" type="text/css" media="print"
+          href="style_print.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="style_screen.css"/>
+    <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+
+
+</head>
+<body>
+
+<div class="span12 text-center">
+    <h1>Statsbiblioteket's Radio/TV Channel</h1>
+
+    <h1>Archive Request Interface</h1>
+</div>
+<div id="navigation">
+    <form action="simple_dispatcher.jsp" name="nav_form" method="get">
+        <!--<a href="#" class="main_nav" onclick="gotopage('');">Start</a>-->
+        <a href="#" class="main_nav" onclick="gotopage('you_see_channel_mapping.jsp');">Channels</a>
+        <a href="#" class="main_nav" onclick="gotopage('channel_archive_request.jsp');">Requests</a>
+        <input id="page_name" type="hidden" name="page"/>
+    </form>
+</div>
+<table id="tableCAR">
+    <thead>
+    <tr>
+        <th>Channel</th>
+        <th>Coverage</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>From</th>
+        <th>To</th>
+    </tr>
+    </thead>
+    <tbody id="bodyCAR">
+    </tbody>
+</table>
+
+<tr></tr>
+<button id="btnDeleteRow">Delete</button>
+<button id="btnAddNewRow">Add</button>
+<div class="span12 text-center strong">
+    <form id="formAddNewRow" action="#" title="ADD NEW REQUESTER">
+        <label for="name">Channel</label><input type="text" name="channel" id="channel" class="required" rel="0"/>
+        <br/>
+        <label for="name">Coverage</label><select name="coverage" id="coverage" rel="1">
+        <option value="1">Daily</option>
+        <option value="2">Monday</option>
+        <option value="3">Tuesday</option>
+        <option value="4">Wednesday</option>
+        <option value="5">Thursday</option>
+        <option value="6">Friday</option>
+        <option value="7">Saturday</option>
+        <option value="8">Sunday</option>
+        <option value="9">Monday-Thursday</option>
+        <option value="10">Monday-Friday</option>
+        <option value="11">Saturday-Sunday</option>
+    </select>
+        <br/>
+        <label for="name">From time</label><input type="text" name="fromtime" id="fromtime" rel="2"/>
+        <br/>
+        <label for="name">To time</label><input type="text" name="totime" id="totime" rel="3"/>
+        <br/>
+        <label for="name">Start day</label><input type="text" name="startday" id="startday" rel="4"/>
+        <br/>
+        <label for="name">End day</label><input type="text" name="endday" id="endday" rel="5"/>
+        <br/>
+    </form>
+</div>
+
+<script charset="utf8" type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script charset="utf8" src="jquery-ui-1.11.2/jquery-ui.js" type="text/javascript"></script>
+<script charset="utf8" src="DataTables-1.9.0/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script charset="utf8" src="jquery_jeditable/jquery.jeditable.js" type="text/javascript"></script>
+<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.dataTables.editable.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="jquery-validation-1.13.1/dist/jquery.validate.js" type="text/javascript"></script>
+<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.jeditable.datepicker.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.jeditable.time.js"
+        type="text/javascript"></script>
+
+<script type="text/javascript" charset="utf8" src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8" src="datepicker/js/bootstrap-datepicker.js"></script>
+
+<script type="text/javascript" xml:space="preserve">
+        function gotopage(page) {
+            document.getElementById("page_name").setAttribute("value", page);
+            document.nav_form.submit();
+        }
+        function addLoadEvent(func) {
+            var oldonload = window.onload;
+            if (typeof window.onload != 'function') {
+                window.onload = func;
+            } else {
+                window.onload = function () {
+                    oldonload();
+                    func();
+                }
+            }
+        }
+    </script>
+<script>
+
+    function makeCARRow(car) {
+        var carRow = "car-" + car.id;
+        var html = "<tr id='" + carRow + "'></tr>";
+        $("#bodyCAR").append(html);
+        $("#" + carRow).append("<td>" + car.sBChannelId + "</td>");
+        $("#" + carRow).append("<td>" + car.weekdayCoverage + "</td>");
+        $("#" + carRow).append("<td>" + new Date(parseInt(car.fromTime, 10)).toTimeString() + "</td>");
+        $("#" + carRow).append("<td>" + new Date(parseInt(car.toTime, 10)).toTimeString() + "</td>");
+        $("#" + carRow).append("<td>" + new Date(parseInt(car.fromDate, 10)).toDateString() + "</td>");
+        $("#" + carRow).append("<td>" + new Date(parseInt(car.toDate, 10)).toDateString() + "</td>");
+    }
+
+    function loadCAR() {
+        var url = "test/Hello/getCARList";
+        //var url = "ChannelArchiveRequestCRUDServlet/getRequester";
+        $.getJSON(url, {}, function (carList) {
+            for (i in carList) {
+                makeCARRow(carList[i]);
+            }
+            $(".datetooltip").tooltip({placement: 'bottom'});
+            $('#tableCAR').dataTable().makeEditable({
+                sUpdateURL: "test/Hello/updateCAR",
+                /*                    oEditableSettings: { ajaxoptions:{ type: 'GET'} },
+                 aoColumns: [
+                 {},
+                 {},
+                 {
+                 type      : 'time',
+                 submit    : 'OK',
+                 tooltip   : "Click to edit..."
+                 },
+                 {
+                 type      : 'time',
+                 submit    : 'OK',
+                 tooltip   : "Click to edit..."
+                 },
+                 {
+                 type      : 'datepicker',
+                 tooltip   : "Click to edit..."
+                 },
+                 {
+                 type      : 'datepicker',
+                 tooltip   : "Click to edit..."
+                 }
+                 ]
+                 ,
+                 */
+                sAddURL: "test/Hello/addCAR",
+                sDeleteURL: "test/Hello/deleteCAR"
+            });
+        });
+    }
+    ;
+
+    $(document).ready(function () {
+        loadCAR();
+    });
+
+</script>
+
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head profile="http://www.w3.org/2005/10/profile">
+    <title>Newspaper Ingest Monitor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Newspaper ingest monitor">
+    <meta name="author" content="The State and University Library, Denmark">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+-->
+<!-- Styles -->
+<!--    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="jquery/dataTable/jquery.dataTables.bootstrap.css" rel="stylesheet">
+    <link href="jquery/dataTable/yadcf/css/jquery.dataTables.yadcf.css" rel="stylesheet" />
+    <link href="jquery/dataTable/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="jqueryui/themes/base/jquery-ui.css" rel="stylesheet"/>
+    <link rel="icon"
+          type="image/png"
+          href="avisdigitalisering.png">
+    <style>
+        select.yadcf-filter{max-width:80px}
+        .datetooltip:hover { cursor: pointer; }
+        .datetooltip:active { cursor: wait; }
+    </style>
+</head>
+<body>
+
+<div class="container" style="margin-top: 10px; width: 95%">
+    <h1><span id="header">Batches</span></h1>
+    <div style="float: right"><a id="csv" style="display: none" class="btn btn-default btn-success">Download as CSV</a></div>
+    <table class="table" id="batchtable">
+        <thead>
+        <tr>
+            <th>Batch</th>
+            <th>Roundtrip</th>
+            <th>AvisID</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Status</th>
+            <th>Reels sent</th>
+            <th>Data received</th>
+            <th>Metadata archived</th>
+            <th>Files archived</th>
+            <th>Batch structure checked</th>
+            <th>Images characterized</th>
+            <th>Image histograms generated</th>
+            <th>Metadata checked</th>
+            <th>Manual QA input generated</th>
+            <th>Roundtrip approved</th>
+            <th>Presentation copies generated</th>
+            <th>Metadata enriched</th>
+            <th>Cleaned lower roundtrips</th>
+            <th>Data released</th>
+            <th>Reels received</th>
+        </tr>
+        </thead>
+        <tbody id="batches-body"></tbody>
+    </table>
+</div>
+
+<script src="jquery/jquery-2.0.3.min.js"></script>
+<script src="jquery/dataTable/jquery.dataTables.min.js" charset="utf8"></script>
+<script src="jquery/dataTable/jquery.dataTables.bootstrap.js"></script>
+<script src="jquery/dataTable/yadcf/jquery.dataTables.yadcf.js"></script>
+<script src="jqueryui/jquery-ui.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+-->
+<!-- Modal -->
+<!--
+<div id="detailsModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 80%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 id="detailsModalTitle">Modal header</h4>
+            </div>
+            <div class="modal-body">
+                <p id="detailsModalDate"></p>
+                <pre id="detailsModalDetails"></pre>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    var statisticsBaseUrl = null;
+
+    function showDetails(batchID, roundtrip, eventid) {
+        var url = "services/batches/" + batchID + "/roundtrips/" + roundtrip + "/events/" + eventid + "/?details=true";
+        $.getJSON(url, {}, function (event) {
+            $('#detailsModalTitle').text(eventid);
+            $('#detailsModalDate').text(new Date(event.date).toLocaleString());
+            $('#detailsModalDetails').text(event.details);
+            if (event.details != null && event.details != '') {
+                $('#detailsModalDetails').show();
+            } else {
+                $('#detailsModalDetails').hide();
+            }
+            $('#detailsModal').modal();
+        });
+    }
+
+    /**
+     * Make a cell that translates various states into a state for the entire roundtrip.
+     *
+     * States are (first to apply counts):
+     * * Stopped: manually_stopped
+     * * Failed: Any failed state
+     * * Roundtrip_Approved: Success
+     * * Data_Received: In progress
+     * * Pending: Any other state
+     *
+     * @param row The row that should contain the status
+     * @param batch
+     */
+    function makeStatusCell(row, batch) {
+        var cellContent;
+        var failedEvent = findFailedEvent(batch);
+        if (batch.events["Manually_stopped"] != null) {
+            cellContent = "<span data-toggle=\"tooltip\" title=\"" + new Date(batch.events["Manually_stopped"].date).toLocaleString() + "\" onclick=\"showDetails('" + batch.batchID + "', '" + batch.roundTripNumber + "', '" + "Manually_stopped" + "')\" class=\"datetooltip label label-danger\">Stopped</span>";
+        } else if (failedEvent != null) {
+            cellContent = "<span data-toggle=\"tooltip\" title=\"" + new Date(batch.events[failedEvent].date).toLocaleString() + "\" onclick=\"showDetails('" + batch.batchID + "', '" + batch.roundTripNumber + "', '" + failedEvent + "')\" class=\"datetooltip label label-danger\">Failed</span>";
+        } else if (batch.events["Roundtrip_Approved"] != null) {
+            cellContent = "<span data-toggle=\"tooltip\" title=\"" + new Date(batch.events["Roundtrip_Approved"].date).toLocaleString() + "\" onclick=\"showDetails('" + batch.batchID + "', '" + batch.roundTripNumber + "', '" + "Roundtrip_Approved" + "')\" class=\"datetooltip label label-success\">Success</span>";
+        } else if (batch.events["Data_Received"] != null) {
+            cellContent = "<span class=\"label label-success\">In progress</span>";
+        } else {
+            cellContent = "<span class=\"label label-default\">Pending</span>";
+        }
+
+        $(row).append("<td>" + cellContent + "</td>");
+    }
+
+    /**
+     * Helper function to find any event with failed state.
+     *
+     * @param batch The batch to look for failed events in
+     * @returns The key of the failed event, or null for none.
+     */
+    function findFailedEvent(batch) {
+        for (event in batch.events) {
+            if (batch.events.hasOwnProperty(event) && batch.events[event].success == false) {
+                return event;
+            }
+        }
+        return null;
+    }
+
+    function makeEventCell(row, key, batch) {
+        var cellContent;
+
+        if (batch.events[key] == null) {
+            cellContent = "<span class=\"label label-default\">Pending</span>";
+        } else {
+            if (batch.events[key].success == true) {
+                cellContent = "<span data-toggle=\"tooltip\" title=\"" + new Date(batch.events[key].date).toLocaleString() + "\" onclick=\"showDetails('" + batch.batchID + "', '" + batch.roundTripNumber + "', '" + key + "')\" class=\"datetooltip label label-success\">Success</span>";
+            } else {
+                cellContent = "<span data-toggle=\"tooltip\" title=\"" + new Date(batch.events[key].date).toLocaleString() + "\" onclick=\"showDetails('" + batch.batchID + "', '" + batch.roundTripNumber + "', '" + key + "')\" class=\"datetooltip label label-danger\">Failed</span>";
+            }
+        }
+
+        $(row).append("<td>" + cellContent + "</td>");
+    }
+
+    function makeBatchRow(batch) {
+        var batchRow = "batch-" + batch.batchID;
+        var html = "<tr id='" + batchRow + "'></tr>";
+        $("#batches-body").append(html);
+        var batchIDTDContent;
+        if(statisticsBaseUrl != null && batch.events["Statistics_Generated"] != null) {
+            batchIDTDContent = "<a href='" + statisticsBaseUrl + "B" + batch.batchID
+                    + "-RT" + batch.roundTripNumber + "'>" + batch.batchID + "</a>";
+        } else {
+            batchIDTDContent = batch.batchID
+        }
+        $("#" + batchRow).append("<td>" + batchIDTDContent + "</td>");
+        $("#" + batchRow).append("<td>" + batch.roundTripNumber + "</td>");
+        $("#" + batchRow).append("<td title='" + batch.avisid + "' style='text-overflow:ellipsis'>" + batch.avisid + "</td>");
+        $("#" + batchRow).append("<td>" + batch.startDate + "</td>");
+        $("#" + batchRow).append("<td>" + batch.endDate + "</td>");
+
+        //NOTE: When this list is updated you must also always update the list in CSVGenerator
+        makeStatusCell("#" + batchRow, batch);
+        makeEventCell("#" + batchRow, "Shipped_to_supplier", batch);
+        makeEventCell("#" + batchRow, "Data_Received", batch);
+        makeEventCell("#" + batchRow, "Metadata_Archived", batch);
+        makeEventCell("#" + batchRow, "Data_Archived", batch);
+        makeEventCell("#" + batchRow, "Structure_Checked", batch);
+        makeEventCell("#" + batchRow, "JPylyzed", batch);
+        makeEventCell("#" + batchRow, "Histogrammed", batch);
+        makeEventCell("#" + batchRow, "Metadata_checked", batch);
+        makeEventCell("#" + batchRow, "Manual_QA_Flagged", batch);
+        makeEventCell("#" + batchRow, "Roundtrip_Approved", batch);
+        makeEventCell("#" + batchRow, "Dissemination_Copy_Generated", batch);
+        makeEventCell("#" + batchRow, "Metadata_Enriched", batch);
+        makeEventCell("#" + batchRow, "Cleaned_lesser_roundtrips", batch);
+        makeEventCell("#" + batchRow, "Data_Released", batch);
+        makeEventCell("#" + batchRow, "Received_from_supplier", batch);
+    }
+
+    function loadBatches() {
+        var url = "services/batches/";
+        $.getJSON(url, {}, function (batchList) {
+            for (i in batchList) {
+                makeBatchRow(batchList[i]);
+            }
+            $(".datetooltip").tooltip({placement: 'bottom'});
+            $('#batchtable').dataTable().yadcf([
+                {column_number : 0, filter_type: "auto_complete", filter_default_label: "Filter batch"},
+                {column_number : 1, filter_default_label: "All"},
+                {column_number : 2, filter_default_label: "All"},
+                {column_number : 3, filter_default_label: "All"},
+                {column_number : 4, filter_default_label: "All"},
+                {column_number : 5, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 6, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 7, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 8, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 9, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 10, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 11, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 12, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 13, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 14, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 15, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 16, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 17, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 18, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 19, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 20, column_data_type: "html", filter_default_label: "All"},
+                {column_number : 21, column_data_type: "html", filter_default_label: "All"}]);
+        });
+    }
+
+    function loadStatisticsBaseUrl() {
+        var url = "services/stats/baseurl";
+        $.get(url, {}, function(baseurl) {
+            statisticsBaseUrl = baseurl;
+        }).always(loadBatches());
+    }
+-->
+<!-- Configuration of dataTables -->
+<!--
+    $.extend( true, $.fn.dataTable.defaults, {
+        "sDom": "<'row'<'col-xs-6'l><'col-xs-6'f>r>t<'row'<'col-xs-6'i><'col-xs-6'p>>",
+        "sPaginationType": "scrolling",
+        "aaSorting": [[ 0, "desc" ]],
+        "iDisplayLength": "100",
+        "oLanguage": {"sLengthMenu": "_MENU_ records per page"}
+    } );
+
+    $(document).ready(function () {
+        loadStatisticsBaseUrl();
+    });
+</script>
+
+<script type="text/javascript">
+    var request = new XMLHttpRequest();
+    request.open('GET', 'services/batches?details=true');
+    request.setRequestHeader("Accept", "text/csv");
+    request.responseType = 'arraybuffer';
+    var a = document.getElementById('csv');
+    request.onload = function (e) {
+        var blob = new Blob([this.response]);
+        var a = document.getElementById('csv');
+        a.download = 'batch-list-' + new Date().toISOString() + '.csv';
+        a.href = window.URL.createObjectURL(blob);
+        a.style.display='';
+    };
+    request.send();
+</script>
+</body>
+-->
+
+<!--
+$(document).ready(function(){
+//$("myDataTable").dataTable().makeEditable();
+WireEvents();
+// dataTable().makeEditable();
+//$('#example').DataTable();
+/*$("#btnCreate").click(function() {
+/*$('table tr td').each(function(){
+var texto = $(this).text();
+$("#test1").text(texto);
+
+//$("test1").text("TestTest");
+});
+*/
+});
+
+function WireEvents() {
+
+
+$("#btnCreate").click(function () {
+createCAR();
+});
+/*
+$("#btnUpdate").click(function() {
+updateCAR();
+})
+$("#btnDelete").click(function() {
+deleteCAR();
+})*/
+//$("tableCAR").dataTable();
+$("#cfromDate").datepicker({format: "yyyy-mm-dd"});
+$("#ctoDate").datepicker({format: "yyyy-mm-dd"});
+$("#dp3").datepicker({format: "yyyy-mm-dd"});
+$("#dp4").datepicker({format: "yyyy-mm-dd"});
+
+}
+-->

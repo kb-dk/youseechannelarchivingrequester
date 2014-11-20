@@ -74,8 +74,18 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
 
     }
 
+    @Override
+    public List<ChannelArchiveRequest> getRequestByID(Long id) throws ServiceException {
+        try {
+            return getDao().getRequestByID(id);
+        } catch (NotInitialiasedException e) {
+            throw new ServiceException(e);
+        }
+
+    }
+
     private ChannelArchiveRequestDAOIF getDao() throws NotInitialiasedException {
-         return new ChannelArchiveRequestDAO(ChannelArchivingRequesterHibernateUtil.getInitialisedFactory());
-   }
+        return new ChannelArchiveRequestDAO(ChannelArchivingRequesterHibernateUtil.getInitialisedFactory());
+    }
 
 }

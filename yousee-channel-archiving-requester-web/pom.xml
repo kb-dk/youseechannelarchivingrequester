@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>yousee-channel-archiving-requester</artifactId>
         <groupId>dk.statsbiblioteket.medieplatform</groupId>
@@ -18,12 +19,12 @@
             <artifactId>yousee-channel-archiving-requester-core</artifactId>
             <version>${project.version}</version>
         </dependency>
-         <dependency>
+        <dependency>
             <groupId>javax.servlet</groupId>
-             <artifactId>servlet-api</artifactId>
-             <version>2.5</version>
-             <scope>provided</scope>
-         </dependency>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>
@@ -35,6 +36,23 @@
             <artifactId>spring-webflow</artifactId>
             <version>2.3.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-servlet</artifactId>
+            <version>1.18.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>1.18.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
     </dependencies>
 
     <!--<build>
@@ -78,39 +96,53 @@
                                 -->
                                 <configuration>
                                     <target>
-                                        <property name="application_name" value="${parent.artifactId}" />
-                                        <property name="remote_warfile" value="~/${application_name}/${application_name}.war" />
-                                        <property name="tomcat" value="tomcat01" />
-                                        <property name="keyfile" value="${env.sbprojects_canopus_keyfile}" />
-                                        <property name="canonical.name.spaceless" value="youseechannelarchivingrequester" />
+                                        <property name="application_name" value="${parent.artifactId}"/>
+                                        <property name="remote_warfile"
+                                                  value="~/${application_name}/${application_name}.war"/>
+                                        <property name="tomcat" value="tomcat01"/>
+                                        <property name="keyfile" value="${env.sbprojects_canopus_keyfile}"/>
+                                        <property name="canonical.name.spaceless"
+                                                  value="youseechannelarchivingrequester"/>
                                         <!--
                                         Undeploy the webapp by deleting the context descriptor
                                         -->
-                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}" command="rm ~/${tomcat}/conf/Catalina/localhost/${canonical.name.spaceless}.xml" />
-                                        <sleep seconds="10" />
+                                        <sshexec host="canopus" failonerror="false" username="yousee"
+                                                 keyfile="${keyfile}"
+                                                 command="rm ~/${tomcat}/conf/Catalina/localhost/${canonical.name.spaceless}.xml"/>
+                                        <sleep seconds="10"/>
                                         <!--
                                         Kill tomcat (with extreme prejudice)
                                         -->
-                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}" command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh stop" />
-                                        <sleep seconds="5" />
-                                        <sshexec host="canopus" failonerror="false" username="yousee" keyfile="${keyfile}" command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh KILL" />
+                                        <sshexec host="canopus" failonerror="false" username="yousee"
+                                                 keyfile="${keyfile}"
+                                                 command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh stop"/>
+                                        <sleep seconds="5"/>
+                                        <sshexec host="canopus" failonerror="false" username="yousee"
+                                                 keyfile="${keyfile}"
+                                                 command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh KILL"/>
                                         <!--
                                         deploy the warfile
                                         -->
-                                        <scp file="${project.build.directory}/${project.artifactId}-${project.version}.war" remoteToFile="yousee@canopus:${remote_warfile}" keyfile="${keyfile}" />
+                                        <scp file="${project.build.directory}/${project.artifactId}-${project.version}.war"
+                                             remoteToFile="yousee@canopus:${remote_warfile}" keyfile="${keyfile}"/>
                                         <!--
                                            Check out a clean copy of the configuration files from git.
                                         -->
-                                        <exec command="rm -rf ${project.build.directory}/Medieplatform-config " />
-                                        <exec command="git clone https://${env.sbprojects_git_username}:${env.sbprojects_git_password}@sbprojects.statsbiblioteket.dk/fisheye/git/Medieplatform-config.git ${project.build.directory}/Medieplatform-config " />
+                                        <exec command="rm -rf ${project.build.directory}/Medieplatform-config "/>
+                                        <exec command="git clone https://${env.sbprojects_git_username}:${env.sbprojects_git_password}@sbprojects.statsbiblioteket.dk/fisheye/git/Medieplatform-config.git ${project.build.directory}/Medieplatform-config "/>
                                         <!--
                                         deploy project-specific configuration files
                                         -->
-                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/hibernate.cfg.xml" toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}" />
-                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/log4j.xml" toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}" />
-                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/${canonical.name.spaceless}.xml" toDir="yousee@canopus:~/${tomcat}/conf/Catalina/localhost" keyfile="${keyfile}" />
+                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/hibernate.cfg.xml"
+                                             toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}"/>
+                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/log4j.xml"
+                                             toDir="yousee@canopus:~/${application_name}/" keyfile="${keyfile}"/>
+                                        <scp file="${project.build.directory}//Medieplatform-config/${canonical.name.spaceless}/${canonical.name.spaceless}.xml"
+                                             toDir="yousee@canopus:~/${tomcat}/conf/Catalina/localhost"
+                                             keyfile="${keyfile}"/>
                                         <!-- Restart tomcat -->
-                                        <sshexec host="canopus" username="yousee" keyfile="${keyfile}" command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh start" />
+                                        <sshexec host="canopus" username="yousee" keyfile="${keyfile}"
+                                                 command="export JAVA_HOME=/usr/java/jdk1.6.0_32/ ; ~/${tomcat}/sbbin/tomcat-init.sh start"/>
                                     </target>
                                 </configuration>
                                 <goals>

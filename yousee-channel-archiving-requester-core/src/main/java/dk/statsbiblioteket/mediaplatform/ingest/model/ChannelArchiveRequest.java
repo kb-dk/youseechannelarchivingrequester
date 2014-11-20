@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.sql.Time;
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  */
 @Entity
+@XmlRootElement
 public class ChannelArchiveRequest {
 
     private Long Id;
@@ -36,6 +38,7 @@ public class ChannelArchiveRequest {
 
     /**
      * True is there are no validation problems which affect this request.
+     *
      * @return whether this request is enabled.
      */
     @Transient
@@ -49,6 +52,7 @@ public class ChannelArchiveRequest {
 
     /**
      * If this request is disabled, this field gives a human-readable explanation as to why.
+     *
      * @return the reason for this request being disabled.
      */
     @Transient
