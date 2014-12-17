@@ -104,208 +104,208 @@
 
 <div id="demo">
 
-    <form id="formEditBrowser" action="UpdateBrowser.php" title="Update Browser">
-        <input type="hidden" class="DATARECORDID" name="id"/>
-        <input type="hidden" class="ROWID" name="row_id"/>
-        <label for="browser">Browser</label><br/>
-        <input type="text" name="browser" id="browser" class="required" rel="0"/>
-        <br/>
-        <button id="formEditBrowserOk" type="submit">Ok</button>
-        <button id="formEditBrowserCancel" type="button">Cancel</button>
-    </form>
-    <form id="formEditPlatforms" action="UpdatePlatforms.php" title="Update Platforms">
-        <input type="hidden" class="DATARECORDID" name="id"/>
-        <input type="hidden" class="ROWID" name="row_id"/>
-        <label for="platforms">Platform(s)</label><br/>
-        <textarea name="platforms" id="Textarea1" class="required" rel="1"></textarea>
-        <br/>
-        <button id="formEditPlatformsOk" type="submit">Ok</button>
-        <button id="formEditPlatformsCancel" type="button">Cancel</button>
-    </form>
+<form id="formEditBrowser" action="UpdateBrowser.php" title="Update Browser">
+    <input type="hidden" class="DATARECORDID" name="id"/>
+    <input type="hidden" class="ROWID" name="row_id"/>
+    <label for="browser">Browser</label><br/>
+    <input type="text" name="browser" id="browser" class="required" rel="0"/>
+    <br/>
+    <button id="formEditBrowserOk" type="submit">Ok</button>
+    <button id="formEditBrowserCancel" type="button">Cancel</button>
+</form>
+<form id="formEditPlatforms" action="UpdatePlatforms.php" title="Update Platforms">
+    <input type="hidden" class="DATARECORDID" name="id"/>
+    <input type="hidden" class="ROWID" name="row_id"/>
+    <label for="platforms">Platform(s)</label><br/>
+    <textarea name="platforms" id="Textarea1" class="required" rel="1"></textarea>
+    <br/>
+    <button id="formEditPlatformsOk" type="submit">Ok</button>
+    <button id="formEditPlatformsCancel" type="button">Cancel</button>
+</form>
 
-    <form id="formAddBrowser1" action="UpdatePlatforms.php" title="Add Browser 1">
-        <input type="hidden" class="DATARECORDID" name="id"/>
-        <input type="hidden" class="ROWID" name="row_id"/>
-        <label for="platforms">Platform(s)</label><br/>
-        <textarea name="platforms" id="Textarea1" class="required" rel="1"></textarea>
-        <br/>
-        <button id="formAddBrowser1Ok" type="submit">Ok</button>
-        <button id="formAddBrowser1Cancel" type="button">Cancel</button>
-    </form>
+<form id="formAddBrowser1" action="UpdatePlatforms.php" title="Add Browser 1">
+    <input type="hidden" class="DATARECORDID" name="id"/>
+    <input type="hidden" class="ROWID" name="row_id"/>
+    <label for="platforms">Platform(s)</label><br/>
+    <textarea name="platforms" id="Textarea1" class="required" rel="1"></textarea>
+    <br/>
+    <button id="formAddBrowser1Ok" type="submit">Ok</button>
+    <button id="formAddBrowser1Cancel" type="button">Cancel</button>
+</form>
 
-    <form id="formAddBrowser2" action="UpdatePlatforms.php" title="Add Browser 2">
-        <input type="hidden" class="DATARECORDID" name="id"/>
-        <input type="hidden" class="ROWID" name="row_id"/>
-        <label for="platforms">Platform(s)</label><br/>
-        <textarea name="platforms" id="Textarea1" class="required" rel="1"></textarea>
-        <br/>
-        <button id="formAddBrowser2Ok" type="submit">Ok</button>
-        <button id="formAddBrowser2Cancel" type="button">Cancel</button>
-    </form>
+<form id="formAddBrowser2" action="UpdatePlatforms.php" title="Add Browser 2">
+    <input type="hidden" class="DATARECORDID" name="id"/>
+    <input type="hidden" class="ROWID" name="row_id"/>
+    <label for="platforms">Platform(s)</label><br/>
+    <textarea name="platforms" id="Textarea1" class="required" rel="1"></textarea>
+    <br/>
+    <button id="formAddBrowser2Ok" type="submit">Ok</button>
+    <button id="formAddBrowser2Cancel" type="button">Cancel</button>
+</form>
 
-    <form id="formAddNewRow" action="#" title="Add new record">
-        <input type="hidden" name="id" id="id" value="DATAROWID"/>
-        <label for="browser">Browser</label><br/>
-        <input type="text" name="browser" id="browser" rel="0"/>
-        <br/>
-        <label for="platforms">Platform(s)</label><br/>
-        <textarea name="platforms" id="platforms" rel="1"></textarea>
-        <br/>
-        <label for="version">Engine version</label><br/>
-        <select name="version" id="version" rel="2">
-            <option>1.5</option>
-            <option>1.7</option>
-            <option>1.8</option>
-        </select>
-        <br/>
-        <label for="grade">CSS grade</label><br/>
-        <input type="radio" name="grade" value="A" rel="3"> First<br>
-        <input type="radio" name="grade" value="B" rel="3"> Second<br>
-        <input type="radio" name="grade" value="C" checked rel="3"> Third
-        <br/>
+<form id="formAddNewRow" action="#" title="Add new record">
+    <input type="hidden" name="id" id="id" value="DATAROWID"/>
+    <label for="browser">Browser</label><br/>
+    <input type="text" name="browser" id="browser" rel="0"/>
+    <br/>
+    <label for="platforms">Platform(s)</label><br/>
+    <textarea name="platforms" id="platforms" rel="1"></textarea>
+    <br/>
+    <label for="version">Engine version</label><br/>
+    <select name="version" id="version" rel="2">
+        <option>1.5</option>
+        <option>1.7</option>
+        <option>1.8</option>
+    </select>
+    <br/>
+    <label for="grade">CSS grade</label><br/>
+    <input type="radio" name="grade" value="A" rel="3"> First<br>
+    <input type="radio" name="grade" value="B" rel="3"> Second<br>
+    <input type="radio" name="grade" value="C" checked rel="3"> Third
+    <br/>
 <span class="datafield" rel="4" style="display:none">
 <a class="table-action-EditBrowser">Edit Browser</a>  <button type="button" class="table-action-EditPlatforms">Edit
     Platforms
 </button>          </span>
-    </form>
+</form>
 
-    <a class="table-action-AddBrowser1">Add 1</a>
-    <button class="table-action-AddBrowser2">Add 2</button>
-    <div class="add_delete_toolbar"/>
+<a class="table-action-AddBrowser1">Add 1</a>
+<button class="table-action-AddBrowser2">Add 2</button>
+<div class="add_delete_toolbar"/>
 
-    <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
-        <thead>
-        <tr>
-            <th>Browser</th>
-            <th>Platform(s)</th>
-            <th>Engine version</th>
-            <th>CSS grade</th>
-            <th>Edit</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+    <thead>
+    <tr>
+        <th>Browser</th>
+        <th>Platform(s)</th>
+        <th>Engine version</th>
+        <th>CSS grade</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
 
 
-            <th>Browser</th>
-            <th>Platform(s)</th>
-            <th>Engine version</th>
-            <th>CSS grade</th>
-            <th>Edit</th>
-        </tr>
+        <th>Browser</th>
+        <th>Platform(s)</th>
+        <th>Engine version</th>
+        <th>CSS grade</th>
+        <th>Edit</th>
+    </tr>
 
-        </tfoot>
-        <tbody>
-        <tr id="1">
-            <td>
-                Internet Explorer 4.0
-            </td>
-            <td>
-                Win 95+
-            </td>
-            <td>
-                4
-            </td>
-            <td>
-                X
-            </td>
-            <td>
-                <a class="table-action-EditBrowser">Edit Browser</a>
-                <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
-            </td>
-        </tr>
-        <tr id="2">
-            <td>
-                Internet Explorer 5.0
-            </td>
-            <td>
-                Win 95+
-            </td>
-            <td>
-                5
-            </td>
-            <td>
-                C
-            </td>
-            <td>
-                <a class="table-action-EditBrowser">Edit Browser</a>
-                <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
-            </td>
-        </tr>
-        <tr id="3">
-            <td>
-                Internet Explorer 5.5
-            </td>
-            <td>
-                Win 95+
-            </td>
-            <td>
-                5.5
-            </td>
-            <td>
-                A
-            </td>
-            <td>
-                <a class="table-action-EditBrowser">Edit Browser</a>
-                <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
-            </td>
-        </tr>
-        <tr id="4">
-            <td>
-                Internet Explorer 6
-            </td>
-            <td>
-                Win 98+
-            </td>
-            <td>
-                6
-            </td>
-            <td>
-                A
-            </td>
-            <td>
-                <a class="table-action-EditBrowser">Edit Browser</a>
-                <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
-            </td>
-        </tr>
-        <tr id="5">
-            <td>
-                Internet Explorer 7
-            </td>
-            <td>
-                Win XP SP2+
-            </td>
-            <td>
-                7
-            </td>
-            <td>
-                A
-            </td>
-            <td>
-                <a class="table-action-EditBrowser">Edit Browser</a>
-                <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
-            </td>
-        </tr>
-        <tr id="6">
-            <td>
-                AOL browser (AOL desktop)
-            </td>
-            <td>
-                Win XP
-            </td>
-            <td>
-                6
-            </td>
-            <td>
-                A
-            </td>
-            <td>
-                <a class="table-action-EditBrowser">Edit Browser</a>
-                <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    </tfoot>
+    <tbody>
+    <tr id="1">
+        <td>
+            Internet Explorer 4.0
+        </td>
+        <td>
+            Win 95+
+        </td>
+        <td>
+            4
+        </td>
+        <td>
+            X
+        </td>
+        <td>
+            <a class="table-action-EditBrowser">Edit Browser</a>
+            <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
+        </td>
+    </tr>
+    <tr id="2">
+        <td>
+            Internet Explorer 5.0
+        </td>
+        <td>
+            Win 95+
+        </td>
+        <td>
+            5
+        </td>
+        <td>
+            C
+        </td>
+        <td>
+            <a class="table-action-EditBrowser">Edit Browser</a>
+            <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
+        </td>
+    </tr>
+    <tr id="3">
+        <td>
+            Internet Explorer 5.5
+        </td>
+        <td>
+            Win 95+
+        </td>
+        <td>
+            5.5
+        </td>
+        <td>
+            A
+        </td>
+        <td>
+            <a class="table-action-EditBrowser">Edit Browser</a>
+            <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
+        </td>
+    </tr>
+    <tr id="4">
+        <td>
+            Internet Explorer 6
+        </td>
+        <td>
+            Win 98+
+        </td>
+        <td>
+            6
+        </td>
+        <td>
+            A
+        </td>
+        <td>
+            <a class="table-action-EditBrowser">Edit Browser</a>
+            <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
+        </td>
+    </tr>
+    <tr id="5">
+        <td>
+            Internet Explorer 7
+        </td>
+        <td>
+            Win XP SP2+
+        </td>
+        <td>
+            7
+        </td>
+        <td>
+            A
+        </td>
+        <td>
+            <a class="table-action-EditBrowser">Edit Browser</a>
+            <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
+        </td>
+    </tr>
+    <tr id="6">
+        <td>
+            AOL browser (AOL desktop)
+        </td>
+        <td>
+            Win XP
+        </td>
+        <td>
+            6
+        </td>
+        <td>
+            A
+        </td>
+        <td>
+            <a class="table-action-EditBrowser">Edit Browser</a>
+            <button type="button" class="table-action-EditPlatforms">Edit Platforms</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 </div>
 <div class="spacer"></div>
