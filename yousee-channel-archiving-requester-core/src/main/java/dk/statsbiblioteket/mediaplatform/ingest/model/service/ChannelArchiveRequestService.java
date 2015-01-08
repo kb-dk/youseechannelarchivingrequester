@@ -21,8 +21,10 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
 
     @Override
     public void insert(ChannelArchiveRequest request) throws ServiceException {
-        if (request.getFromTime().after(request.getToTime())) {
-            throw new ServiceException("fromTime (" + request.getFromTime() + ") must not be after toTime (" + request.getToTime() + ")");
+        if ((request.getFromTime() != null) && (request.getToTime() != null)) {
+            if (request.getFromTime().after(request.getToTime())) {
+                throw new ServiceException("fromTime (" + request.getFromTime() + ") must not be after toTime (" + request.getToTime() + ")");
+            }
         }
         try {
             getDao().create(request);
@@ -74,6 +76,12 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
 
     }
 
+    /**
+     * Returns a list of rows with given id from the CAR table in the database
+     *
+     * @param id: Unique id of the requested CAR object
+     * @return List of requested CAR object(s) with the given id
+     */
     @Override
     public List<ChannelArchiveRequest> getRequestByID(Long id) throws ServiceException {
         try {

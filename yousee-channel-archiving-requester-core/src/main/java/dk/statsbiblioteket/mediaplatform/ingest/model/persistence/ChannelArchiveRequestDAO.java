@@ -31,9 +31,12 @@ public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchive
         return query.list();
     }
 
+    /**
+     * @param id The id of the wanted request
+     * @return List of the wanted CAR objects from the database
+     */
     @Override
     public List<ChannelArchiveRequest> getRequestByID(Long id) {
-        //Query query = getSession().createQuery("FROM ChannelArchiveRequest ORDER BY sBChannelId, toDate desc");
         Query query = getSession().createQuery("FROM ChannelArchiveRequest WHERE id = :id").setLong("id", id);
         return query.list();
     }

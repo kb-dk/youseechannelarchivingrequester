@@ -49,11 +49,11 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>HelloWorld</servlet-name>
+        <servlet-name>ChannelArchiveRequest</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.Test</param-value>
+            <param-value>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web</param-value>
         </init-param>
         <init-param>
             <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
@@ -63,8 +63,8 @@
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>HelloWorld</servlet-name>
-        <url-pattern>/test/*</url-pattern>
+        <servlet-name>ChannelArchiveRequest</servlet-name>
+        <url-pattern>/CAR/*</url-pattern>
     </servlet-mapping>
 
     <listener>
