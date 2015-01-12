@@ -39,8 +39,8 @@
 <script type="text/javascript" src="jquery-timepicker/lib/site.js"></script>
 <link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/site.css"/>
 
-<div class="span12 text-center">
-    <h1>Statsbiblioteket's Radio/TV</h1>
+<div class="span12 text-center" id="headCAR">
+<h1>Statsbiblioteket's Radio/TV</h1>
 
     <h1>Channel Archive Request Interface</h1>
 </div>
@@ -155,7 +155,7 @@
     the
     date
     to
-    yyyy - mm - dd-->
+    yyyy - mm - dd -->
     Date.prototype.toYYYYMMDDString = function () {
         return isNaN(this) ? 'NaN' : [
             this.getFullYear(),
@@ -192,6 +192,7 @@
             //then convert the table to a CRUD table, which also has some nice functionality like sorting
             $(".datetooltip").tooltip({placement: 'bottom'});
             var oTableCAR = $('#tableCAR').dataTable({
+                "iDisplayLength": 100,
                 "sPaginationType": "full_numbers"
             });
             $('#tableCAR').dataTable().makeEditable({
@@ -211,20 +212,32 @@
                          sSuccessResponse: "IGNORE"
                      },
                      {
-                         type: 'datepicker',
-                         tooltip: "Click to edit...",
-                         sSuccessResponse: "IGNORE",
-                         datepicker: {
-                             dateFormat: 'yyyy-mm-dd'
+                         oValidationOptions: {
+                             rules: {
+                                 value: {
+                                     required: true,
+                                     dateISO: true
+                                 }
+                             },
+                             messages: {
+                                 value: {
+                                     dateISO: "Invalid date" }
+                             }
                          }
                      },
                      {
-                         type: 'datepicker',
-                         datepicker: {
-                             dateFormat: 'yyyy-mm-dd'
-                         },
-                         tooltip: "Click to edit...",
-                         sSuccessResponse: "IGNORE"
+                         oValidationOptions: {
+                             rules: {
+                                 value: {
+                                     required: true,
+                                     dateISO: true
+                                 }
+                             },
+                             messages: {
+                                 value: {
+                                     dateISO: "Invalid date" }
+                             }
+                         }
                      },
                      {
                          type: 'select',
@@ -257,6 +270,7 @@
     $(document).ready(function () {
         loadCAR();
     });
+
 
 </script>
 
