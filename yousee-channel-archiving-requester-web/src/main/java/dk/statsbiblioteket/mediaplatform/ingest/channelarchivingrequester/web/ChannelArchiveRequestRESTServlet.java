@@ -140,12 +140,12 @@ public class ChannelArchiveRequestRESTServlet {
             } else if (indexOfColumn == FROM_DATE) {
                 Date newFromDate = new Date(0);
                 try {
-                    newFromDate = formatTime.parse(value);
+                    newFromDate = formatDate.parse(value);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                if (newFromDate.before(caRequest.getToDate()) || newFromDate.equals(caRequest.getToDate()))
-                    caRequest.setToDate(newFromDate);
+                if (newFromDate.before(caRequest.getFromDate()) || newFromDate.equals(caRequest.getToDate()))
+                    caRequest.setFromDate(newFromDate);
                 else {
                     ok = false;
                     errorStr = "From date cannot be after to date";
@@ -154,10 +154,10 @@ public class ChannelArchiveRequestRESTServlet {
                 Date newToDate = new Date(0);
                 try {
                     if (formatDate.parse(value) != null)
-                        newToDate = formatTime.parse(value);
+                        newToDate = formatDate.parse(value);
                     else {
                         //If no date is given then put it at 3000-01-01
-                        newToDate = formatTime.parse("3000-01-01");
+                        newToDate = formatDate.parse("3000-01-01");
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
