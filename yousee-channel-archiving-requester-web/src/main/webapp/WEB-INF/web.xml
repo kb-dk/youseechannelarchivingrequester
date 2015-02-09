@@ -27,28 +27,6 @@
     <description>Statsbiblioteket Mediaplatform Channel Scheduler</description>
 
     <servlet>
-        <servlet-name>ChannelArchiveRequestCRUDServlet</servlet-name>
-        <servlet-class>
-            dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.ChannelArchiveRequestCRUDServlet
-        </servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ChannelArchiveRequestCRUDServlet</servlet-name>
-        <url-pattern>/ChannelArchiveRequestCRUDServlet/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>YouSeeChannelMappingCRUDServlet</servlet-name>
-        <servlet-class>
-            dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.YouSeeChannelMappingCRUDServlet
-        </servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>YouSeeChannelMappingCRUDServlet</servlet-name>
-        <url-pattern>/YouSeeChannelMappingCRUDServlet/*</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>ChannelArchiveRequest</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
