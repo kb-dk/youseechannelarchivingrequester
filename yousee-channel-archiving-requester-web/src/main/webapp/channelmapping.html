@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>Statsbiblioteket's Radio/TV Channel Archive Request Interface</title>
+    <link rel="stylesheet" type="text/css" media="all"
+          href="style_all.css"/>
+    <link rel="stylesheet" type="text/css" media="print"
+          href="style_print.css"/>
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="style_screen.css"/>
+    <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+          href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+
+</head>
+<body>
+
+<script charset="utf8" type="text/javascript" src="jquery-2.1.1.min.js"></script>
+<script charset="utf8" src="jquery-ui-1.11.2/jquery-ui.js" type="text/javascript"></script>
+<script charset="utf8" src="DataTables-1.9.0/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+<script charset="utf8" src="jquery_jeditable/jquery.jeditable.js" type="text/javascript"></script>
+<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.dataTables.editable.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="jquery-validation-1.13.1/dist/jquery.validate.js" type="text/javascript"></script>
+<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.jeditable.datepicker.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.jeditable.time.js"
+        type="text/javascript"></script>
+
+<script type="text/javascript" charset="utf8" src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8" src="datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="jquery-timepicker/jquery.timepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery-timepicker/jquery.timepicker.css"/>
+
+<script type="text/javascript" src="jquery-timepicker/lib/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/bootstrap-datepicker.css"/>
+
+<script type="text/javascript" src="jquery-timepicker/lib/site.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/site.css"/>
+
+<div class="span12 text-center" id="headCAR">
+    <h1>Statsbiblioteket's Radio/TV</h1>
+
+    <h1>Channel Archive Request Interface</h1>
+</div>
+<div id="navigation">
+    <a href="channelmapping.html">Channels</a>
+    <a href="index.html">Requests</a>
+</div>
+
+<!-- Form that appears when add button is pressed-->
+<form id="formAddNewRow" action="#" title="Add New Channel">
+    <label for="ycm_channel">Channel</label> <br/>
+    <input type="text" name="ycm_channel" id="ycm_channel" value="" class="required" rel="0"/>
+    <br/>
+    <label for="ycm_id">YouSee Id</label><br/>
+    <input type="text" name="ycm_id" id="ycm_id" value="" class="required" rel="1"/>
+    <br/>
+    <label for="ycm_ch_name">Display Name</label><br/>
+    <input type="text" name="ycm_ch_name" id="ycm_ch_name" rel="2"/>
+    <br/>
+    <label for="ycm_ch_datefrom">From</label><br/>
+    <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="ycm_ch_datefrom" id="ycm_ch_datefrom"
+           data-provider="datepicker" rel="3"/>
+    <br/>
+    <label for="ycm_ch_dateto">To</label><br/>
+    <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="ycm_ch_dateto" id="ycm_ch_dateto"
+           data-provider="datepicker" rel="4"/>
+    <br/>
+    <br/>
+
+    <script type="text/javascript" xml:space="preserve">
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        })
+    </script>
+
+</form>
+<tr></tr>
+
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="tableYCM">
+    <thead id="headYouSeeChannelMapping">
+    <tr>
+        <th>Channel</th>
+        <th>YouSee Id</th>
+        <th>Display Name</th>
+        <th>From</th>
+        <th>To</th>
+    </tr>
+    </thead>
+    <tbody id="bodyChannel">
+    </tbody>
+</table>
+<!-- Place holder where add and delete buttons will be generated -->
+<div class="add_delete_toolbar"/>
+<br/>
+
+<script type="text/javascript" xml:space="preserve">
+
+    //Convert the date to yyyy - mm - dd
+    Date.prototype.toYYYYMMDDString = function () {
+        return isNaN(this) ? 'NaN' : [
+            this.getFullYear(),
+                    this.getMonth() > 8 ? this.getMonth() + 1 : '0' + (this.getMonth() + 1),
+                    this.getDate() > 9 ? this.getDate() : '0' + this.getDate()].join('-')
+    }
+
+    //Make a table row
+    function makeChannelRow(channel) {
+        var channelRow = "ch-" + channel.id;
+        var html = "<tr id='" + channelRow + "'></tr>";
+        $("#bodyChannel").append(html);
+        $("#" + channelRow).append("<td>" + channel.sbChannelId + "</td>");
+        $("#" + channelRow).append("<td>" + channel.youSeeChannelId + "</td>");
+        $("#" + channelRow).append("<td>" + channel.displayName + "</td>");
+        $("#" + channelRow).append("<td>" + new Date(parseInt(channel.fromDate, 10)).toYYYYMMDDString() + "</td>");
+        if ((parseInt(channel.toDate, 10) == 0) || (parseInt(channel.toDate, 10) == 32503676400000) || (parseInt(channel.toDate, 10) == -2208992400000))
+            $("#" + channelRow).append("<td>" + "</td>");
+        else
+            $("#" + channelRow).append("<td>" + new Date(parseInt(channel.toDate, 10)).toYYYYMMDDString() + "</td>");
+    }
+
+    function loadChannel() {
+        var url = "/youseechannelarchivingrequester/CAR/channelMapping/getChannelList";
+        var selected = [];
+        $.getJSON(url, {}, function (channelList) {
+            //First put all channel mappings in the table
+            for (i in channelList) {
+                makeChannelRow(channelList[i]);
+            }
+            //then convert the table to a CRUD table
+            $(".datetooltip").tooltip({placement: 'bottom'});
+            oTableChannel = $('#tableYCM').dataTable({
+                "fnDrawCallback": function () {
+                    $('table#tableYCM td').bind('mouseenter', function () {
+                        $(this).parent().children().each(function () {
+                            $(this).addClass('datatablerowhighlight');
+                        });
+                    });
+                    $('table#tableYCM td').bind('mouseleave', function () {
+                        $(this).parent().children().each(function () {
+                            $(this).removeClass('datatablerowhighlight');
+                        });
+                    });
+                },
+                "bPaginate": false
+            });
+
+            $('#tableYCM').dataTable().makeEditable({
+                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelMapping/updateChannel",
+                aoColumns: [
+                    {},
+                    {},
+                    {},
+                    {
+                        tooltip: "",
+                        submit: "OK",
+                        sSuccessResponse: "IGNORE",
+                        oValidationOptions: {
+                            rules: {value: {required: true, dateISO: true}},
+                            messages: {value: {dateISO: "Invalid date" }}}
+                    },
+                    {
+                        tooltip: "",
+                        submit: "OK",
+                        sSuccessResponse: "IGNORE",
+                        oValidationOptions: {
+                            rules: {value: {required: true, dateISO: true}},
+                            messages: {value: { dateISO: "Invalid date" }}}
+                    }
+                ],
+                sDeleteURL: "/youseechannelarchivingrequester/CAR/channelMapping/deleteChannel",
+                sAddURL: "/youseechannelarchivingrequester/CAR/channelMapping/addChannel",
+                fnOnDeleting: function (tr, id, fnDeleteRow) {
+                    if (confirm('Please confirm that you want to delete row with channel ' + tr[0].cells[0].innerText))
+                        fnDeleteRow(id);
+                    return false;
+                },
+                //The following functions are needed for refreshing the table after each function has been performed
+                fnOnDeleted: function (status) {
+                    oTableChannel.fnDraw(false);
+                },
+                fnOnAdded: function (status) {
+                    oTableChannel.fnDraw(false);
+                },
+                fnOnEdited: function (status) {
+                    oTableChannel.fnDraw(false);
+                }
+            });
+
+        });
+    }
+
+    $(document).ready(function () {
+        loadChannel();
+    })
+</script>
+
+</body>
+</html>

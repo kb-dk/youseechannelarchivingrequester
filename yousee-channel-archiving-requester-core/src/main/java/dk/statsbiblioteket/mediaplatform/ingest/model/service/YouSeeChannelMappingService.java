@@ -40,7 +40,7 @@ public class YouSeeChannelMappingService implements YouSeeChannelMappingServiceI
         if (mappings.size() == 1) {
             return mappings.get(0);
         } else {
-            throw new ServiceException("Expected a unique mapping for '" + sBChannelId  + " at "
+            throw new ServiceException("Expected a unique mapping for '" + sBChannelId + " at "
                     + date + " but found " + mappings.size());
         }
     }
@@ -52,6 +52,16 @@ public class YouSeeChannelMappingService implements YouSeeChannelMappingServiceI
         } catch (NotInitialiasedException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public YouSeeChannelMapping getMappingByID(Long id) throws ServiceException {
+        try {
+            return getDao().getMappingByID(id);
+        } catch (NotInitialiasedException e) {
+            throw new ServiceException(e);
+        }
+
     }
 
     @Override

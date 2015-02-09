@@ -51,7 +51,7 @@ public interface ChannelArchiveRequestServiceIF {
      * @param id id of the wanted ChannelArchiveRequest object.
      * @return the wanted ChannelArchiveRequest object.
      */
-    List<ChannelArchiveRequest> getRequestByID(Long id) throws ServiceException;
+    ChannelArchiveRequest getRequestByID(Long id) throws ServiceException;
 
     List<ChannelArchiveRequest> getAllRequests() throws ServiceException;
 }

@@ -13,8 +13,9 @@ public interface YouSeeChannelMappingServiceIF {
     /**
      * Gets the unique mapping corresponding to a given channel in you see on a given date. Throws an exception if there
      * is not a unique mapping.
+     *
      * @param youSeeChannelId the YouSee channel
-     * @param date the date.
+     * @param date            the date.
      * @return the unique mapping
      * @throws ServiceException if the mappings is not unique
      */
@@ -23,8 +24,9 @@ public interface YouSeeChannelMappingServiceIF {
     /**
      * Gets the unique mapping corresponding to a given SB channel on a given date. Throws an exception if there
      * is not a unique mapping.
+     *
      * @param sBChannelId
-     * @param date the date.
+     * @param date        the date.
      * @return the unique mapping
      * @throws ServiceException if the mappings is not unique
      */
@@ -32,10 +34,19 @@ public interface YouSeeChannelMappingServiceIF {
 
     /**
      * Get a complete list of all known mappings,sorted by expiry date.
+     *
      * @return The list of known mappings.
      * @throws ServiceException
      */
     List<YouSeeChannelMapping> getAllMappings() throws ServiceException;
+
+    /**
+     * Returns a list of rows with given id from the channel mapping table in the database
+     *
+     * @param id: Unique id of the requested channel mapping object
+     * @return List of requested channel mappings object(s) with the given id
+     */
+    YouSeeChannelMapping getMappingByID(Long id) throws ServiceException;
 
     void create(YouSeeChannelMapping mapping) throws ServiceException;
 

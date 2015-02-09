@@ -8,31 +8,38 @@ import java.util.List;
 
 /**
  */
-public interface YouSeeChannelMappingDAOIF extends GenericDAO<YouSeeChannelMapping, Long>{
+public interface YouSeeChannelMappingDAOIF extends GenericDAO<YouSeeChannelMapping, Long> {
 
 
     /**
      * Gets the YouSeeChannelMapping for a given youSeeChannelId valid on a given date.
-     * @param youSeeChannelId  the YouSee id
-     * @param date the date for the request
-     * @return  the mappings
+     *
+     * @param youSeeChannelId the YouSee id
+     * @param date            the date for the request
+     * @return the mappings
      */
     List<YouSeeChannelMapping> getMappingsFromYouSeeChannelId(String youSeeChannelId, Date date);
 
 
-
     /**
      * Gets the YouSeeChannelMappings for a given sBChannelId valid on a given date.
+     *
      * @param sBChannelId the SB id of the channel
-     * @param date the date for the request
-     * @return  the mappings
+     * @param date        the date for the request
+     * @return the mappings
      */
     List<YouSeeChannelMapping> getMappingsFromSbChannelId(String sBChannelId, Date date);
 
     /**
      * Get all known mappings, expired or not.
+     *
      * @return The mappings.
      */
     List<YouSeeChannelMapping> getAllMappings();
 
+    /**
+     * @param id The id of the wanted channel mapping
+     * @return List of the wanted channel mapping objects from the database
+     */
+    YouSeeChannelMapping getMappingByID(Long id);
 }

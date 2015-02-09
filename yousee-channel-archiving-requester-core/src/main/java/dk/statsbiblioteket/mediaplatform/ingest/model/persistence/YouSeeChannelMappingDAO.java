@@ -1,6 +1,7 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 
 import java.util.Date;
@@ -30,7 +31,7 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
     public List<YouSeeChannelMapping> getMappingsFromSbChannelId(String sBChannelId, Date date) {
         final Query query = getSession().createQuery("FROM YouSeeChannelMapping WHERE sbChannelId = :id AND " +
                 "fromDate <= :date AND toDate >= :date");
-         return query.setParameter("id", sBChannelId).setDate("date", date).list();
+        return query.setParameter("id", sBChannelId).setDate("date", date).list();
     }
 
     @Override
@@ -38,5 +39,10 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
         return getSession().createQuery("from YouSeeChannelMapping ORDER BY toDate desc").list();
     }
 
+    @Override
+    public YouSeeChannelMapping getMappingByID(Long id) {
+        Query query = getSession().createQuery("FROM YouSeeChannelMapping WHERE id = :id").setLong("id", id);
+        return (YouSeeChannelMapping) query.list().get(0);
+    }
 
 }

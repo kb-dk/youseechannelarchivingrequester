@@ -27,7 +27,7 @@ public interface ChannelArchiveRequestDAOIF extends GenericDAO<ChannelArchiveReq
      * @param id The id of the wanted request
      * @return the wanted request
      */
-    List<ChannelArchiveRequest> getRequestByID(Long id);
+    ChannelArchiveRequest getRequestByID(Long id);
 
 
     /**

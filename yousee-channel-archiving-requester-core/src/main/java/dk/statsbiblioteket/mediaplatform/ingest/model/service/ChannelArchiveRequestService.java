@@ -76,14 +76,8 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
 
     }
 
-    /**
-     * Returns a list of rows with given id from the CAR table in the database
-     *
-     * @param id: Unique id of the requested CAR object
-     * @return List of requested CAR object(s) with the given id
-     */
     @Override
-    public List<ChannelArchiveRequest> getRequestByID(Long id) throws ServiceException {
+    public ChannelArchiveRequest getRequestByID(Long id) throws ServiceException {
         try {
             return getDao().getRequestByID(id);
         } catch (NotInitialiasedException e) {
