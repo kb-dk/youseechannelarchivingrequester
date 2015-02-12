@@ -45,7 +45,8 @@ public class YouSeeChannelMappingRESTServlet {
     public String deleteChannel(@FormParam("id") String id) throws ServiceException {
 
         try {
-            //Convert the id (as a string) to an integer id
+            if (id.length() < 3)
+                return "Error";
             Long realId = Long.parseLong(id.substring(3));
             YouSeeChannelMapping ycm = service.getMappingByID(realId);
             //Delete the CAR object
@@ -70,7 +71,8 @@ public class YouSeeChannelMappingRESTServlet {
         boolean ok = true;
         String errorStr = "";
         try {
-            //Convert the id (as a string) to an integer id
+            if (id.length() < 3)
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
             Long realId = Long.parseLong(id.substring(3));
             YouSeeChannelMapping ycm = service.getMappingByID(realId);
             //Find the column by the column name

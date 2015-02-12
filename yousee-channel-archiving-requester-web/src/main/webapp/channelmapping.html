@@ -12,6 +12,11 @@
     <link rel="stylesheet" type="text/css"
           href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 
+    <style>
+        .markrow {
+            background-color: #ffbbbb !important;
+        }
+    </style>
 </head>
 <body>
 
@@ -97,6 +102,25 @@
 
 <script type="text/javascript" xml:space="preserve">
 
+    var hlr = 0;
+
+    function rowClick() {
+        if (hlr)
+            $("td:first", hlr).parent().children().each(function () {
+                $(this).removeClass('markrow');
+            });
+
+        if (hlr != this) {
+            hlr = this;
+            $("td:first", this).parent().children().each(function () {
+                $(this).addClass('markrow');
+            });
+        }
+        else {
+            hlr = 0;
+        }
+    }
+
     //Convert the date to yyyy - mm - dd
     Date.prototype.toYYYYMMDDString = function () {
         return isNaN(this) ? 'NaN' : [
@@ -131,20 +155,19 @@
             //then convert the table to a CRUD table
             $(".datetooltip").tooltip({placement: 'bottom'});
             oTableChannel = $('#tableYCM').dataTable({
-                "fnDrawCallback": function () {
-                    $('table#tableYCM td').bind('mouseenter', function () {
-                        $(this).parent().children().each(function () {
-                            $(this).addClass('datatablerowhighlight');
-                        });
-                    });
-                    $('table#tableYCM td').bind('mouseleave', function () {
-                        $(this).parent().children().each(function () {
-                            $(this).removeClass('datatablerowhighlight');
-                        });
-                    });
-                },
-                "bPaginate": false
+                "bPaginate": true,
+                "scrollY": "100px",
+                "bScrollCollapse": true,
+                "sPaginationType": "full_numbers",
+                //"bJQueryUI": true,
+                "aLengthMenu": [
+                    [10, 50, 100, -1],
+                    [10, 50, 100, "All"]
+                ],
+                "iDisplayLength": 100
+                //"bPaginate": false
             });
+            $('#tableYCM tbody').delegate("tr", "click", rowClick);
 
             $('#tableYCM').dataTable().makeEditable({
                 sUpdateURL: "/youseechannelarchivingrequester/CAR/channelMapping/updateChannel",
@@ -171,9 +194,23 @@
                 ],
                 sDeleteURL: "/youseechannelarchivingrequester/CAR/channelMapping/deleteChannel",
                 sAddURL: "/youseechannelarchivingrequester/CAR/channelMapping/addChannel",
+                fnShowError: function (message, action) {
+                    switch (action) {
+                        case "update":
+                            alert("An error happened during update. The reason may be that you haven't refreshed the page.");
+                            break;
+                        case "delete":
+                            alert("An error happened during delete. The reason may be that you haven't refreshed the page.");
+                            break;
+                        case "add":
+                            alert(message);
+                            break;
+                    }
+                },
                 fnOnDeleting: function (tr, id, fnDeleteRow) {
-                    if (confirm('Please confirm that you want to delete row with channel ' + tr[0].cells[0].innerText))
+                    if (confirm('Please confirm that you want to delete row with channel ' + tr[0].cells[0].innerText)) {
                         fnDeleteRow(id);
+                    }
                     return false;
                 },
                 //The following functions are needed for refreshing the table after each function has been performed
@@ -181,6 +218,7 @@
                     oTableChannel.fnDraw(false);
                 },
                 fnOnAdded: function (status) {
+
                     oTableChannel.fnDraw(false);
                 },
                 fnOnEdited: function (status) {

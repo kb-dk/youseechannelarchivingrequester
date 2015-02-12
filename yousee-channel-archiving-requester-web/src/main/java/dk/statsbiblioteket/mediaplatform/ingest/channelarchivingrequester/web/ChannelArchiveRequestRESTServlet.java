@@ -3,6 +3,7 @@ package dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -15,6 +16,8 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequ
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @Path("/channelRequests/")
@@ -32,8 +35,29 @@ public class ChannelArchiveRequestRESTServlet {
     public static final List<String> COLUMN_LIST =
             Arrays.asList("Channel", "Start Time", "End Time", "From", "To", "Coverage");
 
+
+    private Pattern pattern;
+    private Matcher matcher;
+
+    private static final String TIME24HOURS_PATTERN =
+            "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+
     public ChannelArchiveRequestRESTServlet() {
         service = new ChannelArchiveRequestService();
+        pattern = Pattern.compile(TIME24HOURS_PATTERN);
+    }
+
+    /**
+     * Validate time in 24 hours format with regular expression
+     *
+     * @param time time address for validation
+     * @return true valid time fromat, false invalid time format
+     */
+    public boolean validate(final String time) {
+
+        matcher = pattern.matcher(time);
+        return matcher.matches();
+
     }
 
     @GET
@@ -50,7 +74,8 @@ public class ChannelArchiveRequestRESTServlet {
     public String deleteCAR(@FormParam("id") String id) throws ServiceException {
 
         try {
-            //Convert the id (as a string) to an integer id
+            if (id.length() < 4)
+                return "Error";
             Long realId = Long.parseLong(id.substring(4));
             //Get the first element of the list. We can safely assume that there is only object, since we know it is unique
             ChannelArchiveRequest caRequest = service.getRequestByID(realId);
@@ -76,7 +101,9 @@ public class ChannelArchiveRequestRESTServlet {
         boolean ok = true;
         String errorStr = "";
         try {
-            //Convert the id (as a string) to an integer id
+            if (id.length() < 4)
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
+
             Long realId = Long.parseLong(id.substring(4));
             //Get the requested CAR object
             ChannelArchiveRequest caRequest = service.getRequestByID(realId);
@@ -171,13 +198,20 @@ public class ChannelArchiveRequestRESTServlet {
             //Get the requested CAR object
             ChannelArchiveRequest caRequest = new ChannelArchiveRequest();
             caRequest.setsBChannelId(channel);
-            Date newFromTime = new Date();
-            if (formatTime.parse(fromTime) != null)
+            Date newFromTime = new Time(0);
+            if (validate(fromTime) && formatTime.parse(fromTime) != null) {
                 newFromTime = formatTime.parse(fromTime);
+            } else {
+                newFromTime = formatTime.parse("00:00");
+            }
+
             caRequest.setFromTime(newFromTime);
-            Date newToTime = new Date(0);
-            if (formatTime.parse(toTime) != null)
+            Date newToTime = new Time(0);
+            if (validate(toTime) && formatTime.parse(toTime) != null) {
                 newToTime = formatTime.parse(toTime);
+            } else {
+                newToTime = formatTime.parse("00:00");
+            }
             caRequest.setToTime(newToTime);
 
             if (fromDate == null || "".equals(fromDate)) {
