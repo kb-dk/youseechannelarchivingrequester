@@ -12,6 +12,11 @@
     <link rel="stylesheet" type="text/css"
           href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 
+    <style>
+        .markrow {
+            background-color: #ffbbbb !important;
+        }
+    </style>
 
 </head>
 <body>
@@ -40,21 +45,74 @@
 <link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/site.css"/>
 
 <div class="span12 text-center" id="headCAR">
-<h1>Statsbiblioteket's Radio/TV</h1>
+    <h1>Statsbiblioteket's Radio/TV</h1>
 
     <h1>Channel Archive Request Interface</h1>
 </div>
 <div id="navigation">
-    <form action="simple_dispatcher.jsp" name="nav_form" method="get">
-        <a href="#" class="main_nav" onclick="gotopage('you_see_channel_mapping.jsp');">Channels</a>
-        <a href="#" class="main_nav" onclick="gotopage('channel_archive_request.jsp');">Requests</a>
-        <input id="page_name" type="hidden" name="page"/>
+    <a href="channelmapping.html">Channels</a>
+    <a href="index.html">Requests</a>
+</div>
+
+<!-- Form that appears when add button is pressed-->
+<div class="span12 text-center strong">-
+    <form id="formAddNewRow" title="ADD NEW REQUESTER">
+        <label for="CARChannel" id="CARChannel">Channel</label><br/>
+        <input type="text" name="channel" id="channel" class="required" rel="0"/>
+        <br/>
+        <label for="CARFromTime" id="CARFromTime">From time</label><br/>
+        <input type="text" name="fromTime" id="fromTime" class="required" rel="1"/>
+        <br/>
+        <label for="CARToTime" id="CARToTime">To time</label><br/>
+        <input type="text" name="toTime" id="toTime" class="required" rel="2"/>
+        <br/>
+        <label for="CARStartDate" id="CARStartDate">Start day</label><br/>
+        <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="fromDate" id="fromDate"
+               data-provider="datepicker" class="required" rel="3"/>
+        <br/>
+        <label for="carenddate" id="CAREndDate">End day</label><br/>
+        <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="toDate" id="toDate"
+               data-provider="datepicker" class="required" rel="4"/>
+        <br/>
+        <label for="carcoverage" id="CARCoverage">Coverage</label><br/>
+        <select name="weekdayCoverage" id="weekdayCoverage" class="required" rel="5">
+            <option value="1">DAILY</option>
+            <option value="2">MONDAY</option>
+            <option value="3">TUESDAY</option>
+            <option value="4">WEDNESDAY</option>
+            <option value="5">THURSDAY</option>
+            <option value="6">FRIDAY</option>
+            <option value="7">SATURDAY</option>
+            <option value="8">SUNDAY</option>
+            <option value="9">MONDAY-THURSDAY</option>
+            <option value="10">MONDAY-FRIDAY</option>
+            <option value="11">SATURDAY-SUNDAY</option>
+        </select>
+        <br/>
+        <br/>
+        <!-- Datepicker and timepicker code-->
+        <script type="text/javascript" xml:space="preserve">
+        $('.datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+        })
+
+        $(function () {
+            $('#fromTime').timepicker({
+                'timeFormat': 'H:i' });
+        });
+
+        $(function () {
+            $('#toTime').timepicker({ 'timeFormat': 'H:i' });
+        })
+
+    </script>
+
     </form>
 </div>
 
 <!-- Add the Channel Archive Request table -->
-<table id="tableCAR">
-    <thead>
+<table cellpadding="0" cellspacing="0" border="0" class="display" id="tableCAR">
+    <thead id="headChannelArchivingRequester">
     <tr>
         <th>Channel</th>
         <th>Start Time</th>
@@ -71,105 +129,44 @@
 <tr></tr>
 <!-- Place holder where add and delete buttons will be generated -->
 <div class="add_delete_toolbar"/>
-<!-- Add buttons
-<button id="btnDeleteRow">Delete</button>
-<button id="btnAddNewRow">Add</button>-->
 <br/>
 
-<!-- Form that appears when add button is pressed-->
-<div class="span12 text-center strong">
-    <form id="formAddNewRow" action="#" title="ADD NEW REQUESTER">
-        <label for="name">Channel</label><br/><input type="text" name="channel" id="channel" class="required" rel="0"/>
-        <br/>
-
-        <label for="name">From time</label><br/>
-        <input type="text" name="fromTime" id="fromTime" class="required" rel="1"/>
-        <br/>
-        <label for="name">To time</label><br/>
-        <input type="text" name="toTime" id="toTime" class="required" rel="2"/>
-        <br/>
-        <label for="name">Start day</label><br/>
-        <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="fromDate" id="fromDate"
-               data-provider="datepicker" class="required" rel="3"/>
-        <br/>
-        <label for="name">End day</label><br/>
-        <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="toDate" id="toDate"
-               data-provider="datepicker" class="required" rel="4"/>
-        <br/>
-        <label for="name">Coverage</label><br/>
-        <select name="weekdayCoverage" id="weekdayCoverage" class="required" rel="5">
-            <option value="1">DAILY</option>
-            <option value="2">MONDAY</option>
-            <option value="3">TUESDAY</option>
-            <option value="4">WEDNESDAY</option>
-            <option value="5">THURSDAY</option>
-            <option value="6">FRIDAY</option>
-            <option value="7">SATURDAY</option>
-            <option value="8">SUNDAY</option>
-            <option value="9">MONDAY-THURSDAY</option>
-            <option value="10">MONDAY-FRIDAY</option>
-            <option value="11">SATURDAY-SUNDAY</option>
-        </select>
-        <br/>
-        <!-- Datepicker and timepicker code-->
-        <script type="text/javascript" xml:space="preserve">
-            $('.datepicker').datepicker({
-                format: 'yyyy-mm-dd'
-            })
-
-            $(function () {
-                $('#fromTime').timepicker({ 'timeFormat': 'H:i' });
-            })
-            $(function () {
-                $('#toTime').timepicker({ 'timeFormat': 'H:i' });
-            })
-
-
-        </script>
-
-    </form>
-</div>
-
-
 <script type="text/javascript" xml:space="preserve">
-        function gotopage(page) {
-            document.getElementById("page_name").setAttribute("value", page);
-            document.nav_form.submit();
-        }
-        function addLoadEvent(func) {
-            var oldonload = window.onload;
-            if (typeof window.onload != 'function') {
-                window.onload = func;
-            } else {
-                window.onload = function () {
-                    oldonload();
-                    func();
-                }
-            }
-        }
-    </script>
-<script>
 
-    <!--
-    Convert
-    the
-    date
-    to
-    yyyy - mm - dd -->
+    var hlr = 0;
+
+    function rowClick() {
+        if (hlr)
+            $("td:first", hlr).parent().children().each(function () {
+                $(this).removeClass('markrow');
+            });
+
+        if (hlr != this) {
+            hlr = this;
+            $("td:first", this).parent().children().each(function () {
+                $(this).addClass('markrow');
+            });
+        }
+        else {
+            hlr = 0;
+        }
+    }
+
+    //Convert the date to yyyy - mm - dd
     Date.prototype.toYYYYMMDDString = function () {
         return isNaN(this) ? 'NaN' : [
             this.getFullYear(),
                     this.getMonth() > 8 ? this.getMonth() + 1 : '0' + (this.getMonth() + 1),
                     this.getDate() > 9 ? this.getDate() : '0' + this.getDate()].join('-')
     }
-    <!--Convert the time to hh:mm -->
+    //Convert the time to hh:mm
     Date.prototype.toHHMMString = function () {
         return isNaN(this) ? 'NaN' : [
                     this.getHours() > 9 ? this.getHours() : '0' + this.getHours(),
                     this.getMinutes() > 9 ? this.getMinutes() : '0' + this.getMinutes()].join(':')
     }
 
-    <!--Make a table line -->
+    //Make a table line
     function makeCARRow(car) {
         var carRow = "car-" + car.id;
         var html = "<tr id='" + carRow + "'></tr>";
@@ -178,32 +175,47 @@
         $("#" + carRow).append("<td>" + new Date(parseInt(car.fromTime, 10)).toHHMMString() + "</td>");
         $("#" + carRow).append("<td>" + new Date(parseInt(car.toTime, 10)).toHHMMString() + "</td>");
         $("#" + carRow).append("<td>" + new Date(parseInt(car.fromDate, 10)).toYYYYMMDDString() + "</td>");
-        $("#" + carRow).append("<td>" + new Date(parseInt(car.toDate, 10)).toYYYYMMDDString() + "</td>");
+        if ((parseInt(car.toDate, 10) == 0) || (parseInt(car.toDate, 10) == 32503676400000) || (parseInt(channel.toDate, 10) == -2208992400000))
+            $("#" + carRow).append("<td>" + "</td>");
+        else
+            $("#" + carRow).append("<td>" + new Date(parseInt(car.toDate, 10)).toYYYYMMDDString() + "</td>");
         $("#" + carRow).append("<td>" + car.weekdayCoverage + "</td>");
     }
 
     function loadCAR() {
-        var url = "/youseechannelarchivingrequester/CAR/getCARList";
+        var url = "/youseechannelarchivingrequester/CAR/channelRequests/getCARList";
         $.getJSON(url, {}, function (carList) {
-            //First put all lines in the table
+            //First put all channel archiving requests in the table
             for (i in carList) {
                 makeCARRow(carList[i]);
             }
-            //then convert the table to a CRUD table, which also has some nice functionality like sorting
+            //then convert the table to a CRUD table
             $(".datetooltip").tooltip({placement: 'bottom'});
-            var oTableCAR = $('#tableCAR').dataTable({
-                "iDisplayLength": 100,
-                "sPaginationType": "full_numbers"
+            oTableCAR = $('#tableCAR').dataTable({
+                "bPaginate": false
             });
+            $('#tableCAR tbody').delegate("tr", "click", rowClick);
             $('#tableCAR').dataTable().makeEditable({
-                sUpdateURL: "/youseechannelarchivingrequester/CAR/updateCAR",
+                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelRequests/updateCAR",
                  aoColumns: [
                      {},
                      {
                          type: 'time',
                          submit: 'OK',
                          tooltip: "Click to edit...",
-                         sSuccessResponse: "IGNORE"
+                         sSuccessResponse: "IGNORE",
+                         oValidationOptions: {
+                             rules: {
+                                 value: {
+                                     required: true,
+                                     timeISO: true
+                                 }
+                             },
+                             messages: {
+                                 value: {
+                                     timeISO: "Invalid date" }
+                             }
+                         }
                      },
                      {
                          type: 'time',
@@ -212,20 +224,26 @@
                          sSuccessResponse: "IGNORE"
                      },
                      {
+                         tooltip: "",
+                         submit: "OK",
+                         sSuccessResponse: "IGNORE",
                          oValidationOptions: {
                              rules: {
                                  value: {
                                      required: true,
-                                     dateISO: true
+                                     timeISO: true
                                  }
                              },
                              messages: {
                                  value: {
-                                     dateISO: "Invalid date" }
+                                     timeISO: "Invalid date" }
                              }
                          }
                      },
                      {
+                         tooltip: "",
+                         submit: "OK",
+                         sSuccessResponse: "IGNORE",
                          oValidationOptions: {
                              rules: {
                                  value: {
@@ -249,9 +267,27 @@
                      }
                  ]
                  ,
-                sDeleteURL: "/youseechannelarchivingrequester/CAR/deleteCAR",
-                sAddURL: "/youseechannelarchivingrequester/CAR/addCAR",
+                sDeleteURL: "/youseechannelarchivingrequester/CAR/channelRequests/deleteCAR",
+                sAddURL: "/youseechannelarchivingrequester/CAR/channelRequests/addCAR",
+                fnShowError: function (message, action) {
+                    switch (action) {
+                        case "update":
+                            alert("An error happened during update. The reason may be that you haven't refreshed the page.");
+                            break;
+                        case "delete":
+                            alert("An error happened during delete. The reason may be that you haven't refreshed the page.");
+                            break;
+                        case "add":
+                            alert(message);
+                            break;
+                    }
+                },
                 //The following functions are needed for refreshing the table after each function has been performed
+                fnOnDeleting: function (tr, id, fnDeleteRow) {
+                    if (confirm('Please confirm that you want to delete row with channel ' + tr[0].cells[0].innerText))
+                        fnDeleteRow(id);
+                    return false;
+                },
                 fnOnDeleted: function (status) {
                     oTableCAR.fnDraw(false);
                 },
@@ -276,4 +312,3 @@
 
 </body>
 </html>
-</body>
