@@ -184,7 +184,7 @@
             $("#" + carRow).append("<td>" + "</td>");
         else
             $("#" + carRow).append("<td>" + new Date(parseInt(car.fromDate, 10)).toYYYYMMDDString() + "</td>");
-        if ((parseInt(car.toDate, 10) == 0) || (parseInt(car.toDate, 10) == 32503676400000) || (parseInt(channel.toDate, 10) == -2208992400000))
+        if ((parseInt(car.toDate, 10) == 0) || (parseInt(car.toDate, 10) == 32503676400000))
             $("#" + carRow).append("<td>" + "</td>");
         else
             $("#" + carRow).append("<td>" + new Date(parseInt(car.toDate, 10)).toYYYYMMDDString() + "</td>");
@@ -222,39 +222,27 @@
                          tooltip: "Click to edit...",
                          sSuccessResponse: "IGNORE",
                          oValidationOptions: {
-                             rules: {
-                                 value: {
-                                     required: true,
-                                     timeISO: true
-                                 }
-                             },
-                             messages: {
-                                 value: {
-                                     timeISO: "Invalid date" }
-                             }
+                             rules: {value: {required: true, timeISO: true}},
+                             messages: {value: {timeISO: "Invalid time" }}
                          }
                      },
                      {
                          type: 'time',
                          submit: 'OK',
                          tooltip: "Click to edit...",
-                         sSuccessResponse: "IGNORE"
+                         sSuccessResponse: "IGNORE",
+                         oValidationOptions: {
+                             rules: {value: {required: true, timeISO: true}},
+                             messages: {value: {timeISO: "Invalid time" }}
+                         }
                      },
                      {
                          tooltip: "",
                          submit: "OK",
                          sSuccessResponse: "IGNORE",
                          oValidationOptions: {
-                             rules: {
-                                 value: {
-                                     required: true,
-                                     timeISO: true
-                                 }
-                             },
-                             messages: {
-                                 value: {
-                                     timeISO: "Invalid date" }
-                             }
+                             rules: {value: {required: true, dateISO: true}},
+                             messages: {value: {dateISO: "Invalid date" }}
                          }
                      },
                      {
@@ -263,15 +251,8 @@
                          sSuccessResponse: "IGNORE",
                          oValidationOptions: {
                              rules: {
-                                 value: {
-                                     required: true,
-                                     dateISO: true
-                                 }
-                             },
-                             messages: {
-                                 value: {
-                                     dateISO: "Invalid date" }
-                             }
+                                 value: {required: true, dateISO: true}},
+                             messages: {value: {dateISO: "Invalid date" }}
                          }
                      },
                      {
