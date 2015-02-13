@@ -59,34 +59,37 @@
     <a href="index.html">Requests</a>
 </div>
 
-<!-- Form that appears when add button is pressed-->
-<form id="formAddNewRow" action="#" title="Add New Channel">
-    <label for="ycm_channel">Channel</label> <br/>
-    <input type="text" name="ycm_channel" id="ycm_channel" value="" class="required" rel="0"/>
-    <br/>
-    <label for="ycm_id">YouSee Id</label><br/>
-    <input type="text" name="ycm_id" id="ycm_id" value="" class="required" rel="1"/>
-    <br/>
-    <label for="ycm_ch_name">Display Name</label><br/>
-    <input type="text" name="ycm_ch_name" id="ycm_ch_name" rel="2"/>
-    <br/>
-    <label for="ycm_ch_datefrom">From</label><br/>
-    <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="ycm_ch_datefrom" id="ycm_ch_datefrom"
-           data-provider="datepicker" rel="3"/>
-    <br/>
-    <label for="ycm_ch_dateto">To</label><br/>
-    <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="ycm_ch_dateto" id="ycm_ch_dateto"
-           data-provider="datepicker" rel="4"/>
-    <br/>
-    <br/>
+<div>
+    <!-- Form that appears when add button is pressed-->
+    <form class="text-center strong" id="formAddNewRow">
+        <h1>Add Channel</h1>
+        <label class="col-lg-4" for="ycm_channel">Channel</label> <br/>
+        <input type="text" name="ycm_channel" id="ycm_channel" value="" class="required" rel="0"/>
+        <br/>
+        <label for="ycm_id">YouSee Id</label><br/>
+        <input type="text" name="ycm_id" id="ycm_id" value="" class="required" rel="1"/>
+        <br/>
+        <label for="ycm_ch_name">Display Name</label><br/>
+        <input type="text" name="ycm_ch_name" id="ycm_ch_name" rel="2"/>
+        <br/>
+        <label for="ycm_ch_datefrom">From</label><br/>
+        <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="ycm_ch_datefrom" id="ycm_ch_datefrom"
+               data-provider="datepicker" rel="3"/>
+        <br/>
+        <label for="ycm_ch_dateto">To</label><br/>
+        <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="ycm_ch_dateto" id="ycm_ch_dateto"
+               data-provider="datepicker" rel="4"/>
+        <br/>
+        <br/>
 
-    <script type="text/javascript" xml:space="preserve">
-        $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd'
-        })
-    </script>
+        <script type="text/javascript" xml:space="preserve">
+            $('.datepicker').datepicker({
+                format: 'yyyy-mm-dd'
+            })
+        </script>
 
-</form>
+    </form>
+</div>
 <tr></tr>
 
 <table cellpadding="0" cellspacing="0" border="0" class="display" id="tableYCM">
