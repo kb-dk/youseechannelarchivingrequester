@@ -142,6 +142,7 @@ public class YouSeeChannelMappingRESTServlet {
                              @FormParam("ycm_ch_datefrom") String fromDate,
                              @FormParam("ycm_ch_dateto") String toDate) throws ServiceException {
 
+        boolean ok = true;
         try {
             Date newFromDate;
             Date newToDate;
@@ -161,6 +162,11 @@ public class YouSeeChannelMappingRESTServlet {
                 toDate = "3000-01-01";
             }
             newToDate = formatDate.parse(toDate);
+            if (newToDate.after(ycm.getFromDate()) || newToDate.equals(ycm.getFromDate()))
+                ycm.setToDate(newToDate);
+            else {
+                ok = false;
+            }
             ycm.setToDate(newToDate);
             //Insert the object in db
             service.create(ycm);
@@ -169,6 +175,9 @@ public class YouSeeChannelMappingRESTServlet {
         } catch (ServiceException e) {
             return "Error ";
         }
-        return "ok";
+        if (ok)
+            return "ok";
+        else
+            return "Error";
     }
 }

@@ -44,6 +44,12 @@
 <script type="text/javascript" src="jquery-timepicker/lib/site.js"></script>
 <link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/site.css"/>
 
+<style>
+    .ui-dialog {
+        background: #fcfcfc
+    }
+</style>
+
 <div class="span12 text-center" id="headCAR">
     <h1>Statsbiblioteket's Radio/TV</h1>
 
@@ -55,8 +61,9 @@
 </div>
 
 <!-- Form that appears when add button is pressed-->
-<div class="span12 text-center strong">-
+<div class="span12 text-center strong">
     <form id="formAddNewRow" title="ADD NEW REQUESTER">
+        <body bgcolor="#E6E6FA">
         <label for="CARChannel" id="CARChannel">Channel</label><br/>
         <input type="text" name="channel" id="channel" class="required" rel="0"/>
         <br/>
@@ -92,21 +99,22 @@
         <br/>
         <!-- Datepicker and timepicker code-->
         <script type="text/javascript" xml:space="preserve">
-        $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd'
-        })
+                $('.datepicker').datepicker({
+                    format: 'yyyy-mm-dd'
+                })
 
-        $(function () {
-            $('#fromTime').timepicker({
-                'timeFormat': 'H:i' });
-        });
+                $(function () {
+                    $('#fromTime').timepicker({
+                        'timeFormat': 'H:i' });
+                });
 
-        $(function () {
-            $('#toTime').timepicker({ 'timeFormat': 'H:i' });
-        })
+                $(function () {
+                    $('#toTime').timepicker({ 'timeFormat': 'H:i' });
+                })
 
-    </script>
+            </script>
 
+        </body>
     </form>
 </div>
 
@@ -126,7 +134,6 @@
     </tbody>
 </table>
 
-<tr></tr>
 <!-- Place holder where add and delete buttons will be generated -->
 <div class="add_delete_toolbar"/>
 <br/>
@@ -174,7 +181,10 @@
         $("#" + carRow).append("<td>" + car.sBChannelId + "</td>");
         $("#" + carRow).append("<td>" + new Date(parseInt(car.fromTime, 10)).toHHMMString() + "</td>");
         $("#" + carRow).append("<td>" + new Date(parseInt(car.toTime, 10)).toHHMMString() + "</td>");
-        $("#" + carRow).append("<td>" + new Date(parseInt(car.fromDate, 10)).toYYYYMMDDString() + "</td>");
+        if ((parseInt(car.fromDate, 10) == 0) || (parseInt(car.fromDate, 10) == -2208992400000))
+            $("#" + carRow).append("<td>" + "</td>");
+        else
+            $("#" + carRow).append("<td>" + new Date(parseInt(car.fromDate, 10)).toYYYYMMDDString() + "</td>");
         if ((parseInt(car.toDate, 10) == 0) || (parseInt(car.toDate, 10) == 32503676400000) || (parseInt(channel.toDate, 10) == -2208992400000))
             $("#" + carRow).append("<td>" + "</td>");
         else
@@ -282,6 +292,26 @@
                             break;
                     }
                 },
+                aoColumns: [
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    }
+                ],
                 //The following functions are needed for refreshing the table after each function has been performed
                 fnOnDeleting: function (tr, id, fnDeleteRow) {
                     if (confirm('Please confirm that you want to delete row with channel ' + tr[0].cells[0].innerText))

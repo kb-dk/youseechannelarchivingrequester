@@ -43,6 +43,12 @@
 <script type="text/javascript" src="jquery-timepicker/lib/site.js"></script>
 <link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/site.css"/>
 
+<style>
+    .ui-dialog {
+        background: #fcfcfc
+    }
+</style>
+
 <div class="span12 text-center" id="headCAR">
     <h1>Statsbiblioteket's Radio/TV</h1>
 
@@ -137,8 +143,11 @@
         $("#" + channelRow).append("<td>" + channel.sbChannelId + "</td>");
         $("#" + channelRow).append("<td>" + channel.youSeeChannelId + "</td>");
         $("#" + channelRow).append("<td>" + channel.displayName + "</td>");
-        $("#" + channelRow).append("<td>" + new Date(parseInt(channel.fromDate, 10)).toYYYYMMDDString() + "</td>");
-        if ((parseInt(channel.toDate, 10) == 0) || (parseInt(channel.toDate, 10) == 32503676400000) || (parseInt(channel.toDate, 10) == -2208992400000))
+        if ((parseInt(channel.fromDate, 10) == 0) || (parseInt(channel.fromDate, 10) == -2208992400000))
+            $("#" + channelRow).append("<td>" + "</td>");
+        else
+            $("#" + channelRow).append("<td>" + new Date(parseInt(channel.fromDate, 10)).toYYYYMMDDString() + "</td>");
+        if ((parseInt(channel.toDate, 10) == 0) || (parseInt(channel.toDate, 10) == 32503676400000))
             $("#" + channelRow).append("<td>" + "</td>");
         else
             $("#" + channelRow).append("<td>" + new Date(parseInt(channel.toDate, 10)).toYYYYMMDDString() + "</td>");
@@ -213,6 +222,23 @@
                     }
                     return false;
                 },
+                aoColumns: [
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    },
+                    {
+                        placeholder: ""
+                    }
+                ],
                 //The following functions are needed for refreshing the table after each function has been performed
                 fnOnDeleted: function (status) {
                     oTableChannel.fnDraw(false);
