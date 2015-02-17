@@ -64,7 +64,7 @@
 <div>
     <form class="text-center strong" id="formAddNewRow">
         <h1>Add Requester</h1>
-        <label class="col-lg-4" for="CARChannel" id="CARChannel">Channel</label><br/>
+        <label for="CARChannel" id="CARChannel">Channel</label><br/>
         <input type="text" name="channel" id="channel" class="required" rel="0"/>
         <br/>
         <label for="CARFromTime" id="CARFromTime">From time</label><br/>
@@ -213,12 +213,12 @@
             });
             $('#tableCAR tbody').delegate("tr", "click", rowClick);
             $('#tableCAR').dataTable().makeEditable({
-                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelRequests/updateCAR",
                  aoColumns: [
                      {},
                      {
                          type: 'time',
                          submit: 'OK',
+                         placeholder: "",
                          tooltip: "Click to edit...",
                          sSuccessResponse: "IGNORE",
                          oValidationOptions: {
@@ -229,6 +229,7 @@
                      {
                          type: 'time',
                          submit: 'OK',
+                         placeholder: "",
                          tooltip: "Click to edit...",
                          sSuccessResponse: "IGNORE",
                          oValidationOptions: {
@@ -239,19 +240,21 @@
                      {
                          tooltip: "",
                          submit: "OK",
+                         placeholder: "",
                          sSuccessResponse: "IGNORE",
                          oValidationOptions: {
-                             rules: {value: {required: true, dateISO: true}},
+                             rules: {value: {required: false, dateISO: true}},
                              messages: {value: {dateISO: "Invalid date" }}
                          }
                      },
                      {
                          tooltip: "",
                          submit: "OK",
+                         placeholder: "",
                          sSuccessResponse: "IGNORE",
                          oValidationOptions: {
                              rules: {
-                                 value: {required: true, dateISO: true}},
+                                 value: {required: false, dateISO: true}},
                              messages: {value: {dateISO: "Invalid date" }}
                          }
                      },
@@ -265,41 +268,22 @@
                      }
                  ]
                  ,
+                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelRequests/updateCAR",
                 sDeleteURL: "/youseechannelarchivingrequester/CAR/channelRequests/deleteCAR",
                 sAddURL: "/youseechannelarchivingrequester/CAR/channelRequests/addCAR",
                 fnShowError: function (message, action) {
                     switch (action) {
                         case "update":
-                            alert("An error happened during update. The reason may be that you haven't refreshed the page.");
+                            alert("An error happened during deletion. The reason may be that you haven't refreshed the page or that the start is after the end.");
                             break;
                         case "delete":
-                            alert("An error happened during delete. The reason may be that you haven't refreshed the page.");
+                            alert("An error happened during update. The reason may be that you haven't refreshed the page or that the start is after the end.");
                             break;
                         case "add":
-                            alert(message);
+                            alert("An error happened during adding. The reason may be that the start is after the end.");
                             break;
                     }
                 },
-                aoColumns: [
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    }
-                ],
                 //The following functions are needed for refreshing the table after each function has been performed
                 fnOnDeleting: function (tr, id, fnDeleteRow) {
                     if (confirm('Please confirm that you want to delete row with channel ' + tr[0].cells[0].innerText))

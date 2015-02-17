@@ -63,7 +63,7 @@
     <!-- Form that appears when add button is pressed-->
     <form class="text-center strong" id="formAddNewRow">
         <h1>Add Channel</h1>
-        <label class="col-lg-4" for="ycm_channel">Channel</label> <br/>
+        <label for="ycm_channel">Channel</label> <br/>
         <input type="text" name="ycm_channel" id="ycm_channel" value="" class="required" rel="0"/>
         <br/>
         <label for="ycm_id">YouSee Id</label><br/>
@@ -180,14 +180,18 @@
             $('#tableYCM tbody').delegate("tr", "click", rowClick);
 
             $('#tableYCM').dataTable().makeEditable({
-                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelMapping/updateChannel",
                 aoColumns: [
-                    {},
-                    {},
-                    {},
+                    {
+                    },
+                    {
+                    },
+                    {
+                        placeholder: ""
+                    },
                     {
                         tooltip: "",
                         submit: "OK",
+                        placeholder: "",
                         sSuccessResponse: "IGNORE",
                         oValidationOptions: {
                             rules: {value: {required: true, dateISO: true}},
@@ -195,6 +199,7 @@
                     },
                     {
                         tooltip: "",
+                        placeholder: "",
                         submit: "OK",
                         sSuccessResponse: "IGNORE",
                         oValidationOptions: {
@@ -202,18 +207,19 @@
                             messages: {value: { dateISO: "Invalid date" }}}
                     }
                 ],
-                sDeleteURL: "/youseechannelarchivingrequester/CAR/channelMapping/deleteChannel",
                 sAddURL: "/youseechannelarchivingrequester/CAR/channelMapping/addChannel",
+                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelMapping/updateChannel",
+                sDeleteURL: "/youseechannelarchivingrequester/CAR/channelMapping/deleteChannel",
                 fnShowError: function (message, action) {
                     switch (action) {
                         case "update":
-                            alert("An error happened during update. The reason may be that you haven't refreshed the page.");
+                            alert("An error happened during delete. The reason may be that you haven't refreshed the page or that the start is after the end.");
                             break;
                         case "delete":
-                            alert("An error happened during delete. The reason may be that you haven't refreshed the page.");
+                            alert("An error happened during update. The reason may be that you haven't refreshed the page or that the start is after the end .");
                             break;
                         case "add":
-                            alert(message);
+                            alert("An error happened during adding. The reason may be that the start is after the end.");
                             break;
                     }
                 },
@@ -223,23 +229,6 @@
                     }
                     return false;
                 },
-                aoColumns: [
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    },
-                    {
-                        placeholder: ""
-                    }
-                ],
                 //The following functions are needed for refreshing the table after each function has been performed
                 fnOnDeleted: function (status) {
                     oTableChannel.fnDraw(false);
