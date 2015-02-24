@@ -45,6 +45,7 @@ public class ChannelArchiveRequestRESTServlet {
     public ChannelArchiveRequestRESTServlet() {
         service = new ChannelArchiveRequestService();
         pattern = Pattern.compile(TIME24HOURS_PATTERN);
+        formatDate.setLenient(false);
     }
 
     /**
@@ -121,6 +122,7 @@ public class ChannelArchiveRequestRESTServlet {
                 case START_TIME:
                     Date newFromTime = new Date();
                     newFromTime = formatTime.parse(value);
+                    newFromTime.setYear(0);
                     if (newFromTime.before(caRequest.getToTime()) || newFromTime.equals(caRequest.getToTime()))
                         caRequest.setFromTime(newFromTime);
                     else {
@@ -131,6 +133,9 @@ public class ChannelArchiveRequestRESTServlet {
                 case END_TIME:
                     Date newToTime = new Date(0);
                     newToTime = formatTime.parse(value);
+                    newToTime.setYear(0);
+                    if ((newToTime.getHours() == 0) && (newToTime.getMinutes() == 0))
+                        newToTime.setDate(2);
                     if (newToTime.after(caRequest.getFromTime()) || newToTime.equals(caRequest.getFromTime()))
                         caRequest.setToTime(newToTime);
                     else {
@@ -144,7 +149,7 @@ public class ChannelArchiveRequestRESTServlet {
                         value = "1900-01-01";
                     }
                     newFromDate = formatDate.parse(value);
-                    if (newFromDate.before(caRequest.getFromDate()) || newFromDate.equals(caRequest.getToDate()))
+                    if (newFromDate.before(caRequest.getToDate()) || newFromDate.equals(caRequest.getToDate()))
                         caRequest.setFromDate(newFromDate);
                     else {
                         ok = false;
@@ -204,7 +209,7 @@ public class ChannelArchiveRequestRESTServlet {
             } else {
                 newFromTime = formatTime.parse("00:00");
             }
-
+            newFromTime.setYear(0);
             caRequest.setFromTime(newFromTime);
             Date newToTime = new Time(0);
             if (validate(toTime) && formatTime.parse(toTime) != null) {
@@ -212,6 +217,7 @@ public class ChannelArchiveRequestRESTServlet {
             } else {
                 newToTime = formatTime.parse("00:00");
             }
+            newToTime.setYear(0);
             caRequest.setToTime(newToTime);
 
             if (fromDate == null || "".equals(fromDate)) {

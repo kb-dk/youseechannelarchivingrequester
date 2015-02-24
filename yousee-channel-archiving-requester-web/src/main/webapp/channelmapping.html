@@ -70,7 +70,7 @@
         <input type="text" name="ycm_id" id="ycm_id" value="" class="required" rel="1"/>
         <br/>
         <label for="ycm_ch_name">Display Name</label><br/>
-        <input type="text" name="ycm_ch_name" id="ycm_ch_name" rel="2"/>
+        <input type="text" name="ycm_ch_name" id="ycm_ch_name" class="required" rel="2"/>
         <br/>
         <label for="ycm_ch_datefrom">From</label><br/>
         <input class="datepicker" data-date-format="yyyy-mm-dd" type="text" name="ycm_ch_datefrom" id="ycm_ch_datefrom"
@@ -182,11 +182,19 @@
             $('#tableYCM').dataTable().makeEditable({
                 aoColumns: [
                     {
+                        oValidationOptions: {
+                            rules: {value: {required: true, minlength: 1}},
+                            messages: {value: {minlength: "Channel name is required" }}}
                     },
                     {
+                        oValidationOptions: {
+                            rules: {value: {required: true, minlength: 1}},
+                            messages: {value: {minlength: "YouSee name is required" }}}
                     },
                     {
-                        placeholder: ""
+                        oValidationOptions: {
+                            rules: {value: {required: true, minlength: 1}},
+                            messages: {value: {minlength: "Display name is required" }}}
                     },
                     {
                         tooltip: "",

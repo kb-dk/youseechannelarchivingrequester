@@ -17,18 +17,19 @@ import java.util.List;
 @Path("/channelMapping")
 public class YouSeeChannelMappingRESTServlet {
     private static YouSeeChannelMappingServiceIF service = null;
-    private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
     private static final int CHANNEL = 0;
     private static final int YOUSEEID = 1;
     private static final int DISPLAYNAME = 2;
     private static final int FROM_DATE = 3;
     private static final int TO_DATE = 4;
+    private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
 
     public static final List<String> COLUMN_LIST =
             Arrays.asList("Channel", "YouSee Id", "Display Name", "From", "To");
 
     public YouSeeChannelMappingRESTServlet() {
         service = new YouSeeChannelMappingService();
+        formatDate.setLenient(false);
     }
 
     @GET
@@ -94,7 +95,7 @@ public class YouSeeChannelMappingRESTServlet {
                         value = "1900-01-01";
                     }
                     newFromDate = formatDate.parse(value);
-                    if (newFromDate.before(ycm.getFromDate()) || newFromDate.equals(ycm.getToDate()))
+                    if (newFromDate.before(ycm.getToDate()) || newFromDate.equals(ycm.getToDate()))
                         ycm.setFromDate(newFromDate);
                     else {
                         ok = false;

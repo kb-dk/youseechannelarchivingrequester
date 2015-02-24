@@ -214,7 +214,11 @@
             $('#tableCAR tbody').delegate("tr", "click", rowClick);
             $('#tableCAR').dataTable().makeEditable({
                  aoColumns: [
-                     {},
+                     {
+                         oValidationOptions: {
+                             rules: {value: {required: true, minlength: 1}},
+                             messages: {value: {minlength: "Channel name is required" }}}
+                     },
                      {
                          type: 'time',
                          submit: 'OK',
