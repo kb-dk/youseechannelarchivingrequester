@@ -34,7 +34,10 @@ public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchive
     @Override
     public ChannelArchiveRequest getRequestByID(Long id) {
         Query query = getSession().createQuery("FROM ChannelArchiveRequest WHERE id = :id").setLong("id", id);
-        return (ChannelArchiveRequest) query.list().get(0);
+        if (query.list().size() == 1)
+            return (ChannelArchiveRequest) query.list().get(0);
+        else
+            return null;
     }
 
 }
