@@ -3,56 +3,20 @@
 <head lang="en">
     <title>Statsbiblioteket's Radio/TV Channel Archive Request Interface</title>
     <link rel="stylesheet" type="text/css" media="all"
-          href="style_all.css"/>
+          href="StatsbiblioteketChannelArchivingRequester/css/style_all.css"/>
     <link rel="stylesheet" type="text/css" media="print"
-          href="style_print.css"/>
+          href="StatsbiblioteketChannelArchivingRequester/css/style_print.css"/>
     <link rel="stylesheet" type="text/css" media="screen"
-          href="style_screen.css"/>
-    <link href="bootstrap-3.2.0-dist/css/bootstrap.min.css" rel="stylesheet">
+          href="StatsbiblioteketChannelArchivingRequester/css/style_screen.css"/>
+    <link href="StatsbiblioteketChannelArchivingRequester/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
-          href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
-
-    <style>
-        .markrow {
-            background-color: #ffbbbb !important;
-        }
-    </style>
+          href="StatsbiblioteketChannelArchivingRequester/css/jquery.dataTables.css">
 
 </head>
 <body>
 
-<script charset="utf8" type="text/javascript" src="jquery-2.1.1.min.js"></script>
-<script charset="utf8" src="jquery-ui-1.11.2/jquery-ui.js" type="text/javascript"></script>
-<script charset="utf8" src="DataTables-1.9.0/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-<script charset="utf8" src="jquery_jeditable/jquery.jeditable.js" type="text/javascript"></script>
-<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.dataTables.editable.js"
-        type="text/javascript"></script>
-<script charset="utf8" src="jquery-validation-1.13.1/dist/jquery.validate.js" type="text/javascript"></script>
-<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.jeditable.datepicker.js"
-        type="text/javascript"></script>
-<script charset="utf8" src="jquery-datatables-editable/media/js/jquery.jeditable.time.js"
-        type="text/javascript"></script>
-
-<script type="text/javascript" charset="utf8" src="bootstrap-3.2.0-dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" charset="utf8" src="datepicker/js/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="jquery-timepicker/jquery.timepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery-timepicker/jquery.timepicker.css"/>
-
-<script type="text/javascript" src="jquery-timepicker/lib/bootstrap-datepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/bootstrap-datepicker.css"/>
-
-<script type="text/javascript" src="jquery-timepicker/lib/site.js"></script>
-<link rel="stylesheet" type="text/css" href="jquery-timepicker/lib/site.css"/>
-
-<style>
-    .ui-dialog {
-        background: #fcfcfc
-    }
-</style>
-
 <div class="span12 text-center" id="headCAR">
     <h1>Statsbiblioteket's Radio/TV</h1>
-
     <h1>Channel Archive Request Interface</h1>
 </div>
 <div id="navigation">
@@ -97,23 +61,6 @@
         </select>
         <br/>
         <br/>
-        <!-- Datepicker and timepicker code-->
-        <script type="text/javascript" xml:space="preserve">
-                $('.datepicker').datepicker({
-                    format: 'yyyy-mm-dd'
-                })
-
-                $(function () {
-                    $('#fromTime').timepicker({
-                        'timeFormat': 'H:i' });
-                });
-
-                $(function () {
-                    $('#toTime').timepicker({ 'timeFormat': 'H:i' });
-                })
-
-            </script>
-
     </form>
 </div>
 
@@ -137,9 +84,53 @@
 <div class="add_delete_toolbar"/>
 <br/>
 
+<script charset="utf8" type="text/javascript"
+        src="StatsbiblioteketChannelArchivingRequester/js/jquery-2.1.1.min.js"></script>
+<script charset="utf8" src="StatsbiblioteketChannelArchivingRequester/js/jquery-ui.min.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="StatsbiblioteketChannelArchivingRequester/js/jquery.dataTables.min.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="StatsbiblioteketChannelArchivingRequester/js/jquery.jeditable.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="StatsbiblioteketChannelArchivingRequester/js/jquery.dataTables.editable.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="StatsbiblioteketChannelArchivingRequester/js/jquery.validate.min.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="StatsbiblioteketChannelArchivingRequester/js/jquery.jeditable.datepicker.js"
+        type="text/javascript"></script>
+<script charset="utf8" src="StatsbiblioteketChannelArchivingRequester/js/jquery.jeditable.time.js"
+        type="text/javascript"></script>
+
+<script type="text/javascript" charset="utf8"
+        src="StatsbiblioteketChannelArchivingRequester/js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf8"
+        src="StatsbiblioteketChannelArchivingRequester/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/js/jquery.timepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/css/jquery.timepicker.css"/>
+
+<script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/lib/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/lib/bootstrap-datepicker.css"/>
+
+<script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/lib/site.js"></script>
+<link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/lib/site.css"/>
+
 <script type="text/javascript" xml:space="preserve">
 
     var hlr = 0;
+
+    <!-- Datepicker and timepicker code-->
+    $('.datepicker').datepicker({
+        format: 'yyyy-mm-dd'
+    })
+
+    $(function () {
+        $('#fromTime').timepicker({
+            'timeFormat': 'H:i' });
+    });
+
+    $(function () {
+        $('#toTime').timepicker({ 'timeFormat': 'H:i' });
+    })
 
     function rowClick() {
         if (hlr)
@@ -304,7 +295,6 @@
                     oTableCAR.fnDraw(false);
                 }
             });
-
         });
     }
     ;
@@ -312,8 +302,6 @@
     $(document).ready(function () {
         loadCAR();
     });
-
-
 </script>
 
 </body>
