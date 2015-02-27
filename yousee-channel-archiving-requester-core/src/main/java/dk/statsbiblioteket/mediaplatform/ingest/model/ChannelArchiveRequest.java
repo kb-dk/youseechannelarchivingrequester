@@ -12,7 +12,7 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
+ * This class represents a what date and time a channel has to be recorded.
  */
 @Entity
 @XmlRootElement
