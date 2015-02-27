@@ -42,7 +42,10 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
     @Override
     public YouSeeChannelMapping getMappingByID(Long id) {
         Query query = getSession().createQuery("FROM YouSeeChannelMapping WHERE id = :id").setLong("id", id);
-        return (YouSeeChannelMapping) query.list().get(0);
+        if (query.list().size() == 1)
+            return (YouSeeChannelMapping) query.list().get(0);
+        else
+            return null;
     }
 
 }
