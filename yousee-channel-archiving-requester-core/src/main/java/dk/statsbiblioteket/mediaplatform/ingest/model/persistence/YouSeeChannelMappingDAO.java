@@ -1,7 +1,6 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 
 import java.util.Date;

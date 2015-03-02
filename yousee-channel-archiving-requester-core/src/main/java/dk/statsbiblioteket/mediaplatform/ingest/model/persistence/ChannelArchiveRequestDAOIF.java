@@ -33,7 +33,7 @@ public interface ChannelArchiveRequestDAOIF extends GenericDAO<ChannelArchiveReq
     /**
      * Gets all requests in the database.
      *
-     * @return
+     * @return List of all requests
      */
     List<ChannelArchiveRequest> getAllRequests();
 }

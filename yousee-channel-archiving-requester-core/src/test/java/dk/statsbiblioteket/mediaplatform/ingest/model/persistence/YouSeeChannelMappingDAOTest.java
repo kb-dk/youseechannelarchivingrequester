@@ -3,9 +3,7 @@ package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 import dk.statsbiblioteket.mediaplatform.ingest.model.PersistenceTestCase;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService;
-import junit.framework.TestCase;
 
-import java.io.File;
 import java.util.Date;
 
 /**
@@ -14,7 +12,6 @@ import java.util.Date;
 public class YouSeeChannelMappingDAOTest extends PersistenceTestCase {
 
     public void testGetMappingFromYouSeeChannelId() throws Exception {
-        //File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.getInitialisedFactory();
         YouSeeChannelMappingDAO ucDAO = new YouSeeChannelMappingDAO(util);
         YouSeeChannelMapping ucMapping = new YouSeeChannelMapping();

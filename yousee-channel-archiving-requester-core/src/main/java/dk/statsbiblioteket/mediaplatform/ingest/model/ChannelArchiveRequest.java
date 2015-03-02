@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import java.sql.Time;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
