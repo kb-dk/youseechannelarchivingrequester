@@ -129,7 +129,7 @@
                                            Check out a clean copy of the configuration files from git.
                                         -->
                                         <exec command="rm -rf ${project.build.directory}/Medieplatform-config "/>
-                                        <exec command="git clone https://${env.sbprojects_git_username}:${env.sbprojects_git_password}@sbprojects.statsbiblioteket.dk/fisheye/git/Medieplatform-config.git ${project.build.directory}/Medieplatform-config "/>
+                                        <exec command="git clone ssh://git@sbprojects.statsbiblioteket.dk:7999/med/medieplatform-config.git"/>
                                         <!--
                                         deploy project-specific configuration files
                                         -->
