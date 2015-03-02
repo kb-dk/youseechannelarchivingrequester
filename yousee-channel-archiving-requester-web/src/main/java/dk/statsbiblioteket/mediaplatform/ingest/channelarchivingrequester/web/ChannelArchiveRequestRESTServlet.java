@@ -1,5 +1,11 @@
 package dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web;
 
+import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
+import dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverage;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestService;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestServiceIF;
+import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -7,13 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
-
-import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
-import dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverage;
-import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestService;
-import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestServiceIF;
-import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
-
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -77,6 +76,8 @@ public class ChannelArchiveRequestRESTServlet {
             //Get the first element of the list. We can safely assume that there is only object, since we know it is unique
             ChannelArchiveRequest caRequest = service.getRequestByID(realId);
             //Delete the CAR object
+            if (caRequest == null)
+                return "Error";
             service.delete(caRequest);
         } catch (ServiceException ex) {
             return "Error";
@@ -104,6 +105,9 @@ public class ChannelArchiveRequestRESTServlet {
             Long realId = Long.parseLong(id.substring(4));
             //Get the requested CAR object
             ChannelArchiveRequest caRequest = service.getRequestByID(realId);
+            if (caRequest == null)
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
+
             //Find the column by the column name
             int indexOfColumn = (COLUMN_LIST.indexOf(columnName));
             //Update the CAR object

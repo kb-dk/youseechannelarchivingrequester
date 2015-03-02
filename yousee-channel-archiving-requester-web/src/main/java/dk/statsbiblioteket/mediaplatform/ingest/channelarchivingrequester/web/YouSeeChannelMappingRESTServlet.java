@@ -50,12 +50,13 @@ public class YouSeeChannelMappingRESTServlet {
                 return "Error";
             Long realId = Long.parseLong(id.substring(3));
             YouSeeChannelMapping ycm = service.getMappingByID(realId);
+            if (ycm == null)
+                return "Error";
             //Delete the CAR object
             service.delete(ycm);
         } catch (ServiceException ex) {
             return "Error";
         }
-
         return "ok";
     }
 
@@ -76,6 +77,8 @@ public class YouSeeChannelMappingRESTServlet {
                 return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
             Long realId = Long.parseLong(id.substring(3));
             YouSeeChannelMapping ycm = service.getMappingByID(realId);
+            if (ycm == null)
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
             //Find the column by the column name
             int indexOfColumn = (COLUMN_LIST.indexOf(columnName));
             //Update the channel mapping object
