@@ -100,13 +100,13 @@ public class ChannelArchiveRequestRESTServlet {
         String errorStr = "";
         try {
             if (id.length() < 4)
-                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity("Invalid id").build();
 
             Long realId = Long.parseLong(id.substring(4));
             //Get the requested CAR object
             ChannelArchiveRequest caRequest = service.getRequestByID(realId);
             if (caRequest == null)
-                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity("Id not found").build();
 
             //Find the column by the column name
             int indexOfColumn = (COLUMN_LIST.indexOf(columnName));

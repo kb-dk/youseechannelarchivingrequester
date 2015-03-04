@@ -74,11 +74,11 @@ public class YouSeeChannelMappingRESTServlet {
         String errorStr = "";
         try {
             if (id.length() < 3)
-                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity("Invalid id").build();
             Long realId = Long.parseLong(id.substring(3));
             YouSeeChannelMapping ycm = service.getMappingByID(realId);
             if (ycm == null)
-                return Response.status(Response.Status.NOT_ACCEPTABLE).entity(errorStr).build();
+                return Response.status(Response.Status.NOT_ACCEPTABLE).entity("Id not found").build();
             //Find the column by the column name
             int indexOfColumn = (COLUMN_LIST.indexOf(columnName));
             //Update the channel mapping object
