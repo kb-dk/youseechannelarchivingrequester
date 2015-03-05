@@ -17,6 +17,7 @@
 
 <div class="span12 text-center" id="headCAR">
     <h1>Statsbiblioteket's Radio/TV</h1>
+
     <h1>Channel Archive Request Interface</h1>
 </div>
 <div id="navigation">
@@ -108,11 +109,11 @@
 <script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/js/jquery.timepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/css/jquery.timepicker.css"/>
 
-<script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/lib/bootstrap-datepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/lib/bootstrap-datepicker.css"/>
+<script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/css/bootstrap-datepicker.css"/>
 
-<script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/lib/site.js"></script>
-<link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/lib/site.css"/>
+<script type="text/javascript" src="StatsbiblioteketChannelArchivingRequester/js/site.js"></script>
+<link rel="stylesheet" type="text/css" href="StatsbiblioteketChannelArchivingRequester/css/site.css"/>
 
 <script type="text/javascript" xml:space="preserve">
 
@@ -204,65 +205,64 @@
             });
             $('#tableCAR tbody').delegate("tr", "click", rowClick);
             $('#tableCAR').dataTable().makeEditable({
-                 aoColumns: [
-                     {
-                         oValidationOptions: {
-                             rules: {value: {required: true, minlength: 1}},
-                             messages: {value: {minlength: "Channel name is required" }}}
-                     },
-                     {
-                         type: 'time',
-                         submit: 'OK',
-                         placeholder: "",
-                         tooltip: "Click to edit...",
-                         sSuccessResponse: "IGNORE",
-                         oValidationOptions: {
-                             rules: {value: {required: true, timeISO: true}},
-                             messages: {value: {timeISO: "Invalid time" }}
-                         }
-                     },
-                     {
-                         type: 'time',
-                         submit: 'OK',
-                         placeholder: "",
-                         tooltip: "Click to edit...",
-                         sSuccessResponse: "IGNORE",
-                         oValidationOptions: {
-                             rules: {value: {required: true, timeISO: true}},
-                             messages: {value: {timeISO: "Invalid time" }}
-                         }
-                     },
-                     {
-                         tooltip: "",
-                         submit: "OK",
-                         placeholder: "",
-                         sSuccessResponse: "IGNORE",
-                         oValidationOptions: {
-                             rules: {value: {required: false, dateISO: true}},
-                             messages: {value: {dateISO: "Invalid date" }}
-                         }
-                     },
-                     {
-                         tooltip: "",
-                         submit: "OK",
-                         placeholder: "",
-                         sSuccessResponse: "IGNORE",
-                         oValidationOptions: {
-                             rules: {
-                                 value: {required: false, dateISO: true}},
-                             messages: {value: {dateISO: "Invalid date" }}
-                         }
-                     },
-                     {
-                         type: 'select',
-                         onblur: 'cancel',
-                         submit: 'Ok',
-                         data: "{'DAILY':'DAILY','MONDAY':'MONDAY','TUESDAY':'TUESDAY','WEDNESDAY':'WEDNESDAY','THURSDAY':'THURSDAY'," +
-                                 "'FRIDAY':'FRIDAY','SATURDAY':'SATURDAY','SUNDAY':'SUNDAY','MONDAY-THURSDAY':'MONDAY-THURSDAY'," +
-                                 "'MONDAY-FRIDAY':'MONDAY-FRIDAY','SATURDAY-SUNDAY':'SATURDAY-SUNDAY'}"
-                     }
-                 ]
-                 ,
+                aoColumns: [
+                    {
+                        oValidationOptions: {
+                            rules: {value: {required: true, minlength: 1}},
+                            messages: {value: {minlength: "Channel name is required" }}}
+                    },
+                    {
+                        type: 'time',
+                        submit: 'OK',
+                        placeholder: "",
+                        tooltip: "Click to edit...",
+                        sSuccessResponse: "IGNORE",
+                        oValidationOptions: {
+                            rules: {value: {required: true, timeISO: true}},
+                            messages: {value: {timeISO: "Invalid time" }}
+                        }
+                    },
+                    {
+                        type: 'time',
+                        submit: 'OK',
+                        placeholder: "",
+                        tooltip: "Click to edit...",
+                        sSuccessResponse: "IGNORE",
+                        oValidationOptions: {
+                            rules: {value: {required: true, timeISO: true}},
+                            messages: {value: {timeISO: "Invalid time" }}
+                        }
+                    },
+                    {
+                        tooltip: "",
+                        submit: "OK",
+                        placeholder: "",
+                        sSuccessResponse: "IGNORE",
+                        oValidationOptions: {
+                            rules: {value: {required: false, dateISO: true}},
+                            messages: {value: {dateISO: "Invalid date" }}
+                        }
+                    },
+                    {
+                        tooltip: "",
+                        submit: "OK",
+                        placeholder: "",
+                        sSuccessResponse: "IGNORE",
+                        oValidationOptions: {
+                            rules: {
+                                value: {required: false, dateISO: true}},
+                            messages: {value: {dateISO: "Invalid date" }}
+                        }
+                    },
+                    {
+                        type: 'select',
+                        onblur: 'cancel',
+                        submit: 'Ok',
+                        data: "{'DAILY':'DAILY','MONDAY':'MONDAY','TUESDAY':'TUESDAY','WEDNESDAY':'WEDNESDAY','THURSDAY':'THURSDAY'," +
+                                "'FRIDAY':'FRIDAY','SATURDAY':'SATURDAY','SUNDAY':'SUNDAY','MONDAY-THURSDAY':'MONDAY-THURSDAY'," +
+                                "'MONDAY-FRIDAY':'MONDAY-FRIDAY','SATURDAY-SUNDAY':'SATURDAY-SUNDAY'}"
+                    }
+                ],
                 sUpdateURL: "/youseechannelarchivingrequester/CAR/channelRequests/updateCAR",
                 sDeleteURL: "/youseechannelarchivingrequester/CAR/channelRequests/deleteCAR",
                 sAddURL: "/youseechannelarchivingrequester/CAR/channelRequests/addCAR",
