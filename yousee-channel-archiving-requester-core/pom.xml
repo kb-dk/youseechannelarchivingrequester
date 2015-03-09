@@ -18,11 +18,11 @@
             <artifactId>digitv-core</artifactId>
             <version>1.2.0</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>dk.statsbiblioteket.medieplatform</groupId>
             <artifactId>yousee-channel-archiving-requester-core</artifactId>
             <version>${project.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
