@@ -23,7 +23,7 @@ public enum WeekdayCoverage {
      * @param id The id with which this drop down is identified (may be null)
      * @param htmlClass the css class with which this drop down is identified (may be null)
      * @param selected The element to be selected (may be null)
-     * @return An html <select> element which can be dropped into a jsp page
+     * @return An html select element which can be dropped into a jsp page
      */
     public static String getHtmlSelect(String name, String id, String htmlClass, WeekdayCoverage selected) {
         StringBuilder sb = new StringBuilder();
