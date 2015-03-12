@@ -150,7 +150,7 @@
     }
 
     function loadChannel() {
-        var url = "/youseechannelarchivingrequester/CAR/channelMapping/getChannelList";
+        var url = "CAR/channelMapping/getChannelList";
         var selected = [];
         $.getJSON(url, {}, function (channelList) {
             //First put all channel mappings in the table
@@ -208,9 +208,9 @@
                             messages: {value: { dateISO: "Invalid date" }}}
                     }
                 ],
-                sAddURL: "/youseechannelarchivingrequester/CAR/channelMapping/addChannel",
-                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelMapping/updateChannel",
-                sDeleteURL: "/youseechannelarchivingrequester/CAR/channelMapping/deleteChannel",
+                sAddURL: "CAR/channelMapping/addChannel",
+                sUpdateURL: "CAR/channelMapping/updateChannel",
+                sDeleteURL: "CAR/channelMapping/deleteChannel",
                 fnShowError: function (message, action) {
                     switch (action) {
                         case "update":
