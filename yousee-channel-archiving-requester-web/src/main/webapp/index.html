@@ -184,7 +184,7 @@
     }
 
     function loadCAR() {
-        var url = "CAR/channelRequests/getCARList";
+        var url = "/youseechannelarchivingrequester/CAR/channelRequests/getCARList";
         $.getJSON(url, {}, function (carList) {
             //First put all channel archiving requests in the table
             for (i in carList) {
@@ -263,9 +263,9 @@
                                 "'MONDAY-FRIDAY':'MONDAY-FRIDAY','SATURDAY-SUNDAY':'SATURDAY-SUNDAY'}"
                     }
                 ],
-                sUpdateURL: "CAR/channelRequests/updateCAR",
-                sDeleteURL: "CAR/channelRequests/deleteCAR",
-                sAddURL: "CAR/channelRequests/addCAR",
+                sUpdateURL: "/youseechannelarchivingrequester/CAR/channelRequests/updateCAR",
+                sDeleteURL: "/youseechannelarchivingrequester/CAR/channelRequests/deleteCAR",
+                sAddURL: "/youseechannelarchivingrequester/CAR/channelRequests/addCAR",
                 fnShowError: function (message, action) {
                     switch (action) {
                         case "update":
