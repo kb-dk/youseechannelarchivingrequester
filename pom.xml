@@ -30,7 +30,7 @@
     </repositories>
     <scm>
         <url>https://github.com/statsbiblioteket/youseechannelarchivingrequester.git</url>
-        <connection>scm:git:git://github.com/statsbiblioteket/youseechannelarchivingrequester.git</connection>
+        <connection>scm:git:git@github.com:statsbiblioteket/youseechannelarchivingrequester.git</connection>
         <developerConnection>scm:git:git@github.com:statsbiblioteket/youseechannelarchivingrequester.git</developerConnection>
       <tag>HEAD</tag>
   </scm>
