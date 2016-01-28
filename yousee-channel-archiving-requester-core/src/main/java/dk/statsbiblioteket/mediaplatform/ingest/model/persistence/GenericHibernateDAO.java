@@ -26,41 +26,62 @@ public class GenericHibernateDAO<T, PK extends Serializable> implements GenericD
         }
 
         public PK create(T o) {
-            Session sess = getSession();
+            Session sess = null;
             PK key;
             try {
+                sess = getSession();
                 sess.beginTransaction();
                 key = (PK) sess.save(o);
                 sess.getTransaction().commit();
             } finally {
-                sess.close();
+                if (sess != null) {
+                    sess.close();
+                }
             }
             return key;
         }
 
         public T read(PK id) {
-            Session sess = getSession();
-            //sess.beginTransaction();
-            T result =  (T) sess.get(type, id);
-            //sess.getTransaction().commit();
-            sess.close();
-            return result;
+            Session sess = null;
+            try {
+                sess = getSession();
+                //sess.beginTransaction();
+                T result =  (T) sess.get(type, id);
+                //sess.getTransaction().commit();
+                return result;
+            } finally {
+                if (sess != null) {
+                    sess.close();
+                }
+            }
         }
 
         public void update(T o) {
-            Session sess = getSession();
-            sess.beginTransaction();
-            sess.update(o);
-            sess.getTransaction().commit();
-            sess.close();
+            Session sess = null;
+            try {
+                sess = getSession();
+                sess.beginTransaction();
+                sess.update(o);
+                sess.getTransaction().commit();
+            } finally {
+                if (sess != null) {
+                    sess.close();
+                }
+            }
         }
 
         public void delete(T o) {
-            Session sess = getSession();
-            sess.beginTransaction();
-            sess.delete(o);
-            sess.getTransaction().commit();
-            sess.close();
+            Session sess = null;
+            try {
+                sess = getSession();
+                sess.beginTransaction();
+                sess.delete(o);
+                sess.getTransaction().commit();
+            } finally {
+                if (sess != null) {
+                    sess.close();
+                }
+            }
         }
 
         protected Session getSession() {
@@ -76,12 +97,20 @@ public class GenericHibernateDAO<T, PK extends Serializable> implements GenericD
              */
             @SuppressWarnings("unchecked")
             protected List<T> findByCriteria(Criterion... criterion) {
-                Criteria crit = getSession().createCriteria(type);
-                for (Criterion c : criterion) {
-                    crit.add(c);
+                Session sess = null;
+                try {
+                    sess = getSession();
+                    Criteria crit = sess.createCriteria(type);
+                    for (Criterion c : criterion) {
+                        crit.add(c);
+                    }
+                    return crit.list();
+                } finally {
+                    if (sess != null) {
+                        sess.close();
+                    }
                 }
-                return crit.list();
-           }
+            }
 
 
     }
