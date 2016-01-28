@@ -6,7 +6,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 //import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 
 import java.io.File;
 
@@ -40,7 +40,7 @@ public class ChannelArchivingRequesterHibernateUtil implements HibernateUtilIF {
         if (sessionFactory == null || sessionFactory.isClosed()) {
             try {
                 if (sessionFactory == null) {
-                    AnnotationConfiguration configure = (new AnnotationConfiguration()).configure(cfgFile);
+                    Configuration configure = (new Configuration()).configure(cfgFile);
                     configure.addAnnotatedClass(ChannelArchiveRequest.class);
                     configure.addAnnotatedClass(YouSeeChannelMapping.class);
                     sessionFactory = configure.buildSessionFactory();
