@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 @Path("/channelRequests/")
 public class ChannelArchiveRequestRESTServlet {
     private static ChannelArchiveRequestServiceIF service = null;
-    private SimpleDateFormat formatTime = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+    private SimpleDateFormat formatTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
     private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
     private static final int CHANNEL = 0;
     private static final int START_TIME = 1;
