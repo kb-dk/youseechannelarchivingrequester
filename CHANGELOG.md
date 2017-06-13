@@ -7,6 +7,7 @@ Version 1.1.9
 =============
 
  1. Changed the clock from 12-hour to 24-hour
+ 2. Replaced source plugin in pom
  
 Version 1.1.8
 =============
