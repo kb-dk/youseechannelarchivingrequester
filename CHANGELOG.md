@@ -3,6 +3,11 @@ Changelog
 
 Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channel+Archiving+Requester+Releases
 
+Version 1.1.9
+=============
+
+ 1. Changed the clock from 12-hour to 24-hour
+ 
 Version 1.1.8
 =============
 
