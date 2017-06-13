@@ -3,7 +3,7 @@
 
     <groupId>dk.statsbiblioteket.medieplatform</groupId>
     <artifactId>yousee-channel-archiving-requester</artifactId>
-    <version>1.1.9-SNAPSHOT</version>
+    <version>1.1.9</version>
     <name>Yousee Channel Archiving Requester</name>
 
     <modelVersion>4.0.0</modelVersion>
@@ -32,7 +32,7 @@
         <url>https://github.com/statsbiblioteket/youseechannelarchivingrequester.git</url>
         <connection>scm:git:git@github.com:statsbiblioteket/youseechannelarchivingrequester.git</connection>
         <developerConnection>scm:git:git@github.com:statsbiblioteket/youseechannelarchivingrequester.git</developerConnection>
-      <tag>HEAD</tag>
+      <tag>yousee-channel-archiving-requester-1.1.9</tag>
   </scm>
 
     <packaging>pom</packaging>
