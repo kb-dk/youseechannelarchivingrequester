@@ -1,8 +1,11 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 
+import dk.statsbiblioteket.mediaplatform.ingest.model.PersistenceTestCase;
 import dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverage;
 import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 //import java.io.File;
 import java.util.Date;
@@ -11,16 +14,16 @@ import java.util.List;
 
 /**
  */
-public class ChannelArchiveRequestDAOTest extends TestCase {
+public class ChannelArchiveRequestDAOTest extends PersistenceTestCase {
 
     private static ChannelArchiveRequestDAO dao;
 
-    public void setUp() throws NotInitialiasedException {
-        //File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
-        //HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
-         dao = new ChannelArchiveRequestDAO(ChannelArchivingRequesterHibernateUtil.getInitialisedFactory());
-    }
+    @BeforeEach
+    public void setUp() {
+        dao = new ChannelArchiveRequestDAO(ChannelArchivingRequesterHibernateUtil.getInitialisedFactory());
 
+    }
+    @Test
     public void testInsert() throws NotInitialiasedException {
         ChannelArchiveRequest schedule = new ChannelArchiveRequest();
         schedule.setWeekdayCoverage(WeekdayCoverage.MONDAY_TO_FRIDAY);
@@ -44,6 +47,7 @@ public class ChannelArchiveRequestDAOTest extends TestCase {
      *          d11 d12             d13            d14          d15          d16
      * These should return 4, 3, 2, 2 requests, respectively.
      */
+    @Test
     public void testGetValidRequests() {
         Date d1 = new GregorianCalendar(100, 1, 1).getTime();
         Date d2 = new GregorianCalendar(100, 3, 1).getTime();
@@ -71,7 +75,7 @@ public class ChannelArchiveRequestDAOTest extends TestCase {
         r4.setsBChannelId("r4");
         ChannelArchiveRequestDAO carDAO = dao;
         carDAO.create(r1); carDAO.create(r2); carDAO.create(r3); carDAO.create(r4);
-        //
+
         Date d9 = new GregorianCalendar(100, 2, 1).getTime();
         Date d15 = new GregorianCalendar(102, 5, 1).getTime();
         assertEquals(4,carDAO.getValidRequests(d9, d15).size());

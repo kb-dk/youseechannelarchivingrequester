@@ -11,6 +11,10 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 import dk.statsbiblioteket.mediaplatform.ingest.model.PersistenceTestCase;
 import dk.statsbiblioteket.mediaplatform.ingest.model.WeekdayCoverage;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.GregorianCalendar;
 
@@ -23,6 +27,7 @@ public class ChannelArchiveRequestServiceTest extends PersistenceTestCase {
      * Create an overlapping channel definition and a request for that channel. The
      * request should be returned, but marked disabled.
      */
+    @Test
     public void testGetAllValid() throws ServiceException {
         Date date1 = new GregorianCalendar(10, 1, 0).getTime();
         Date date2 = new GregorianCalendar(15, 1, 0).getTime();
@@ -51,14 +56,14 @@ public class ChannelArchiveRequestServiceTest extends PersistenceTestCase {
         request.setToTime(new GregorianCalendar(0, 1, 1, 0, 0).getTime());
         requestService.insert(request);
         List<ChannelArchiveRequest> requests = requestService.getValidRequests(new GregorianCalendar(10, 1, 0).getTime(), new GregorianCalendar(100, 1, 0).getTime());
-        assertEquals("Expect to find that we have created one request, not " + requests.size(), 1, requests.size());
-        assertFalse("Expect the request to be disabled", requests.get(0).isEnabled());
+        assertEquals(1, requests.size(), "Expect to find that we have created one request, not " + requests.size());
+        assertFalse(requests.get(0).isEnabled(), "Expect the request to be disabled");
         //Now fix the error
         m1.setToDate(date2);
         mappingService.update(m1);
         requests = requestService.getValidRequests(new GregorianCalendar(10, 1, 0).getTime(), new GregorianCalendar(100, 1, 0).getTime());
-        assertEquals("Expect to find that we have created one request, not " + requests.size(), 1, requests.size());
-        assertTrue("Expect the request to be enabled", requests.get(0).isEnabled());
+        assertEquals(1, requests.size(), "Expect to find that we have created one request, not " + requests.size());
+        assertTrue(requests.get(0).isEnabled(),"Expect the request to be enabled");
     }
 
 }

@@ -1,14 +1,16 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model;
 
-import junit.framework.TestCase;
-
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
  */
-public class WeekdayCoverageTimeTest extends TestCase {
+public class WeekdayCoverageTimeTest {
 
+    @Test
     public void testCtor() {
         Date d1 = new GregorianCalendar(100, 0, 1, 8, 56).getTime();
         Date d2 = new GregorianCalendar(50, 7, 3, 8, 57).getTime();

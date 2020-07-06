@@ -13,7 +13,8 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivi
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingServiceIF;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.File;
 import java.util.Date;
@@ -22,7 +23,7 @@ import java.util.List;
 public class NonoverlappingChannelMappingsValidatorTest extends PersistenceTestCase {
 
 
-
+    @Test
     public void testGetFailuresNoFailure() throws ServiceException {
         Date date1 = new Date(10, 1, 0);
         Date date2 = new Date(15, 1, 0);
@@ -42,9 +43,10 @@ public class NonoverlappingChannelMappingsValidatorTest extends PersistenceTestC
         mappingService.create(m1);
         mappingService.create(m2);
         NonoverlappingChannelMappingsValidator validator = new NonoverlappingChannelMappingsValidator();
-        assertTrue("Expect no validation failures", validator.getFailures().isEmpty());
+        assertTrue(validator.getFailures().isEmpty(), "Expect no validation failures");
     }
 
+     @Test
      public void testGetFailuresWithFailure() throws ServiceException {
         Date date1 = new Date(10, 1, 0);
         Date date2 = new Date(15, 1, 0);
@@ -64,8 +66,9 @@ public class NonoverlappingChannelMappingsValidatorTest extends PersistenceTestC
         mappingService.create(m1);
         mappingService.create(m2);
         NonoverlappingChannelMappingsValidator validator = new NonoverlappingChannelMappingsValidator();
-        assertTrue("Expect one validation failure not " + validator.getFailures().size(), validator.getFailures().size() == 1);
+        assertTrue(validator.getFailures().size() == 1, "Expect one validation failure not " + validator.getFailures().size());
         System.out.println(validator.getFailures().get(0).getCause());
-     }
+    }
+
 
 }

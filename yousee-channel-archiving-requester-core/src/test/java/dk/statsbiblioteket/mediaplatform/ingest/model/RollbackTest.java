@@ -11,7 +11,11 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivi
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.HibernateUtilIF;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.NotInitialiasedException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.YouSeeChannelMappingDAO;
-import junit.framework.TestCase;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.hibernate.Session;
 
 import java.io.File;
@@ -19,13 +23,9 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-public class RollbackTest extends TestCase {
+public class RollbackTest extends PersistenceTestCase {
 
-
-    public void testTest() {
-
-    }
-
+    @Test
     public void failingTestDoTest() throws NotInitialiasedException, SQLException {
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
@@ -54,6 +54,7 @@ public class RollbackTest extends TestCase {
                 fail("Didn't work");
             }
         } finally {
+
             sess.close();
         }
         assertEquals(1, dao.getAllMappings().size());
