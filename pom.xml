@@ -38,7 +38,15 @@
     <packaging>pom</packaging>
 
 
-
+    <properties>
+        <!-- Specify java version here, to support forbiddenapis plugin -->
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!-- Replace the line below with
+             <api.check.phase>none</api.check.phase>
+             to disable forbidden APIs check -->
+        <api.check.phase>process-test-classes</api.check.phase>
+    </properties>
     <dependencies>
          <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -85,15 +93,6 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
-             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>

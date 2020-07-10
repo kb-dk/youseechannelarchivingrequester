@@ -16,9 +16,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
-import java.util.Date;
 import java.util.List;
 
 public class ChannelArchiveRequestServiceTest extends PersistenceTestCase {
@@ -29,10 +30,16 @@ public class ChannelArchiveRequestServiceTest extends PersistenceTestCase {
      */
     @Test
     public void testGetAllValid() throws ServiceException {
-        Date date1 = new GregorianCalendar(10, 1, 0).getTime();
-        Date date2 = new GregorianCalendar(15, 1, 0).getTime();
-        Date date3 = new GregorianCalendar(20, 1, 0).getTime();
-        Date date4 = new GregorianCalendar(25, 1, 0).getTime();
+        ZonedDateTime date1 = ZonedDateTime.of(LocalDateTime.of(10, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date2 = ZonedDateTime.of(LocalDateTime.of(15, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date3 = ZonedDateTime.of(LocalDateTime.of(20, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date4 = ZonedDateTime.of(LocalDateTime.of(25, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+
+        ZonedDateTime fromDate = ZonedDateTime.of(LocalDateTime.of(22, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime fromTime = ZonedDateTime.of(LocalDateTime.of(0, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime toDate = ZonedDateTime.of(LocalDateTime.of(23, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime toTime = ZonedDateTime.of(LocalDateTime.of(0, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+
         YouSeeChannelMappingServiceIF mappingService = new YouSeeChannelMappingService();
         YouSeeChannelMapping m1 = new YouSeeChannelMapping();
         m1.setSbChannelId("dr1");
@@ -49,19 +56,21 @@ public class ChannelArchiveRequestServiceTest extends PersistenceTestCase {
         ChannelArchiveRequestService requestService = new ChannelArchiveRequestService();
         ChannelArchiveRequest request = new ChannelArchiveRequest();
         request.setsBChannelId("dr1");
-        request.setFromDate(new GregorianCalendar(22, 1, 0).getTime());
-        request.setToDate(new GregorianCalendar(23, 1, 0).getTime());
+        request.setFromDate(fromDate);
+        request.setToDate(toDate);
         request.setWeekdayCoverage(WeekdayCoverage.DAILY);
-        request.setFromTime(new GregorianCalendar(0, 1, 0, 0, 0).getTime());
-        request.setToTime(new GregorianCalendar(0, 1, 1, 0, 0).getTime());
+        request.setFromTime(fromTime);
+        request.setToTime(toTime);
         requestService.insert(request);
-        List<ChannelArchiveRequest> requests = requestService.getValidRequests(new GregorianCalendar(10, 1, 0).getTime(), new GregorianCalendar(100, 1, 0).getTime());
+        ZonedDateTime fromDate2 = ZonedDateTime.of(LocalDateTime.of(10,1,1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime toDate2 = ZonedDateTime.of(LocalDateTime.of(100,1,1,0,0), ZoneId.of("Europe/Copenhagen"));
+        List<ChannelArchiveRequest> requests = requestService.getValidRequests(fromDate2, toDate2);
         assertEquals(1, requests.size(), "Expect to find that we have created one request, not " + requests.size());
         assertFalse(requests.get(0).isEnabled(), "Expect the request to be disabled");
         //Now fix the error
         m1.setToDate(date2);
         mappingService.update(m1);
-        requests = requestService.getValidRequests(new GregorianCalendar(10, 1, 0).getTime(), new GregorianCalendar(100, 1, 0).getTime());
+        requests = requestService.getValidRequests(fromDate2, toDate2);
         assertEquals(1, requests.size(), "Expect to find that we have created one request, not " + requests.size());
         assertTrue(requests.get(0).isEnabled(),"Expect the request to be enabled");
     }

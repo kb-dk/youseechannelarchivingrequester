@@ -9,7 +9,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ChannelA
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ValidatorIF;
 import org.apache.log4j.Logger;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -22,7 +22,7 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
     @Override
     public void insert(ChannelArchiveRequest request) throws ServiceException {
         if ((request.getFromTime() != null) && (request.getToTime() != null)) {
-            if (request.getFromTime().after(request.getToTime())) {
+            if (request.getFromTime().isAfter(request.getToTime())) {
                 throw new ServiceException("fromTime (" + request.getFromTime() + ") must not be after toTime (" + request.getToTime() + ")");
             }
         }
@@ -53,7 +53,7 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
     }
 
     @Override
-    public List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) throws ServiceException {
+    public List<ChannelArchiveRequest> getValidRequests(ZonedDateTime fromDate, ZonedDateTime toDate) throws ServiceException {
         List<ChannelArchiveRequest> validRequests;
         try {
             validRequests = getDao().getValidRequests(fromDate, toDate);

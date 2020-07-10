@@ -20,13 +20,16 @@ import org.hibernate.Session;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 public class RollbackTest extends PersistenceTestCase {
 
     @Test
     public void failingTestDoTest() throws NotInitialiasedException, SQLException {
+        ZonedDateTime date = ZonedDateTime.of(LocalDateTime.of(10, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
         YouSeeChannelMappingDAO dao = new YouSeeChannelMappingDAO(util);
@@ -34,14 +37,14 @@ public class RollbackTest extends PersistenceTestCase {
         YouSeeChannelMapping mapping = new YouSeeChannelMapping();
         mapping.setSbChannelId("dr1");
         mapping.setYouSeeChannelId("");
-        mapping.setFromDate(new Date());
-        mapping.setToDate(new Date());
+        mapping.setFromDate(date);
+        mapping.setToDate(date);
         dao.create(mapping);
         YouSeeChannelMapping mapping2 = new YouSeeChannelMapping();
         mapping2.setSbChannelId("dr2");
         mapping2.setYouSeeChannelId("");
-        mapping2.setFromDate(new Date());
-        mapping2.setToDate(new Date());
+        mapping2.setFromDate(date);
+        mapping2.setToDate(date);
         try {
             sess.beginTransaction();
             sess.save(mapping2);

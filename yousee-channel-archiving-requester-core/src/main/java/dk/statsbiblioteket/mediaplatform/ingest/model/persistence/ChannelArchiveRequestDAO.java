@@ -5,7 +5,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -17,7 +17,7 @@ public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchive
     }
 
     @Override
-    public List<ChannelArchiveRequest> getValidRequests(Date queryFromDate, Date queryToDate) {
+    public List<ChannelArchiveRequest> getValidRequests(ZonedDateTime queryFromDate, ZonedDateTime queryToDate) {
         Session sess = null;
         try {
             sess = getSession();
@@ -25,7 +25,7 @@ public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchive
                             " (fromDate >= :queryFromDate AND fromDate <= :queryToDate) " +
                             " OR (toDate >= :queryFromDate AND toDate <= :queryToDate) " +
                             " OR (fromDate <= :queryFromDate AND toDate >= :queryToDate) "
-            ).setDate("queryFromDate", queryFromDate).setDate("queryToDate", queryToDate);
+            ).setParameter("queryFromDate", queryFromDate).setParameter("queryToDate", queryToDate);
             return (List<ChannelArchiveRequest>) query.list();
         } finally {
             if (sess != null) {

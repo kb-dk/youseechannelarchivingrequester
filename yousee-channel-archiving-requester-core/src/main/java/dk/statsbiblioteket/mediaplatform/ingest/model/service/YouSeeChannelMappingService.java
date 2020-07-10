@@ -6,7 +6,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.NotInitialiase
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.YouSeeChannelMappingDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.YouSeeChannelMappingDAOIF;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class YouSeeChannelMappingService implements YouSeeChannelMappingServiceIF {
     @Override
-    public YouSeeChannelMapping getUniqueMappingFromYouSeeChannelId(String youSeeChannelId, Date date) throws ServiceException {
+    public YouSeeChannelMapping getUniqueMappingFromYouSeeChannelId(String youSeeChannelId, ZonedDateTime date) throws ServiceException {
         List<YouSeeChannelMapping> mappings = null;
         try {
             mappings = getDao().getMappingsFromYouSeeChannelId(youSeeChannelId, date);
@@ -30,7 +30,7 @@ public class YouSeeChannelMappingService implements YouSeeChannelMappingServiceI
     }
 
     @Override
-    public YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, Date date) throws ServiceException {
+    public YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, ZonedDateTime date) throws ServiceException {
         List<YouSeeChannelMapping> mappings = null;
         try {
             mappings = getDao().getMappingsFromSbChannelId(sBChannelId, date);

@@ -9,26 +9,27 @@ package dk.statsbiblioteket.mediaplatform.ingest.model.service.validator;
 
 import dk.statsbiblioteket.mediaplatform.ingest.model.PersistenceTestCase;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
-import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivingRequesterHibernateUtil;
+
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingServiceIF;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.io.File;
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 public class NonoverlappingChannelMappingsValidatorTest extends PersistenceTestCase {
 
 
     @Test
     public void testGetFailuresNoFailure() throws ServiceException {
-        Date date1 = new Date(10, 1, 0);
-        Date date2 = new Date(15, 1, 0);
-        Date date3 = new Date(20, 1, 0);
-        Date date4 = new Date(25, 1, 0);
+
+        ZonedDateTime date1 = ZonedDateTime.of(LocalDateTime.of(10, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date2 = ZonedDateTime.of(LocalDateTime.of(15, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date3 = ZonedDateTime.of(LocalDateTime.of(20, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date4 = ZonedDateTime.of(LocalDateTime.of(25, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
         YouSeeChannelMappingServiceIF mappingService = new YouSeeChannelMappingService();
         YouSeeChannelMapping m1 = new YouSeeChannelMapping();
         m1.setSbChannelId("dr1");
@@ -48,10 +49,10 @@ public class NonoverlappingChannelMappingsValidatorTest extends PersistenceTestC
 
      @Test
      public void testGetFailuresWithFailure() throws ServiceException {
-        Date date1 = new Date(10, 1, 0);
-        Date date2 = new Date(15, 1, 0);
-        Date date3 = new Date(20, 1, 0);
-        Date date4 = new Date(25, 1, 0);
+        ZonedDateTime date1 = ZonedDateTime.of(LocalDateTime.of(10, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date2 = ZonedDateTime.of(LocalDateTime.of(15, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date3 = ZonedDateTime.of(LocalDateTime.of(20, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime date4 = ZonedDateTime.of(LocalDateTime.of(25, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
         YouSeeChannelMappingServiceIF mappingService = new YouSeeChannelMappingService();
         YouSeeChannelMapping m1 = new YouSeeChannelMapping();
         m1.setSbChannelId("dr1");

@@ -2,7 +2,7 @@ package dk.statsbiblioteket.mediaplatform.ingest.model.service;
 
 import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -43,7 +43,7 @@ public interface ChannelArchiveRequestServiceIF {
      * @param toDate   End of date range.
      * @return the list of vaild requests.
      */
-    List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) throws ServiceException;
+    List<ChannelArchiveRequest> getValidRequests(ZonedDateTime fromDate, ZonedDateTime toDate) throws ServiceException;
 
     /**
      * Returns the ChannelArchiveRequest objects which has the sent id

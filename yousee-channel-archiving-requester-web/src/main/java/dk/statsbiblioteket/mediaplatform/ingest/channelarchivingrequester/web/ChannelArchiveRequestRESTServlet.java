@@ -9,11 +9,11 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,8 +21,8 @@ import java.util.regex.Pattern;
 @Path("/channelRequests/")
 public class ChannelArchiveRequestRESTServlet {
     private static ChannelArchiveRequestServiceIF service = null;
-    private SimpleDateFormat formatTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat formatTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ROOT);
+    private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT);
     private static final int CHANNEL = 0;
     private static final int START_TIME = 1;
     private static final int END_TIME = 2;
@@ -119,10 +119,10 @@ public class ChannelArchiveRequestRESTServlet {
                     caRequest.setWeekdayCoverage(WeekdayCoverage.valueOf(value));
                     break;
                 case START_TIME:
-                    Date newFromTime;
+                    ZonedDateTime newFromTime;
                     value = "1900-01-01 " + value;
-                    newFromTime = formatTime.parse(value);
-                    if (newFromTime.before(caRequest.getToTime()) || newFromTime.equals(caRequest.getToTime()))
+                    newFromTime = ZonedDateTime.parse(value);
+                    if (newFromTime.isBefore(caRequest.getToTime()) || newFromTime.equals(caRequest.getToTime()))
                         caRequest.setFromTime(newFromTime);
                     else {
                         ok = false;
@@ -130,13 +130,13 @@ public class ChannelArchiveRequestRESTServlet {
                     }
                     break;
                 case END_TIME:
-                    Date newToTime;
+                    ZonedDateTime newToTime;
                     if (value.equals("00:00"))
                         value = "1900-01-02 " + value;
                     else
                         value = "1900-01-01 " + value;
-                    newToTime = formatTime.parse(value);
-                    if (newToTime.after(caRequest.getFromTime()) || newToTime.equals(caRequest.getFromTime()))
+                    newToTime = ZonedDateTime.parse(value);
+                    if (newToTime.isAfter(caRequest.getFromTime()) || newToTime.equals(caRequest.getFromTime()))
                         caRequest.setToTime(newToTime);
                     else {
                         ok = false;
@@ -144,12 +144,12 @@ public class ChannelArchiveRequestRESTServlet {
                     }
                     break;
                 case FROM_DATE:
-                    Date newFromDate;
+                    ZonedDateTime newFromDate;
                     if (value == null || "".equals(value)) {
                         value = "1900-01-01";
                     }
-                    newFromDate = formatDate.parse(value);
-                    if (newFromDate.before(caRequest.getToDate()) || newFromDate.equals(caRequest.getToDate()))
+                    newFromDate = ZonedDateTime.parse(value);
+                    if (newFromDate.isBefore(caRequest.getToDate()) || newFromDate.equals(caRequest.getToDate()))
                         caRequest.setFromDate(newFromDate);
                     else {
                         ok = false;
@@ -157,12 +157,12 @@ public class ChannelArchiveRequestRESTServlet {
                     }
                     break;
                 case TO_DATE:
-                    Date newToDate;
+                    ZonedDateTime newToDate;
                     if (value == null || "".equals(value)) {
                         value = "3000-01-01";
                     }
-                    newToDate = formatDate.parse(value);
-                    if (newToDate.after(caRequest.getFromDate()) || newToDate.equals(caRequest.getFromDate()))
+                    newToDate = ZonedDateTime.parse(value);
+                    if (newToDate.isAfter(caRequest.getFromDate()) || newToDate.equals(caRequest.getFromDate()))
                         caRequest.setToDate(newToDate);
                     else {
                         ok = false;
@@ -177,8 +177,6 @@ public class ChannelArchiveRequestRESTServlet {
             //Sends update request to the service, that when the input is valid updates DB
             service.update(caRequest);
         } catch (ServiceException e) {
-            return Response.status(Response.Status.BAD_REQUEST).build();
-        } catch (ParseException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         if (ok)
@@ -198,48 +196,46 @@ public class ChannelArchiveRequestRESTServlet {
                          @FormParam("toDate") String toDate,
                          @FormParam("weekdayCoverage") String weekdayCoverage) throws ServiceException {
         try {
-            Date newFromDate;
-            Date newToDate;
+            ZonedDateTime newFromDate;
+            ZonedDateTime newToDate;
             //Get the requested CAR object
             ChannelArchiveRequest caRequest = new ChannelArchiveRequest();
             caRequest.setsBChannelId(channel);
-            Date newFromTime;
+            ZonedDateTime newFromTime;
             fromTime = "1900-01-01" + fromTime;
-            if (validate(fromTime) && formatTime.parse(fromTime) != null) {
-                newFromTime = formatTime.parse(fromTime);
+            if (validate(fromTime) && ZonedDateTime.parse(fromTime) != null) {
+                newFromTime = ZonedDateTime.parse(fromTime);
             } else {
-                newFromTime = formatTime.parse("1900-01-01 00:00");
+                newFromTime = ZonedDateTime.parse("1900-01-01 00:00");
             }
             caRequest.setFromTime(newFromTime);
-            Date newToTime;
+            ZonedDateTime newToTime;
             if (toTime.equals("00:00"))
                 toTime = "1900-01-02" + toTime;
             else
                 toTime = "1900-01-01" + toTime;
 
-            if (validate(toTime) && formatTime.parse(toTime) != null) {
-                newToTime = formatTime.parse(toTime);
+            if (validate(toTime) && ZonedDateTime.parse(toTime) != null) {
+                newToTime = ZonedDateTime.parse(toTime);
             } else {
-                newToTime = formatTime.parse("1900-01-02 00:00");
+                newToTime = ZonedDateTime.parse("1900-01-02 00:00");
             }
             caRequest.setToTime(newToTime);
 
             if (fromDate == null || "".equals(fromDate)) {
                 fromDate = "1900-01-01";
             }
-            newFromDate = formatDate.parse(fromDate);
+            newFromDate = ZonedDateTime.parse(fromDate);
             caRequest.setFromDate(newFromDate);
 
             if (toDate == null || "".equals(toDate)) {
                 toDate = "3000-01-01";
             }
-            newToDate = formatDate.parse(toDate);
+            newToDate = ZonedDateTime.parse(toDate);
             caRequest.setToDate(newToDate);
             caRequest.setWeekdayCoverage(WeekdayCoverage.values()[Integer.parseInt(weekdayCoverage) - 1]);
             //Insert the object in db
             service.insert(caRequest);
-        } catch (ParseException e) {
-            e.printStackTrace();
         } catch (ServiceException e) {
             return "Error ";
         }

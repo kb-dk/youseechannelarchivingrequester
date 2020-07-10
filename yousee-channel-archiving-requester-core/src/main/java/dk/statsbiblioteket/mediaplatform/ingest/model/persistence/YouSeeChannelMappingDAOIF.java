@@ -3,7 +3,7 @@ package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 import dk.statsbiblioteket.digitaltv.utils.db.GenericDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ public interface YouSeeChannelMappingDAOIF extends GenericDAO<YouSeeChannelMappi
      * @param date            the date for the request
      * @return the mappings
      */
-    List<YouSeeChannelMapping> getMappingsFromYouSeeChannelId(String youSeeChannelId, Date date);
+    List<YouSeeChannelMapping> getMappingsFromYouSeeChannelId(String youSeeChannelId, ZonedDateTime date);
 
 
     /**
@@ -28,7 +28,7 @@ public interface YouSeeChannelMappingDAOIF extends GenericDAO<YouSeeChannelMappi
      * @param date        the date for the request
      * @return the mappings
      */
-    List<YouSeeChannelMapping> getMappingsFromSbChannelId(String sBChannelId, Date date);
+    List<YouSeeChannelMapping> getMappingsFromSbChannelId(String sBChannelId, ZonedDateTime date);
 
     /**
      * Get all known mappings, expired or not.

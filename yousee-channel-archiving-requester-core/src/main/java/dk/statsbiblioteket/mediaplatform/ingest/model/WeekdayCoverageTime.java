@@ -1,6 +1,8 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 /**
  * Utility for interpreting Java Date's as times expressed as hours (0-23) and minutes (0-55) in 5 minute intervals.
@@ -10,9 +12,9 @@ public class WeekdayCoverageTime {
     int hours;
     int minutes;
 
-    public WeekdayCoverageTime(Date date) {
-        hours = date.getHours();
-        minutes = 5*((date.getMinutes())/5);
+    public WeekdayCoverageTime(ZonedDateTime date) {
+        hours = date.getHour();
+        minutes = 5*((date.getMinute())/5);
     }
 
     /**
@@ -25,8 +27,8 @@ public class WeekdayCoverageTime {
         this.minutes = minutes;
     }
 
-    public Date getDate() {
-        return new Date(0,0,0,hours,minutes);
+    public ZonedDateTime getDate() {
+        return ZonedDateTime.of(LocalDateTime.of(0,0,0,hours,minutes), ZoneId.of("Europe/Copenhagen"));
     }
 
     @Override

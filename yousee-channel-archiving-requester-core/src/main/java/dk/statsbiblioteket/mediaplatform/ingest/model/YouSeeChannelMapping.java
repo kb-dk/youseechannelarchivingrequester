@@ -1,15 +1,11 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model;
 
-import dk.statsbiblioteket.digitaltv.access.model.ChannelMapping;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import java.util.Date;
-
+import java.time.ZonedDateTime;
 /**
  * This class represents a mapping between a channel from YouSee and a channel as defined by us.
  */
@@ -24,9 +20,9 @@ public class YouSeeChannelMapping {
 
     private String displayName;
 
-    private Date fromDate;
+    private ZonedDateTime fromDate;
 
-    private Date toDate;
+    private ZonedDateTime toDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -72,20 +68,20 @@ public class YouSeeChannelMapping {
     }
 
     @Column(nullable = false)
-    public Date getFromDate() {
+    public ZonedDateTime getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
+    public void setFromDate(ZonedDateTime fromDate) {
         this.fromDate = fromDate;
     }
 
     @Column(nullable = false)
-    public Date getToDate() {
+    public ZonedDateTime getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
+    public void setToDate(ZonedDateTime toDate) {
         this.toDate = toDate;
     }
 
