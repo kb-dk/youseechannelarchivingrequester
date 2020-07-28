@@ -9,7 +9,9 @@ import org.springframework.cglib.core.Local;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -27,6 +29,7 @@ public class YouSeeChannelMappingRESTServlet {
 
     public static final List<String> COLUMN_LIST =
             Arrays.asList("Channel", "YouSee Id", "Display Name", "From", "To");
+    private ZoneId localZone = ZoneId.of("Europe/Copenhagen");
 
     public YouSeeChannelMappingRESTServlet() {
         service = new YouSeeChannelMappingService();
@@ -99,8 +102,8 @@ public class YouSeeChannelMappingRESTServlet {
                         value = "1900-01-01";
                     }
                     newFromDate = ZonedDateTime.parse(value);
-                    if (newFromDate.isBefore(ycm.getToDate()) || newFromDate.equals(ycm.getToDate()))
-                        ycm.setFromDate(newFromDate);
+                    if (newFromDate.isBefore(ZonedDateTime.ofInstant(ycm.getToDate().toInstant(), localZone)) || newFromDate.equals(ycm.getToDate()))
+                        ycm.setFromDate(Date.from(newFromDate.toInstant()));
                     else {
                         ok = false;
                         errorStr = "From date cannot be after to date";
@@ -112,8 +115,8 @@ public class YouSeeChannelMappingRESTServlet {
                         value = "3000-01-01";
                     }
                     newToDate = ZonedDateTime.parse(value);
-                    if (newToDate.isAfter(ycm.getFromDate()) || newToDate.equals(ycm.getFromDate()))
-                        ycm.setToDate(newToDate);
+                    if (newToDate.isAfter(ZonedDateTime.ofInstant(ycm.getFromDate().toInstant(), localZone)) || newToDate.equals(ycm.getFromDate()))
+                        ycm.setToDate(Date.from(newToDate.toInstant()));
                     else {
                         ok = false;
                         errorStr = "To date cannot be before from date";
@@ -159,18 +162,18 @@ public class YouSeeChannelMappingRESTServlet {
                 fromDate = "1900-01-01";
             }
             newFromDate = ZonedDateTime.parse(fromDate);
-            ycm.setFromDate(newFromDate);
+            ycm.setFromDate(Date.from(newFromDate.toInstant()));
 
             if (toDate == null || "".equals(toDate)) {
                 toDate = "3000-01-01";
             }
             newToDate = ZonedDateTime.parse(toDate);
-            if (newToDate.isAfter(ycm.getFromDate()) || newToDate.equals(ycm.getFromDate()))
-                ycm.setToDate(newToDate);
+            if (newToDate.isAfter(ZonedDateTime.ofInstant(ycm.getFromDate().toInstant(), localZone)) || newToDate.equals(ycm.getFromDate()))
+                ycm.setToDate(Date.from(newToDate.toInstant()));
             else {
                 ok = false;
             }
-            ycm.setToDate(newToDate);
+            ycm.setToDate(Date.from(newToDate.toInstant()));
             //Insert the object in db
             service.create(ycm);
         } catch (ServiceException e) {

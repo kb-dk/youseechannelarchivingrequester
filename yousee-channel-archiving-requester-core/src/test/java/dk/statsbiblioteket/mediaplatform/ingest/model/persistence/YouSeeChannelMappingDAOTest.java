@@ -5,6 +5,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -26,8 +27,8 @@ public class YouSeeChannelMappingDAOTest extends PersistenceTestCase {
         ucMapping.setSbChannelId("barfoo_sb");
         ucMapping.setYouSeeChannelId("barfoo");
         ucMapping.setDisplayName("Bar Foo");
-        ucMapping.setFromDate(dateFrom);
-        ucMapping.setToDate(dateTo);
+        ucMapping.setFromDate(Date.from(dateFrom.toInstant()));
+        ucMapping.setToDate(Date.from(dateTo.toInstant()));
         Long id = ucDAO.create(ucMapping);
         assertNotNull(id, "Expect create to return an id");
         YouSeeChannelMappingService service = new YouSeeChannelMappingService();

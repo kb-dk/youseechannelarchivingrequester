@@ -16,6 +16,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappi
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -34,13 +35,13 @@ public class NonoverlappingChannelMappingsValidatorTest extends PersistenceTestC
         YouSeeChannelMapping m1 = new YouSeeChannelMapping();
         m1.setSbChannelId("dr1");
         m1.setYouSeeChannelId("DR1");
-        m1.setFromDate(date1);
-        m1.setToDate(date2);
+        m1.setFromDate(Date.from(date1.toInstant()));
+        m1.setToDate(Date.from(date2.toInstant()));
        YouSeeChannelMapping m2 = new YouSeeChannelMapping();
         m2.setSbChannelId("dr1");
         m2.setYouSeeChannelId("DR1_foobar");
-        m2.setFromDate(date2);
-        m2.setToDate(date3);
+        m2.setFromDate(Date.from(date2.toInstant()));
+        m2.setToDate(Date.from(date3.toInstant()));
         mappingService.create(m1);
         mappingService.create(m2);
         NonoverlappingChannelMappingsValidator validator = new NonoverlappingChannelMappingsValidator();
@@ -57,13 +58,13 @@ public class NonoverlappingChannelMappingsValidatorTest extends PersistenceTestC
         YouSeeChannelMapping m1 = new YouSeeChannelMapping();
         m1.setSbChannelId("dr1");
         m1.setYouSeeChannelId("DR1");
-        m1.setFromDate(date1);
-        m1.setToDate(date3);
+        m1.setFromDate(Date.from(date1.toInstant()));
+        m1.setToDate(Date.from(date3.toInstant()));
         YouSeeChannelMapping m2 = new YouSeeChannelMapping();
         m2.setSbChannelId("dr1");
         m2.setYouSeeChannelId("DR1_foobar");
-        m2.setFromDate(date2);
-        m2.setToDate(date4);
+        m2.setFromDate(Date.from(date2.toInstant()));
+        m2.setToDate(Date.from(date4.toInstant()));
         mappingService.create(m1);
         mappingService.create(m2);
         NonoverlappingChannelMappingsValidator validator = new NonoverlappingChannelMappingsValidator();

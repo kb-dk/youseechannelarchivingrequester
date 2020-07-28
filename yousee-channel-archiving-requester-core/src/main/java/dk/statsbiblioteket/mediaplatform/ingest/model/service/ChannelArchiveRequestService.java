@@ -22,7 +22,7 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
     @Override
     public void insert(ChannelArchiveRequest request) throws ServiceException {
         if ((request.getFromTime() != null) && (request.getToTime() != null)) {
-            if (request.getFromTime().isAfter(request.getToTime())) {
+            if (request.getFromTime().after(request.getToTime())) {
                 throw new ServiceException("fromTime (" + request.getFromTime() + ") must not be after toTime (" + request.getToTime() + ")");
             }
         }

@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.ZonedDateTime;
+import java.util.Date;
+
 /**
  * This class represents a mapping between a channel from YouSee and a channel as defined by us.
  */
@@ -20,9 +22,9 @@ public class YouSeeChannelMapping {
 
     private String displayName;
 
-    private ZonedDateTime fromDate;
+    private Date fromDate;
 
-    private ZonedDateTime toDate;
+    private Date toDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -68,20 +70,20 @@ public class YouSeeChannelMapping {
     }
 
     @Column(nullable = false)
-    public ZonedDateTime getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(ZonedDateTime fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
     @Column(nullable = false)
-    public ZonedDateTime getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(ZonedDateTime toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 

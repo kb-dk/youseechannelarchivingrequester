@@ -9,7 +9,9 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -36,6 +38,7 @@ public class ChannelArchiveRequestRESTServlet {
 
     private Pattern pattern;
     private static final String TIME24HOURS_PATTERN = "([01]?[0-9]|2[0-3]):[0-5][0-9]";
+    private ZoneId localZone = ZoneId.of("Europe/Copenhagen");
 
     public ChannelArchiveRequestRESTServlet() {
         service = new ChannelArchiveRequestService();
@@ -122,8 +125,8 @@ public class ChannelArchiveRequestRESTServlet {
                     ZonedDateTime newFromTime;
                     value = "1900-01-01 " + value;
                     newFromTime = ZonedDateTime.parse(value);
-                    if (newFromTime.isBefore(caRequest.getToTime()) || newFromTime.equals(caRequest.getToTime()))
-                        caRequest.setFromTime(newFromTime);
+                    if (newFromTime.isBefore(ZonedDateTime.ofInstant(caRequest.getToTime().toInstant(), localZone)) || newFromTime.equals(caRequest.getToTime()))
+                        caRequest.setFromTime(Date.from(newFromTime.toInstant()));
                     else {
                         ok = false;
                         errorStr = "Start time cannot be after end time";
@@ -136,8 +139,8 @@ public class ChannelArchiveRequestRESTServlet {
                     else
                         value = "1900-01-01 " + value;
                     newToTime = ZonedDateTime.parse(value);
-                    if (newToTime.isAfter(caRequest.getFromTime()) || newToTime.equals(caRequest.getFromTime()))
-                        caRequest.setToTime(newToTime);
+                    if (newToTime.isAfter(ZonedDateTime.ofInstant(caRequest.getFromTime().toInstant(), localZone)) || newToTime.equals(caRequest.getFromTime()))
+                        caRequest.setToTime(Date.from(newToTime.toInstant()));
                     else {
                         ok = false;
                         errorStr = "End time cannot be before start time";
@@ -149,8 +152,8 @@ public class ChannelArchiveRequestRESTServlet {
                         value = "1900-01-01";
                     }
                     newFromDate = ZonedDateTime.parse(value);
-                    if (newFromDate.isBefore(caRequest.getToDate()) || newFromDate.equals(caRequest.getToDate()))
-                        caRequest.setFromDate(newFromDate);
+                    if (newFromDate.isBefore(ZonedDateTime.ofInstant(caRequest.getToDate().toInstant(), localZone)) || newFromDate.equals(caRequest.getToDate()))
+                        caRequest.setFromDate(Date.from(newFromDate.toInstant()));
                     else {
                         ok = false;
                         errorStr = "From date cannot be after to date";
@@ -162,8 +165,8 @@ public class ChannelArchiveRequestRESTServlet {
                         value = "3000-01-01";
                     }
                     newToDate = ZonedDateTime.parse(value);
-                    if (newToDate.isAfter(caRequest.getFromDate()) || newToDate.equals(caRequest.getFromDate()))
-                        caRequest.setToDate(newToDate);
+                    if (newToDate.isAfter(ZonedDateTime.ofInstant(caRequest.getFromDate().toInstant(), localZone)) || newToDate.equals(caRequest.getFromDate()))
+                        caRequest.setToDate(Date.from(newToDate.toInstant()));
                     else {
                         ok = false;
                         errorStr = "To date cannot be before from date";
@@ -208,7 +211,7 @@ public class ChannelArchiveRequestRESTServlet {
             } else {
                 newFromTime = ZonedDateTime.parse("1900-01-01 00:00");
             }
-            caRequest.setFromTime(newFromTime);
+            caRequest.setFromTime(java.util.Date.from(newFromTime.toInstant()));
             ZonedDateTime newToTime;
             if (toTime.equals("00:00"))
                 toTime = "1900-01-02" + toTime;
@@ -220,19 +223,19 @@ public class ChannelArchiveRequestRESTServlet {
             } else {
                 newToTime = ZonedDateTime.parse("1900-01-02 00:00");
             }
-            caRequest.setToTime(newToTime);
+            caRequest.setToTime(Date.from(newToTime.toInstant()));
 
             if (fromDate == null || "".equals(fromDate)) {
                 fromDate = "1900-01-01";
             }
             newFromDate = ZonedDateTime.parse(fromDate);
-            caRequest.setFromDate(newFromDate);
+            caRequest.setFromDate(Date.from(newFromDate.toInstant()));
 
             if (toDate == null || "".equals(toDate)) {
                 toDate = "3000-01-01";
             }
             newToDate = ZonedDateTime.parse(toDate);
-            caRequest.setToDate(newToDate);
+            caRequest.setToDate(Date.from(newToDate.toInstant()));
             caRequest.setWeekdayCoverage(WeekdayCoverage.values()[Integer.parseInt(weekdayCoverage) - 1]);
             //Insert the object in db
             service.insert(caRequest);

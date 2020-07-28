@@ -7,10 +7,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-
 import java.util.List;
 
 /**
@@ -59,20 +59,20 @@ public class ChannelArchiveRequestDAOTest extends PersistenceTestCase {
         ZonedDateTime d7 = ZonedDateTime.of(LocalDateTime.of(102, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
         ZonedDateTime d8 = ZonedDateTime.of(LocalDateTime.of(102, 10, 1,0,0), ZoneId.of("Europe/Copenhagen"));
         ChannelArchiveRequest r1 = new ChannelArchiveRequest();
-        r1.setFromDate(d1);
-        r1.setToDate(d8);
+        r1.setFromDate(Date.from(d1.toInstant()));
+        r1.setToDate(Date.from(d8.toInstant()));
         r1.setsBChannelId("r1");
         ChannelArchiveRequest r2 = new ChannelArchiveRequest();
-        r2.setFromDate(d2);
-        r2.setToDate(d3);
+        r2.setFromDate(Date.from(d2.toInstant()));
+        r2.setToDate(Date.from(d3.toInstant()));
         r2.setsBChannelId("r2");
         ChannelArchiveRequest r3 = new ChannelArchiveRequest();
-        r3.setFromDate(d4);
-        r3.setToDate(d5);
+        r3.setFromDate(Date.from(d4.toInstant()));
+        r3.setToDate(Date.from(d5.toInstant()));
         r3.setsBChannelId("r3");
         ChannelArchiveRequest r4 = new ChannelArchiveRequest();
-        r4.setFromDate(d6);
-        r4.setToDate(d7);
+        r4.setFromDate(Date.from(d6.toInstant()));
+        r4.setToDate(Date.from(d7.toInstant()));
         r4.setsBChannelId("r4");
         ChannelArchiveRequestDAO carDAO = dao;
         carDAO.create(r1); carDAO.create(r2); carDAO.create(r3); carDAO.create(r4);

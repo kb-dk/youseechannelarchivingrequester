@@ -21,8 +21,9 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
     }
 
     @Override
-    public List<YouSeeChannelMapping> getMappingsFromYouSeeChannelId(String youSeeChannelId, ZonedDateTime date) {
+    public List<YouSeeChannelMapping> getMappingsFromYouSeeChannelId(String youSeeChannelId, ZonedDateTime dateZDT) {
         Session sess = null;
+        Date date = Date.from(dateZDT.toInstant());
         try {
             sess = getSession();
             final Query query = sess.createQuery("FROM YouSeeChannelMapping WHERE youSeeChannelId = :id AND " +
@@ -37,8 +38,9 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
 
 
     @Override
-    public List<YouSeeChannelMapping> getMappingsFromSbChannelId(String sBChannelId, ZonedDateTime date) {
+    public List<YouSeeChannelMapping> getMappingsFromSbChannelId(String sBChannelId, ZonedDateTime dateZDT) {
         Session sess = null;
+        Date date = Date.from(dateZDT.toInstant());
         try {
             sess = getSession();
             final Query query = sess.createQuery("FROM YouSeeChannelMapping WHERE sbChannelId = :id AND " +

@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import java.time.ZonedDateTime;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -21,13 +21,13 @@ public class ChannelArchiveRequest {
 
     private String sBChannelId;
 
-    private ZonedDateTime fromTime;
+    private Date fromTime;
 
-    private ZonedDateTime toTime;
+    private Date toTime;
 
-    private ZonedDateTime fromDate;
+    private Date fromDate;
 
-    private ZonedDateTime toDate;
+    private Date toDate;
 
     private WeekdayCoverage weekdayCoverage;
 
@@ -81,19 +81,19 @@ public class ChannelArchiveRequest {
         this.sBChannelId = sBChannelId;
     }
 
-    public ZonedDateTime getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(ZonedDateTime fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
-    public ZonedDateTime getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(ZonedDateTime toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 
@@ -106,19 +106,19 @@ public class ChannelArchiveRequest {
         this.weekdayCoverage = weekdayCoverage;
     }
 
-    public ZonedDateTime getFromTime() {
+    public Date getFromTime() {
         return fromTime;
     }
 
-    public void setFromTime(ZonedDateTime fromTime) {
+    public void setFromTime(Date fromTime) {
         this.fromTime = fromTime;
     }
 
-    public ZonedDateTime getToTime() {
+    public Date getToTime() {
         return toTime;
     }
 
-    public void setToTime(ZonedDateTime toTime) {
+    public void setToTime(Date toTime) {
         this.toTime = toTime;
     }
 

@@ -19,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.hibernate.Session;
 
 import java.io.File;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -37,14 +38,14 @@ public class RollbackTest extends PersistenceTestCase {
         YouSeeChannelMapping mapping = new YouSeeChannelMapping();
         mapping.setSbChannelId("dr1");
         mapping.setYouSeeChannelId("");
-        mapping.setFromDate(date);
-        mapping.setToDate(date);
+        mapping.setFromDate(Date.from(date.toInstant()));
+        mapping.setToDate(Date.from(date.toInstant()));
         dao.create(mapping);
         YouSeeChannelMapping mapping2 = new YouSeeChannelMapping();
         mapping2.setSbChannelId("dr2");
         mapping2.setYouSeeChannelId("");
-        mapping2.setFromDate(date);
-        mapping2.setToDate(date);
+        mapping2.setFromDate(Date.from(date.toInstant()));
+        mapping2.setToDate(Date.from(date.toInstant()));
         try {
             sess.beginTransaction();
             sess.save(mapping2);

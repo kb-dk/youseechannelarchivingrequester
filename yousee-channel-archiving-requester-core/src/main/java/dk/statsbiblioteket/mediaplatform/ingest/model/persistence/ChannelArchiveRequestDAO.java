@@ -6,6 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 
 import java.time.ZonedDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,8 +18,10 @@ public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchive
     }
 
     @Override
-    public List<ChannelArchiveRequest> getValidRequests(ZonedDateTime queryFromDate, ZonedDateTime queryToDate) {
+    public List<ChannelArchiveRequest> getValidRequests(ZonedDateTime fromDate, ZonedDateTime toDate) {
         Session sess = null;
+        Date queryFromDate = Date.from(fromDate.toInstant());
+        Date queryToDate = Date.from(toDate.toInstant());
         try {
             sess = getSession();
             Query query = sess.createQuery("FROM ChannelArchiveRequest WHERE " +
