@@ -21,6 +21,7 @@ import org.hibernate.Session;
 import java.io.File;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -58,7 +59,6 @@ public class RollbackTest extends PersistenceTestCase {
                 fail("Didn't work");
             }
         } finally {
-
             sess.close();
         }
         assertEquals(1, dao.getAllMappings().size());
