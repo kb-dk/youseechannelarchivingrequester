@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -179,7 +180,7 @@ public class ChannelArchiveRequestRESTServlet {
 
             //Sends update request to the service, that when the input is valid updates DB
             service.update(caRequest);
-        } catch (ServiceException e) {
+        } catch (ServiceException | DateTimeParseException e) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         if (ok)
@@ -239,6 +240,8 @@ public class ChannelArchiveRequestRESTServlet {
             caRequest.setWeekdayCoverage(WeekdayCoverage.values()[Integer.parseInt(weekdayCoverage) - 1]);
             //Insert the object in db
             service.insert(caRequest);
+        } catch (DateTimeParseException e) {
+                e.printStackTrace();
         } catch (ServiceException e) {
             return "Error ";
         }

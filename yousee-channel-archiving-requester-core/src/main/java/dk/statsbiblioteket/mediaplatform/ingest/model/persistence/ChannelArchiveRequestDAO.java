@@ -5,6 +5,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import javax.persistence.TemporalType;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ChannelArchiveRequestDAO extends GenericHibernateDAO<ChannelArchive
                             " (fromDate >= :queryFromDate AND fromDate <= :queryToDate) " +
                             " OR (toDate >= :queryFromDate AND toDate <= :queryToDate) " +
                             " OR (fromDate <= :queryFromDate AND toDate >= :queryToDate) "
-            ).setParameter("queryFromDate", queryFromDate).setParameter("queryToDate", queryToDate);
+            ).setParameter("queryFromDate", queryFromDate, TemporalType.TIMESTAMP).setParameter("queryToDate", queryToDate, TemporalType.TIMESTAMP);
             return (List<ChannelArchiveRequest>) query.list();
         } finally {
             if (sess != null) {

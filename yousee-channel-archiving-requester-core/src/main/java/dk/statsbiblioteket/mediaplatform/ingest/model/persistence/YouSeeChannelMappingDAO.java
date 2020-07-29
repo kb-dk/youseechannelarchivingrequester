@@ -4,6 +4,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
+import javax.persistence.TemporalType;
 import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
@@ -28,7 +29,7 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
             sess = getSession();
             final Query query = sess.createQuery("FROM YouSeeChannelMapping WHERE youSeeChannelId = :id AND " +
                     "fromDate <= :date AND toDate >= :date");
-            return query.setParameter("id", youSeeChannelId).setParameter("date", date).list();
+            return query.setParameter("id", youSeeChannelId, TemporalType.TIMESTAMP).setParameter("date", date, TemporalType.TIMESTAMP).list();
         } finally {
             if (sess != null) {
                 sess.close();
@@ -45,7 +46,7 @@ public class YouSeeChannelMappingDAO extends GenericHibernateDAO<YouSeeChannelMa
             sess = getSession();
             final Query query = sess.createQuery("FROM YouSeeChannelMapping WHERE sbChannelId = :id AND " +
                     "fromDate <= :date AND toDate >= :date");
-            return query.setParameter("id", sBChannelId).setParameter("date", date).list();
+            return query.setParameter("id", sBChannelId).setParameter("date", date, TemporalType.TIMESTAMP).list();
         } finally {
             if (sess != null) {
                 sess.close();
