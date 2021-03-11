@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.time.ZonedDateTime;
 import java.util.Date;
 
 /**
@@ -47,7 +46,7 @@ public class YouSeeChannelMapping {
 
     /**
      * Get the Statsbiblioteket Channel Name for this Channel
-     * @return
+     * @return the sb channel name.
      */
     public String getSbChannelId() {
         return sbChannelId;
