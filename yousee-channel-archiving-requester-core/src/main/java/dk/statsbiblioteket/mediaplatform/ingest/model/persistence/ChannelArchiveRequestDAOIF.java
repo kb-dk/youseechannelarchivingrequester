@@ -3,7 +3,7 @@ package dk.statsbiblioteket.mediaplatform.ingest.model.persistence;
 import dk.statsbiblioteket.digitaltv.utils.db.GenericDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ public interface ChannelArchiveRequestDAOIF extends GenericDAO<ChannelArchiveReq
      * @param toDate   End of date range.
      * @return the list of valid requests.
      */
-    List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate);
+    List<ChannelArchiveRequest> getValidRequests(ZonedDateTime fromDate, ZonedDateTime toDate);
 
     /**
      * Get the request from ID in the database.

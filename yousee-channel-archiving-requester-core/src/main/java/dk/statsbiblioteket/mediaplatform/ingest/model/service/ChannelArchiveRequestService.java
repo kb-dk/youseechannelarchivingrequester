@@ -9,7 +9,7 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ChannelA
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ValidatorIF;
 import org.apache.log4j.Logger;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -53,7 +53,7 @@ public class ChannelArchiveRequestService implements ChannelArchiveRequestServic
     }
 
     @Override
-    public List<ChannelArchiveRequest> getValidRequests(Date fromDate, Date toDate) throws ServiceException {
+    public List<ChannelArchiveRequest> getValidRequests(ZonedDateTime fromDate, ZonedDateTime toDate) throws ServiceException {
         List<ChannelArchiveRequest> validRequests;
         try {
             validRequests = getDao().getValidRequests(fromDate, toDate);

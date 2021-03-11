@@ -11,22 +11,27 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivi
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.HibernateUtilIF;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.NotInitialiasedException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.YouSeeChannelMappingDAO;
-import junit.framework.TestCase;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.hibernate.Session;
 
 import java.io.File;
+import java.sql.Date;
 import java.sql.SQLException;
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 
-public class RollbackTest extends TestCase {
+public class RollbackTest extends PersistenceTestCase {
 
-
-    public void testTest() {
-
-    }
-
+    @Test
     public void failingTestDoTest() throws NotInitialiasedException, SQLException {
+        ZonedDateTime date = ZonedDateTime.of(LocalDateTime.of(10, 1, 1,0,0), ZoneId.of("Europe/Copenhagen"));
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         HibernateUtilIF util = ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
         YouSeeChannelMappingDAO dao = new YouSeeChannelMappingDAO(util);
@@ -34,14 +39,14 @@ public class RollbackTest extends TestCase {
         YouSeeChannelMapping mapping = new YouSeeChannelMapping();
         mapping.setSbChannelId("dr1");
         mapping.setYouSeeChannelId("");
-        mapping.setFromDate(new Date());
-        mapping.setToDate(new Date());
+        mapping.setFromDate(Date.from(date.toInstant()));
+        mapping.setToDate(Date.from(date.toInstant()));
         dao.create(mapping);
         YouSeeChannelMapping mapping2 = new YouSeeChannelMapping();
         mapping2.setSbChannelId("dr2");
         mapping2.setYouSeeChannelId("");
-        mapping2.setFromDate(new Date());
-        mapping2.setToDate(new Date());
+        mapping2.setFromDate(Date.from(date.toInstant()));
+        mapping2.setToDate(Date.from(date.toInstant()));
         try {
             sess.beginTransaction();
             sess.save(mapping2);

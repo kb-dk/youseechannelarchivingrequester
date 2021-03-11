@@ -2,7 +2,7 @@ package dk.statsbiblioteket.mediaplatform.ingest.model.service;
 
 import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 
-import java.util.Date;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -19,7 +19,7 @@ public interface YouSeeChannelMappingServiceIF {
      * @return the unique mapping
      * @throws ServiceException if the mappings is not unique
      */
-    YouSeeChannelMapping getUniqueMappingFromYouSeeChannelId(String youSeeChannelId, Date date) throws ServiceException;
+    YouSeeChannelMapping getUniqueMappingFromYouSeeChannelId(String youSeeChannelId, ZonedDateTime date) throws ServiceException;
 
     /**
      * Gets the unique mapping corresponding to a given SB channel on a given date. Throws an exception if there
@@ -30,7 +30,7 @@ public interface YouSeeChannelMappingServiceIF {
      * @return the unique mapping
      * @throws ServiceException if the mappings is not unique
      */
-    YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, Date date) throws ServiceException;
+    YouSeeChannelMapping getUniqueMappingFromSbChannelId(String sBChannelId, ZonedDateTime date) throws ServiceException;
 
     /**
      * Get a complete list of all known mappings,sorted by expiry date.

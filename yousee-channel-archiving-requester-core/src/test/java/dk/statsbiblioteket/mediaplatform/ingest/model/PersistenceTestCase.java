@@ -9,16 +9,16 @@ package dk.statsbiblioteket.mediaplatform.ingest.model;
 
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivingRequesterHibernateUtil;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.ChannelArchiveRequestService;
-import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService;
-import junit.framework.TestCase;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.io.File;
 import java.util.List;
 
-public class PersistenceTestCase extends TestCase {
+public class PersistenceTestCase {
 
-     public void setUp() throws ServiceException {
+     @BeforeEach
+     public void setUp() throws Exception {
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
         YouSeeChannelMappingService service = new YouSeeChannelMappingService();
@@ -35,7 +35,5 @@ public class PersistenceTestCase extends TestCase {
     public void tearDown() {
 
     }
-
-    public void testDummy() {}
 
 }

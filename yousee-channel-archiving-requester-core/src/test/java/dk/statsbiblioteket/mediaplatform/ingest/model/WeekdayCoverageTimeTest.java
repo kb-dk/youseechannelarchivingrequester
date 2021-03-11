@@ -1,18 +1,21 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model;
 
-import junit.framework.TestCase;
-
-import java.util.Date;
-import java.util.GregorianCalendar;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 /**
  */
-public class WeekdayCoverageTimeTest extends TestCase {
+public class WeekdayCoverageTimeTest {
 
+    @Test
     public void testCtor() {
-        Date d1 = new GregorianCalendar(100, 0, 1, 8, 56).getTime();
-        Date d2 = new GregorianCalendar(50, 7, 3, 8, 57).getTime();
-        Date d3 = new GregorianCalendar(55, 3, 4, 6, 0).getTime();
+        ZonedDateTime d1 = ZonedDateTime.of(LocalDateTime.of(100,1, 1, 8, 56), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime d2 = ZonedDateTime.of(LocalDateTime.of(50,7, 3, 8, 57), ZoneId.of("Europe/Copenhagen"));
+        ZonedDateTime d3 = ZonedDateTime.of(LocalDateTime.of(55,3, 4, 6, 0), ZoneId.of("Europe/Copenhagen"));
         WeekdayCoverageTime wkt1 = new WeekdayCoverageTime(d1);
         WeekdayCoverageTime wkt2 = new WeekdayCoverageTime(d2);
         WeekdayCoverageTime wkt3 = new WeekdayCoverageTime(d3);
