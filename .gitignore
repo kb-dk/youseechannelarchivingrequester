@@ -3,3 +3,6 @@ derby.log
 target
 *.iml
 atlassian-ide-plugin.xml
+.project
+.settings/
+.classpath
