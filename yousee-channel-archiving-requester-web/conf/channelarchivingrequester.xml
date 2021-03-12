@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context override="true" docBase="${user.home}/services/tomcat-apps/channel-archiving-requester.war">
+
+    <Environment name="car-logback-config"
+        value="${user.home}/services/conf/channelarchivingrequester/logback.xml"
+        type="java.lang.String"
+        override="false"/>
+    <Environment name="hibernate_cfg"
+        value="${user.home}/services/conf/channelarchivingrequester/hibernate.cfg.xml"
+        type="java.lang.String"
+        override="false"/>
+
+</Context>
