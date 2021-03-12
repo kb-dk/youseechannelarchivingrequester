@@ -4,7 +4,6 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.YouSeeChannelMapping;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingService;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.YouSeeChannelMappingServiceIF;
-import org.springframework.cglib.core.Local;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
