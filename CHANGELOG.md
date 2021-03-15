@@ -12,7 +12,9 @@ Maintenance Update
  2. Update junit, and corresponding unit tests.
  3. Most instances of java.util.Date replaced with java.time counterpart.
  4. Update other dependencies
- 5. Update used java version (1.6 -> 1.8)
+ 5. Update used java version (1.6 -> OpenJDK 11)
+ 6. Change webservice framework to Apache CXF
+ 7. Change logging backend to logback
 
 Version 1.1.9
 =============
