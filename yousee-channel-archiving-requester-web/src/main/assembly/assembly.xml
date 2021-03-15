@@ -1,0 +1,33 @@
+<assembly xmlns="http://maven.apache.org/ASSEMBLY/2.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/ASSEMBLY/2.1.0 http://maven.apache.org/xsd/assembly-2.1.0.xsd">
+  <id>distribution</id>
+
+  <formats>
+    <format>tar.gz</format>
+  </formats>
+
+  <dependencySets>
+    <dependencySet>
+      <includes>
+        <include>*:war</include>
+      </includes>
+    </dependencySet>
+  </dependencySets>
+
+  <fileSets>
+    <fileSet>
+      <outputDirectory>conf</outputDirectory>
+      <fileMode>0740</fileMode>
+      <directoryMode>0740</directoryMode>
+      <directory>conf</directory>
+    </fileSet>
+  </fileSets>
+  <files>
+    <file>
+      <source>${project.parent.basedir}/CHANGELOG.md</source>
+      <outputDirectory></outputDirectory>
+      <filtered>true</filtered>
+    </file>
+  </files>
+</assembly>
+
