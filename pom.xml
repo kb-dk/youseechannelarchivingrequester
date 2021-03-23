@@ -29,9 +29,9 @@
         </repository>
     </repositories>
     <scm>
-        <url>https://github.com/statsbiblioteket/youseechannelarchivingrequester.git</url>
-        <connection>scm:git:git@github.com:statsbiblioteket/youseechannelarchivingrequester.git</connection>
-        <developerConnection>scm:git:git@github.com:statsbiblioteket/youseechannelarchivingrequester.git</developerConnection>
+        <url>https://github.com/kb-dk/youseechannelarchivingrequester.git</url>
+        <connection>scm:git:git@github.com:kb-dk/youseechannelarchivingrequester.git</connection>
+        <developerConnection>scm:git:git@github.com:kb-dk/youseechannelarchivingrequester.git</developerConnection>
       <tag>HEAD</tag>
   </scm>
 
