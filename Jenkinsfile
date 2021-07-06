@@ -127,14 +127,25 @@ private void recreateProject(String projectName) {
  */
 private static String encodeName(groovy.lang.GString jobName) {
     def jobTokens = jobName.tokenize("/")
-    def repo = jobTokens[0]
+    def org = jobTokens[0]
+    if(org.contains('-')) {
+        org = org.tokenize("-").collect{it.take(1)}.join("")
+    } else {
+        org = org.take(3)
+    }
+
+    // Repository have a very long name, lets shorten it further
+    def repo = jobTokens[1]
     if(repo.contains('-')) {
         repo = repo.tokenize("-").collect{it.take(1)}.join("")
+    } else if(repo.contains('_')) {
+        repo = repo.tokenize("_").collect{it.take(1)}.join("")
     } else {
         repo = repo.take(3)
     }
 
-    def name = ([repo] + jobTokens.drop(1)).join("-")
+
+    def name = ([org, repo] + jobTokens.drop(2)).join("-")
             .replaceAll("\\s", "-")
             .replaceAll("_", "-")
             .replace("/", '-')
