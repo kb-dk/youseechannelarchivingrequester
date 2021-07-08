@@ -107,7 +107,8 @@
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
-	                <descriptors>
+			<tarLongFileMode>posix</tarLongFileMode>
+			<descriptors>
 	                    <descriptor>src/main/assembly/assembly.xml</descriptor>
 	                </descriptors>
                 </configuration>
