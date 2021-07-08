@@ -69,6 +69,7 @@ openshift.withCluster() { // Use "default" cluster or fallback to OpenShift clus
                     }
                 }
 
+// Promotion is currently disabled as there's no active setup to promote to. 
 //                stage('Promote image') {
 //                    if (env.BRANCH_NAME == 'master') {
 //                        configFileProvider([configFile(fileId: "imagePromoter", variable: 'promoter')]) {
