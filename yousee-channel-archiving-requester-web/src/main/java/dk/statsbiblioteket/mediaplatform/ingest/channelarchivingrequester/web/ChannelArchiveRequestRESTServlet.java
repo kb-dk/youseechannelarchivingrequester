@@ -9,10 +9,15 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.service.ServiceException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.List;
@@ -23,8 +28,9 @@ import java.util.regex.Pattern;
 
 @Path("/channelRequests/")
 public class ChannelArchiveRequestRESTServlet {
+    private static Logger log = LoggerFactory.getLogger(ChannelArchiveRequestRESTServlet.class);
     private static ChannelArchiveRequestServiceIF service = null;
-    private SimpleDateFormat formatTime = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ROOT);
+    private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.ROOT);
     private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT);
     private static final int CHANNEL = 0;
     private static final int START_TIME = 1;
@@ -125,7 +131,7 @@ public class ChannelArchiveRequestRESTServlet {
                 case START_TIME:
                     ZonedDateTime newFromTime;
                     value = "1900-01-01 " + value;
-                    newFromTime = ZonedDateTime.parse(value);
+                    newFromTime = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
                     if (newFromTime.isBefore(ZonedDateTime.ofInstant(caRequest.getToTime().toInstant(), localZone)) || newFromTime.equals(caRequest.getToTime()))
                         caRequest.setFromTime(Date.from(newFromTime.toInstant()));
                     else {
@@ -139,7 +145,7 @@ public class ChannelArchiveRequestRESTServlet {
                         value = "1900-01-02 " + value;
                     else
                         value = "1900-01-01 " + value;
-                    newToTime = ZonedDateTime.parse(value);
+                    newToTime = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
                     if (newToTime.isAfter(ZonedDateTime.ofInstant(caRequest.getFromTime().toInstant(), localZone)) || newToTime.equals(caRequest.getFromTime()))
                         caRequest.setToTime(Date.from(newToTime.toInstant()));
                     else {
@@ -152,7 +158,7 @@ public class ChannelArchiveRequestRESTServlet {
                     if (value == null || "".equals(value)) {
                         value = "1900-01-01";
                     }
-                    newFromDate = ZonedDateTime.parse(value);
+                    newFromDate = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
                     if (newFromDate.isBefore(ZonedDateTime.ofInstant(caRequest.getToDate().toInstant(), localZone)) || newFromDate.equals(caRequest.getToDate()))
                         caRequest.setFromDate(Date.from(newFromDate.toInstant()));
                     else {
@@ -165,7 +171,7 @@ public class ChannelArchiveRequestRESTServlet {
                     if (value == null || "".equals(value)) {
                         value = "3000-01-01";
                     }
-                    newToDate = ZonedDateTime.parse(value);
+                    newToDate = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
                     if (newToDate.isAfter(ZonedDateTime.ofInstant(caRequest.getFromDate().toInstant(), localZone)) || newToDate.equals(caRequest.getFromDate()))
                         caRequest.setToDate(Date.from(newToDate.toInstant()));
                     else {
@@ -180,7 +186,9 @@ public class ChannelArchiveRequestRESTServlet {
 
             //Sends update request to the service, that when the input is valid updates DB
             service.update(caRequest);
-        } catch (ServiceException | DateTimeParseException e) {
+        } catch (ServiceException e) {
+            log.error("Got service exception while performing update", e);
+            
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         if (ok)
