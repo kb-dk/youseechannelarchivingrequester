@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -31,6 +32,8 @@ public class ChannelArchiveRequestRESTServlet {
     private static Logger log = LoggerFactory.getLogger(ChannelArchiveRequestRESTServlet.class);
     private static ChannelArchiveRequestServiceIF service = null;
     private DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.ROOT);
+    private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ROOT);
+
     private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT);
     private static final int CHANNEL = 0;
     private static final int START_TIME = 1;
@@ -118,6 +121,11 @@ public class ChannelArchiveRequestRESTServlet {
             if (caRequest == null)
                 return Response.status(Response.Status.NOT_ACCEPTABLE).entity("Id not found").build();
 
+            ZonedDateTime oldFromTime = ZonedDateTime.ofInstant(caRequest.getFromTime().toInstant(), localZone);
+            ZonedDateTime oldToTime = ZonedDateTime.ofInstant(caRequest.getToTime().toInstant(), localZone);
+            ZonedDateTime oldFromDate = ZonedDateTime.ofInstant(caRequest.getFromDate().toInstant(), localZone);
+            ZonedDateTime oldToDate = ZonedDateTime.ofInstant(caRequest.getToDate().toInstant(), localZone);
+
             //Find the column by the column name
             int indexOfColumn = (COLUMN_LIST.indexOf(columnName));
             //Update the CAR object
@@ -132,7 +140,7 @@ public class ChannelArchiveRequestRESTServlet {
                     ZonedDateTime newFromTime;
                     value = "1900-01-01 " + value;
                     newFromTime = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
-                    if (newFromTime.isBefore(ZonedDateTime.ofInstant(caRequest.getToTime().toInstant(), localZone)) || newFromTime.equals(caRequest.getToTime()))
+                    if (newFromTime.isBefore(oldToTime) || newFromTime.equals(oldToTime))
                         caRequest.setFromTime(Date.from(newFromTime.toInstant()));
                     else {
                         ok = false;
@@ -146,7 +154,7 @@ public class ChannelArchiveRequestRESTServlet {
                     else
                         value = "1900-01-01 " + value;
                     newToTime = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
-                    if (newToTime.isAfter(ZonedDateTime.ofInstant(caRequest.getFromTime().toInstant(), localZone)) || newToTime.equals(caRequest.getFromTime()))
+                    if (newToTime.isAfter(oldFromTime) || newToTime.equals(oldFromTime))
                         caRequest.setToTime(Date.from(newToTime.toInstant()));
                     else {
                         ok = false;
@@ -159,7 +167,7 @@ public class ChannelArchiveRequestRESTServlet {
                         value = "1900-01-01";
                     }
                     newFromDate = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
-                    if (newFromDate.isBefore(ZonedDateTime.ofInstant(caRequest.getToDate().toInstant(), localZone)) || newFromDate.equals(caRequest.getToDate()))
+                    if (newFromDate.isBefore(oldToDate) || newFromDate.equals(oldToDate))
                         caRequest.setFromDate(Date.from(newFromDate.toInstant()));
                     else {
                         ok = false;
@@ -172,7 +180,7 @@ public class ChannelArchiveRequestRESTServlet {
                         value = "3000-01-01";
                     }
                     newToDate = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
-                    if (newToDate.isAfter(ZonedDateTime.ofInstant(caRequest.getFromDate().toInstant(), localZone)) || newToDate.equals(caRequest.getFromDate()))
+                    if (newToDate.isAfter(oldFromDate) || newToDate.equals(oldFromDate))
                         caRequest.setToDate(Date.from(newToDate.toInstant()));
                     else {
                         ok = false;
@@ -214,11 +222,11 @@ public class ChannelArchiveRequestRESTServlet {
             ChannelArchiveRequest caRequest = new ChannelArchiveRequest();
             caRequest.setsBChannelId(channel);
             ZonedDateTime newFromTime;
-            fromTime = "1900-01-01" + fromTime;
-            if (validate(fromTime) && ZonedDateTime.parse(fromTime) != null) {
-                newFromTime = ZonedDateTime.parse(fromTime);
+            fromTime = "1900-01-01 " + fromTime;
+            if (validate(fromTime) && ZonedDateTime.parse(fromTime, timeFormatter.withZone(localZone)) != null) {
+                newFromTime = ZonedDateTime.parse(fromTime, timeFormatter.withZone(localZone));
             } else {
-                newFromTime = ZonedDateTime.parse("1900-01-01 00:00");
+                newFromTime = ZonedDateTime.parse("1900-01-01 00:00", timeFormatter.withZone(localZone));
             }
             caRequest.setFromTime(java.util.Date.from(newFromTime.toInstant()));
             ZonedDateTime newToTime;
@@ -227,23 +235,25 @@ public class ChannelArchiveRequestRESTServlet {
             else
                 toTime = "1900-01-01" + toTime;
 
-            if (validate(toTime) && ZonedDateTime.parse(toTime) != null) {
-                newToTime = ZonedDateTime.parse(toTime);
+            if (validate(toTime) && ZonedDateTime.parse(toTime, timeFormatter.withZone(localZone)) != null) {
+                newToTime = ZonedDateTime.parse(toTime, timeFormatter.withZone(localZone));
             } else {
-                newToTime = ZonedDateTime.parse("1900-01-02 00:00");
+                newToTime = ZonedDateTime.parse("1900-01-02 00:00", timeFormatter.withZone(localZone));
             }
             caRequest.setToTime(Date.from(newToTime.toInstant()));
 
             if (fromDate == null || "".equals(fromDate)) {
                 fromDate = "1900-01-01";
             }
-            newFromDate = ZonedDateTime.parse(fromDate);
+            LocalDate localFromDate = LocalDate.parse(fromDate, dateFormatter);
+            newFromDate = localFromDate.atStartOfDay(localZone);
             caRequest.setFromDate(Date.from(newFromDate.toInstant()));
 
             if (toDate == null || "".equals(toDate)) {
                 toDate = "3000-01-01";
             }
-            newToDate = ZonedDateTime.parse(toDate);
+            LocalDate localToDate = LocalDate.parse(toDate, dateFormatter);
+            newToDate = localToDate.atStartOfDay(localZone);
             caRequest.setToDate(Date.from(newToDate.toInstant()));
             caRequest.setWeekdayCoverage(WeekdayCoverage.values()[Integer.parseInt(weekdayCoverage) - 1]);
             //Insert the object in db
