@@ -1,5 +1,6 @@
 package dk.statsbiblioteket.mediaplatform.ingest.model.service;
 
+
 import dk.statsbiblioteket.mediaplatform.ingest.model.ChannelArchiveRequest;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchiveRequestDAO;
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchiveRequestDAOIF;
@@ -7,17 +8,19 @@ import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.ChannelArchivi
 import dk.statsbiblioteket.mediaplatform.ingest.model.persistence.NotInitialiasedException;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ChannelArchivingRequesterValidator;
 import dk.statsbiblioteket.mediaplatform.ingest.model.service.validator.ValidatorIF;
-import org.apache.log4j.Logger;
 
 import java.time.ZonedDateTime;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  */
 public class ChannelArchiveRequestService implements ChannelArchiveRequestServiceIF {
 
-    Logger log = Logger.getLogger(ChannelArchiveRequestService.class);
+    Logger log = LoggerFactory.getLogger(ChannelArchiveRequestService.class);
 
     @Override
     public void insert(ChannelArchiveRequest request) throws ServiceException {

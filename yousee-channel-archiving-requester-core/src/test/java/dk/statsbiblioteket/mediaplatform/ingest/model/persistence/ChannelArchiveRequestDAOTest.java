@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 
+
 /**
  */
 public class ChannelArchiveRequestDAOTest extends PersistenceTestCase {
@@ -20,10 +21,11 @@ public class ChannelArchiveRequestDAOTest extends PersistenceTestCase {
     private static ChannelArchiveRequestDAO dao;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws Exception {
+    	super.setUp();
         dao = new ChannelArchiveRequestDAO(ChannelArchivingRequesterHibernateUtil.getInitialisedFactory());
-
     }
+    
     @Test
     public void testInsert() throws NotInitialiasedException {
         ChannelArchiveRequest schedule = new ChannelArchiveRequest();

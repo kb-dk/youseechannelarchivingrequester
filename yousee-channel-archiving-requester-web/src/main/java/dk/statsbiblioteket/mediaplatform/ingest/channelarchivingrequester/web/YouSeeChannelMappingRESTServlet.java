@@ -10,8 +10,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -25,6 +27,8 @@ public class YouSeeChannelMappingRESTServlet {
     private static final int FROM_DATE = 3;
     private static final int TO_DATE = 4;
     private SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT);
+    private DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ROOT);
+
 
     public static final List<String> COLUMN_LIST =
             Arrays.asList("Channel", "YouSee Id", "Display Name", "From", "To");
@@ -100,7 +104,7 @@ public class YouSeeChannelMappingRESTServlet {
                     if (value == null || "".equals(value)) {
                         value = "1900-01-01";
                     }
-                    newFromDate = ZonedDateTime.parse(value);
+                    newFromDate = ZonedDateTime.parse(value, dateFormatter.withZone(localZone));
                     if (newFromDate.isBefore(ZonedDateTime.ofInstant(ycm.getToDate().toInstant(), localZone)) || newFromDate.equals(ycm.getToDate()))
                         ycm.setFromDate(Date.from(newFromDate.toInstant()));
                     else {
@@ -113,7 +117,7 @@ public class YouSeeChannelMappingRESTServlet {
                     if (value == null || "".equals(value)) {
                         value = "3000-01-01";
                     }
-                    newToDate = ZonedDateTime.parse(value);
+                    newToDate = ZonedDateTime.parse(value, dateFormatter.withZone(localZone));
                     if (newToDate.isAfter(ZonedDateTime.ofInstant(ycm.getFromDate().toInstant(), localZone)) || newToDate.equals(ycm.getFromDate()))
                         ycm.setToDate(Date.from(newToDate.toInstant()));
                     else {
@@ -160,14 +164,17 @@ public class YouSeeChannelMappingRESTServlet {
             if (fromDate == null || "".equals(fromDate)) {
                 fromDate = "1900-01-01";
             }
-            newFromDate = ZonedDateTime.parse(fromDate);
+            LocalDate localFromDate = LocalDate.parse(fromDate, dateFormatter);
+            newFromDate = localFromDate.atStartOfDay(localZone);
             ycm.setFromDate(Date.from(newFromDate.toInstant()));
 
             if (toDate == null || "".equals(toDate)) {
                 toDate = "3000-01-01";
             }
-            newToDate = ZonedDateTime.parse(toDate);
-            if (newToDate.isAfter(ZonedDateTime.ofInstant(ycm.getFromDate().toInstant(), localZone)) || newToDate.equals(ycm.getFromDate()))
+            LocalDate localToDate = LocalDate.parse(toDate, dateFormatter);
+            newToDate = localToDate.atStartOfDay(localZone);
+
+            if (newToDate.isAfter(ZonedDateTime.ofInstant(ycm.getFromDate().toInstant(), localZone)) || newToDate.equals(newFromDate))
                 ycm.setToDate(Date.from(newToDate.toInstant()));
             else {
                 ok = false;
