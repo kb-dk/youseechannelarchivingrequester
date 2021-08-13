@@ -19,7 +19,6 @@ public class PersistenceTestCase {
 
      @BeforeEach
      public void setUp() throws Exception {
-    	 System.out.println("#### Running PersistenceTestCase.setUp() ####");
         File cfgFile = new File("src/test/resources/hibernate.cfg.xml");
         ChannelArchivingRequesterHibernateUtil.initialiseFactory(cfgFile);
         YouSeeChannelMappingService service = new YouSeeChannelMappingService();
