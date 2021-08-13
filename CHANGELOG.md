@@ -3,6 +3,11 @@ Changelog
 
 Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channel+Archiving+Requester+Releases
 
+Version 1.1.11
+=============
+Bugfix update
+
+ 1. Fix parsing of various time and date paramters in the program
 
 Version 1.1.10
 =============
