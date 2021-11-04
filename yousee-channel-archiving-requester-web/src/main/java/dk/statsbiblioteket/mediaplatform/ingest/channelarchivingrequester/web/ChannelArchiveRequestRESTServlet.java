@@ -166,7 +166,8 @@ public class ChannelArchiveRequestRESTServlet {
                     if (value == null || "".equals(value)) {
                         value = "1900-01-01";
                     }
-                    newFromDate = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
+                    LocalDate localFromDate = LocalDate.parse(value, dateFormatter);
+                    newFromDate = localFromDate.atStartOfDay(localZone);
                     if (newFromDate.isBefore(oldToDate) || newFromDate.equals(oldToDate))
                         caRequest.setFromDate(Date.from(newFromDate.toInstant()));
                     else {
@@ -179,7 +180,8 @@ public class ChannelArchiveRequestRESTServlet {
                     if (value == null || "".equals(value)) {
                         value = "3000-01-01";
                     }
-                    newToDate = ZonedDateTime.parse(value, timeFormatter.withZone(localZone));
+                    LocalDate localToDate = LocalDate.parse(value, dateFormatter);
+                    newToDate = localToDate.atStartOfDay(localZone);
                     if (newToDate.isAfter(oldFromDate) || newToDate.equals(oldFromDate))
                         caRequest.setToDate(Date.from(newToDate.toInstant()));
                     else {
