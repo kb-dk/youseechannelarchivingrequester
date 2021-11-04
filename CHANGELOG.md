@@ -3,6 +3,12 @@ Changelog
 
 Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channel+Archiving+Requester+Releases
 
+Version 1.1.12
+=============
+Bugfix update
+
+ 1. Fix parsing of dates when no time information is present (i.e. allow to changes dates for requests)
+
 Version 1.1.11
 =============
 Bugfix update
