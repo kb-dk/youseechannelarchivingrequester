@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -100,26 +101,26 @@ public class YouSeeChannelMappingRESTServlet {
                     ycm.setDisplayName(value);
                     break;
                 case FROM_DATE:
-                    ZonedDateTime newFromDate;
+                    LocalDate newFromDate;
                     if (value == null || "".equals(value)) {
                         value = "1900-01-01";
                     }
-                    newFromDate = ZonedDateTime.parse(value, dateFormatter.withZone(localZone));
-                    if (newFromDate.isBefore(ZonedDateTime.ofInstant(ycm.getToDate().toInstant(), localZone)) || newFromDate.equals(ycm.getToDate()))
-                        ycm.setFromDate(Date.from(newFromDate.toInstant()));
+                    newFromDate = LocalDate.parse(value, dateFormatter.withZone(localZone));
+                    if (newFromDate.isBefore(LocalDate.ofInstant(ycm.getToDate().toInstant(), localZone)) || newFromDate.equals(ycm.getToDate()))
+                        ycm.setFromDate(Date.valueOf(newFromDate));
                     else {
                         ok = false;
                         errorStr = "From date cannot be after to date";
                     }
                     break;
                 case TO_DATE:
-                    ZonedDateTime newToDate;
+                    LocalDate newToDate;
                     if (value == null || "".equals(value)) {
                         value = "3000-01-01";
                     }
-                    newToDate = ZonedDateTime.parse(value, dateFormatter.withZone(localZone));
-                    if (newToDate.isAfter(ZonedDateTime.ofInstant(ycm.getFromDate().toInstant(), localZone)) || newToDate.equals(ycm.getFromDate()))
-                        ycm.setToDate(Date.from(newToDate.toInstant()));
+                    newToDate = LocalDate.parse(value, dateFormatter.withZone(localZone));
+                    if (newToDate.isAfter(LocalDate.ofInstant(ycm.getFromDate().toInstant(), localZone)) || newToDate.equals(ycm.getFromDate()))
+                        ycm.setToDate(Date.valueOf(newToDate));
                     else {
                         ok = false;
                         errorStr = "To date cannot be before from date";
