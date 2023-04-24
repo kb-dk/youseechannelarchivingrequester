@@ -51,7 +51,7 @@ openshift.withCluster() { // Use "default" cluster or fallback to OpenShift clus
                         stage("Create build and deploy application") { 
                             openshift.newBuild("--strategy source", "--binary", "-i kb-infra/kb-s2i-tomcat90", "--name channel-archiving-requester")
                             openshift.startBuild("channel-archiving-requester", "--from-dir=.", "--follow")
-                            openshift.newApp("channel-archiving-requester:latest")
+                            openshift.newApp("channel-archiving-requester", "-e BUILD_NUMBER=latest")
                             openshift.create("route", "edge", "--service=channel-archiving-requester")
                         }
                     }
