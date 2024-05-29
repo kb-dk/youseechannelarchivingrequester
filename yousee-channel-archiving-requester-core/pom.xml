@@ -16,6 +16,15 @@
             <groupId>dk.statsbiblioteket.digitaltv</groupId>
             <artifactId>digitv-core</artifactId>
             <version>2.1</version>
+            <!--
+            Note that upgrading the digitv-core dependency currently fails because the jaxb dependencies
+            have an unknown conflict. It would be better to exclude those that come from digitv and include
+            explicitly those known to work for CAR:
+            jaxb-api-2.3.1.jar
+            jaxb-runtime-2.3.1.jar
+            with
+            jakarta.xml.bind-api-2.3.3.jar
+            -->
             <exclusions>
                 <exclusion>
 		            <groupId>dk.statsbiblioteket.doms.transformers</groupId>
@@ -25,6 +34,10 @@
 		            <groupId>com.sun.jersey</groupId>
 		            <artifactId>jersey-client</artifactId>
 	            </exclusion>
+                <exclusion>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -32,7 +45,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.4.32.Final</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.7.3</version>
+        </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-c3p0</artifactId>

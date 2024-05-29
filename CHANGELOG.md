@@ -3,6 +3,17 @@ Changelog
 
 Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channel+Archiving+Requester+Releases
 
+
+Version 1.1.14
+=============
+Upgraded pgjdbc driver version to 42.7.3
+
+
+Version 1.1.13
+=============
+Bugfix. Fixed issue that prevented updating dates on requests.
+
+
 Version 1.1.12
 =============
 Bugfix update
