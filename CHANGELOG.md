@@ -5,7 +5,7 @@ Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channe
 
 Version 1.1.15 (not released - WIP)
 =============
-
+Upgraded pgjdbc driver version to 42.7.6
 
 Version 1.1.14
 =============
@@ -21,13 +21,13 @@ Version 1.1.12
 =============
 Bugfix update
 
- 1. Fix parsing of dates when no time information is present (i.e. allow to changes dates for requests)
+ 1. Fix parsing of dates when no time information is present (i.e. allow to change dates for requests)
 
 Version 1.1.11
 =============
 Bugfix update
 
- 1. Fix parsing of various time and date paramters in the program
+ 1. Fix parsing of various time and date parameters in the program
 
 Version 1.1.10
 =============
