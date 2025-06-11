@@ -150,7 +150,7 @@
                                 -->
                                 <configuration>
                                     <target>
-                                        <property name="application_name" value="${parent.artifactId}" />
+                                        <property name="application_name" value="${project.parent.artifactId}" />
                                         <property name="remote_warfile" value="~/services/tomcat-apps/${application_name}.war" />
                                         <property name="tomcat" value="tomcat" />
                                         <property name="keyfile" value="${env.sbprojects_canopus_keyfile}" />
