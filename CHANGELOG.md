@@ -3,6 +3,9 @@ Changelog
 
 Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channel+Archiving+Requester+Releases
 
+Version 1.1.15 (not released - WIP)
+=============
+
 
 Version 1.1.14
 =============
