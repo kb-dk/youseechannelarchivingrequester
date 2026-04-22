@@ -1,0 +1,38 @@
+# Docker compose for local development
+services:
+  car-web:
+    image: kb/car-web:latest
+    container_name: car-web
+    environment:
+      logbackConfiguration: /usr/local/tomcat/logback.xml
+      car-logback-config: /usr/local/tomcat/logback.xml
+      hibernate_cfg: /usr/local/tomcat/hibernate.cfg.xml
+    ports:
+      - '8080:8080'
+    depends_on:
+      car-psql:
+        condition: service_healthy
+    volumes:
+      - "./hibernate.cfg.xml:/home/services/conf/channelarchivingrequester/hibernate.cfg.xml:ro"
+      - "./logback.xml:/home/services/conf/channelarchivingrequester/logback.xml:ro"
+#      - "./hibernate.cfg.xml:/usr/local/tomcat/hibernate.cfg.xml:ro"
+#      - "./logback.xml:/usr/local/tomcat/logback.xml:ro"
+    restart: unless-stopped
+
+  car-psql:
+    image: postgres:13.20-alpine
+    container_name: car-psql
+    environment:
+      POSTGRES_PASSWORD: test_dummy_pw
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres -d postgres" ]
+      interval: 5s
+      timeout: 10s
+      retries: 10
+    networks:
+      - "default"
+    volumes:
+      - "./docker-testdata/testdata.sql:/docker-entrypoint-initdb.d/testdata.sql:ro"
+    restart: unless-stopped

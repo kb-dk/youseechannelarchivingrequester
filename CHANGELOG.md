@@ -5,7 +5,9 @@ Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channe
 
 Version 1.1.15 (not released - WIP)
 =============
-Upgraded pgjdbc driver version to 42.7.6
+Added new endpoint for filtering channels list by to and from date
+Upgraded pgjdbc driver version to 42.7.7
+Upgraded Derby to version 10.17.1.0
 
 Version 1.1.14
 =============

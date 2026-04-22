@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 
 @Path("/channelRequests/")
@@ -60,7 +62,7 @@ public class ChannelArchiveRequestRESTServlet {
      * Validate time in 24 hours format with regular expression
      *
      * @param time time address for validation
-     * @return true valid time fromat, false invalid time format
+     * @return true valid time format, false invalid time format
      */
     public boolean validate(final String time) {
         Matcher matcher;
@@ -74,6 +76,23 @@ public class ChannelArchiveRequestRESTServlet {
     @Produces(MediaType.APPLICATION_JSON)
     public List<ChannelArchiveRequest> getCARList() throws ServiceException {
         return service.getAllRequests();
+    }
+
+    @GET
+    @Path("/getCARActiveOnDate")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<ChannelArchiveRequest> getCARActiveOnDate(@QueryParam("date") String dateString) throws ServiceException, ParseException {
+        if (dateString == null) {
+            throw new BadRequestException(
+                    Response.status(Response.Status.BAD_REQUEST)
+                            .entity("date parameter (yyyy-MM-dd) is mandatory for this request")
+                            .build()
+            );
+        }
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT);
+        final java.util.Date date;
+        date = formatter.parse(dateString);
+        return service.getAllRequests().stream().filter(p -> p.getFromDate().before(date) && p.getToDate().after(date)).collect(Collectors.toList()); // should be filtered to only show records matching date.
     }
 
     @POST
@@ -198,7 +217,7 @@ public class ChannelArchiveRequestRESTServlet {
             service.update(caRequest);
         } catch (ServiceException e) {
             log.error("Got service exception while performing update", e);
-            
+
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
         if (ok)
@@ -261,7 +280,7 @@ public class ChannelArchiveRequestRESTServlet {
             //Insert the object in db
             service.insert(caRequest);
         } catch (DateTimeParseException e) {
-                e.printStackTrace();
+            e.printStackTrace();
         } catch (ServiceException e) {
             return "Error ";
         }
