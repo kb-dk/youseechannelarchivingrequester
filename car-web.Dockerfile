@@ -8,8 +8,7 @@ RUN mkdir -p /root/.m2/repository
 # Copy maven settings (ignored by git), containing repository credentials
 COPY /settings/settings.xml /root/.m2
 COPY . .
-
-COPY ./hibernate.cfg.xml yousee-channel-archiving-requester-web/src/main/resources
+COPY files-for-docker/web.xml yousee-channel-archiving-requester-web/src/main/webapp/WEB-INF/web.xml
 # Build the application using Maven
 RUN mvn package
 
@@ -21,5 +20,6 @@ RUN apt -y update && apt -y upgrade
 # Copy our built WAR into Tomcat
 COPY --from=builder /app/yousee-channel-archiving-requester-web/target/*.war ${CATALINA_HOME}/webapps/
 
-RUN mkdir -p /root/services/conf/channelarchivingrequester/
-COPY ./hibernate.cfg.xml /root/services/conf/channelarchivingrequester/hibernate.cfg.xml
+RUN mkdir -p ${CATALINA_HOME}/conf/channelarchivingrequester/
+COPY files-for-docker/hibernate.cfg.xml ${CATALINA_HOME}/conf/channelarchivingrequester/hibernate.cfg.xml
+COPY files-for-docker/logback.xml ${CATALINA_HOME}/conf/channelarchivingrequester/logback.xml

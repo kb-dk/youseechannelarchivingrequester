@@ -89,10 +89,13 @@ public class ChannelArchiveRequestRESTServlet {
                             .build()
             );
         }
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ROOT);
-        final java.util.Date date;
-        date = formatter.parse(dateString);
-        return service.getAllRequests().stream().filter(p -> p.getFromDate().before(date) && p.getToDate().after(date)).collect(Collectors.toList()); // should be filtered to only show records matching date.
+        LocalDate dateLocal = LocalDate.parse(dateString, dateFormatter);
+        //Includes the requests that have to or from dates on the input date
+        return service.getAllRequests().stream().filter(
+                        p ->
+                                (LocalDate.ofInstant(p.getFromDate().toInstant(), localZone).isBefore(dateLocal) && LocalDate.ofInstant(p.getToDate().toInstant(), localZone).isAfter(dateLocal))
+                                        || (LocalDate.ofInstant(p.getFromDate().toInstant(), localZone).equals(dateLocal) || LocalDate.ofInstant(p.getToDate().toInstant(), localZone).equals(dateLocal)))
+                .collect(Collectors.toList()); // should be filtered to only show records matching date.
     }
 
     @POST

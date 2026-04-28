@@ -1,10 +1,9 @@
 <included>
     <contextName>channelarchivingrequester</contextName>
-
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${catalina.base}/logs/channelarchivingrequester.log</file>
+        <file>${CATALINA_HOME}/logs/channelarchivingrequester.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${catalina.base}/logs/channelarchivingrequester.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>${CATALINA_HOME}/logs/channelarchivingrequester.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>30</maxHistory>
         </rollingPolicy>
 

@@ -9,15 +9,15 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
+import java.util.stream.Collectors;
 
 @Path("/channelMapping")
 public class YouSeeChannelMappingRESTServlet {
@@ -45,6 +45,26 @@ public class YouSeeChannelMappingRESTServlet {
     @Produces(MediaType.APPLICATION_JSON)
     public List<YouSeeChannelMapping> getChannelList() throws ServiceException {
         return service.getAllMappings();
+    }
+
+    @GET
+    @Path("/getChannelListActiveOnDate")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<YouSeeChannelMapping> getCARActiveOnDate(@QueryParam("date") String dateString) throws ServiceException, ParseException {
+        if (dateString == null) {
+            throw new BadRequestException(
+                    Response.status(Response.Status.BAD_REQUEST)
+                            .entity("date parameter (yyyy-MM-dd) is mandatory for this request")
+                            .build()
+            );
+        }
+        LocalDate dateLocal = LocalDate.parse(dateString, dateFormatter);
+        //Includes the channels that have a from or to date on the input date
+        return service.getAllMappings().stream().filter(
+                p ->
+                        (LocalDate.ofInstant(p.getFromDate().toInstant(), localZone).isBefore(dateLocal) && LocalDate.ofInstant(p.getToDate().toInstant(), localZone).isAfter(dateLocal))
+                                || (LocalDate.ofInstant(p.getFromDate().toInstant(), localZone).equals(dateLocal) || LocalDate.ofInstant(p.getToDate().toInstant(), localZone).equals(dateLocal)))
+                .collect(Collectors.toList()); // should be filtered to only show records matching date.
     }
 
     @POST

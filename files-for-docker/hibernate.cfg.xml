@@ -16,7 +16,7 @@
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
 
-        <mapping class="beans.Task"/>
+        <!--<mapping class="beans.Task"/>-->
 
     </session-factory>
 </hibernate-configuration>
