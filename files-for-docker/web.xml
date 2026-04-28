@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+  Copyright 2004 The Apache Software Foundation
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!DOCTYPE web-app
+        PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app version="2.5"
+         xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
+
+    <display-name>Statsbiblioteket Mediaplatform Channel Scheduler</display-name>
+    <description>Statsbiblioteket Mediaplatform Channel Scheduler</description>
+
+    <servlet>
+        <servlet-name>ChannelArchiveRequest</servlet-name>
+	    <servlet-class>org.apache.cxf.jaxrs.servlet.CXFNonSpringJaxrsServlet</servlet-class>
+        <init-param>
+	        <param-name>javax.ws.rs.Application</param-name>
+	        <param-value>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.CARApplication</param-value>
+	    </init-param>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+
+    <servlet-mapping>
+        <servlet-name>ChannelArchiveRequest</servlet-name>
+        <url-pattern>/CAR/*</url-pattern>
+    </servlet-mapping>
+
+
+    <!--This is an init utiltiy class -->
+    <listener>
+        <listener-class>dk.statsbiblioteket.mediaplatform.ingest.channelarchivingrequester.web.WebInitiator
+        </listener-class>
+    </listener>
+    <!-- Docker needs these variables to be set -->
+    <env-entry>
+        <env-entry-name>hibernate_cfg</env-entry-name>
+        <env-entry-value>/usr/local/tomcat/conf/channelarchivingrequester/hibernate.cfg.xml</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+    <env-entry>
+        <env-entry-name>car-logback-config</env-entry-name>
+        <env-entry-value>/usr/local/tomcat/conf/channelarchivingrequester/logback.xml</env-entry-value>
+        <env-entry-type>java.lang.String</env-entry-type>
+    </env-entry>
+
+</web-app>

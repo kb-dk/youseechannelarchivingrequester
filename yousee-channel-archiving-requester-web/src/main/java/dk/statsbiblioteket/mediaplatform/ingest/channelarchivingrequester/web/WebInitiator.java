@@ -9,7 +9,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import java.io.File;
+import java.io.*;
 
 /**
  *
@@ -19,8 +19,8 @@ public class WebInitiator implements ServletContextListener {
     private static Logger log = LoggerFactory.getLogger(WebInitiator.class);
 
     /**
-     * Place any initialisations or configuration sanity-checks here.
-     * @param sce the context in which this class is intiated.
+     * Place any initializations or configuration sanity-checks here.
+     * @param sce the context in which this class is initiated.
      */
     @Override
     public void contextInitialized(ServletContextEvent sce) {

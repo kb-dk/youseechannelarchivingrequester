@@ -3,9 +3,13 @@ Changelog
 
 Old Changes:  https://sbprojects.statsbiblioteket.dk/display/INFRA/Yousee+Channel+Archiving+Requester+Releases
 
-Version 1.1.15 (not released - WIP)
+Version 1.1.15 
 =============
-Upgraded pgjdbc driver version to 42.7.6
+1. Upgraded pgjdbc driver version to 42.7.7
+2. Upgraded Derby to version 10.17.1.0
+3. Added new endpoints for filtering channels and requests list by to and from date
+4. Added working Dockerfile and docker-compose
+5. Made a README with instructions on how to run the application in Docker with docker compose
 
 Version 1.1.14
 =============

@@ -1,0 +1,22 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+
+        <property name="connection.url">jdbc:postgresql://car-psql:5432/postgres</property>
+        <property name="connection.driver_class">org.postgresql.Driver</property>
+        <property name="connection.username">postgres</property>
+        <property name="connection.password">test_dummy_pw</property>
+
+        <property name="dialect">org.hibernate.dialect.PostgreSQL95Dialect</property>
+        <property name="hbm2ddl.auto">update</property>
+
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+
+        <!--<mapping class="beans.Task"/>-->
+
+    </session-factory>
+</hibernate-configuration>
