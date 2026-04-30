@@ -104,7 +104,6 @@ public class ChannelArchiveRequestRESTServlet {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     ///Param ID is a unique number identifying the unique CAR object, which is a number
     public String deleteCAR(@FormParam("id") String id) throws ServiceException {
-
         try {
             if (id.length() < 4)
                 return "Error";
@@ -118,7 +117,6 @@ public class ChannelArchiveRequestRESTServlet {
         } catch (ServiceException ex) {
             return "Error";
         }
-
         return "ok";
     }
 
@@ -246,22 +244,22 @@ public class ChannelArchiveRequestRESTServlet {
             //Get the requested CAR object
             ChannelArchiveRequest caRequest = new ChannelArchiveRequest();
             caRequest.setsBChannelId(channel);
+
             ZonedDateTime newFromTime;
-            fromTime = "1900-01-01 " + fromTime;
-            if (validate(fromTime) && ZonedDateTime.parse(fromTime, timeFormatter.withZone(localZone)) != null) {
-                newFromTime = ZonedDateTime.parse(fromTime, timeFormatter.withZone(localZone));
+            if (validate(fromTime)) {
+                newFromTime = ZonedDateTime.parse("1900-01-01 " + fromTime, timeFormatter.withZone(localZone));
             } else {
                 newFromTime = ZonedDateTime.parse("1900-01-01 00:00", timeFormatter.withZone(localZone));
             }
             caRequest.setFromTime(java.util.Date.from(newFromTime.toInstant()));
-            ZonedDateTime newToTime;
-            if (toTime.equals("00:00"))
-                toTime = "1900-01-02" + toTime;
-            else
-                toTime = "1900-01-01" + toTime;
 
-            if (validate(toTime) && ZonedDateTime.parse(toTime, timeFormatter.withZone(localZone)) != null) {
-                newToTime = ZonedDateTime.parse(toTime, timeFormatter.withZone(localZone));
+            ZonedDateTime newToTime;
+            if (validate(toTime)) {
+                if (toTime.equals("00:00"))
+                    newToTime = ZonedDateTime.parse("1900-01-02 " + toTime, timeFormatter.withZone(localZone));
+                else
+                    newToTime = ZonedDateTime.parse("1900-01-01 " + toTime, timeFormatter.withZone(localZone));
+
             } else {
                 newToTime = ZonedDateTime.parse("1900-01-02 00:00", timeFormatter.withZone(localZone));
             }

@@ -10,6 +10,7 @@ Version 1.1.15
 3. Added new endpoints for filtering channels and requests list by to and from date
 4. Added working Dockerfile and docker-compose
 5. Made a README with instructions on how to run the application in Docker with docker compose
+6. Bugfix - Fixed the date being set to 00:00 when adding a Request even when the input time was correct
 
 Version 1.1.14
 =============
